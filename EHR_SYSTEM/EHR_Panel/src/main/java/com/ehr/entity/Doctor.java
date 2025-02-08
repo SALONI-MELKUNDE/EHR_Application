@@ -10,45 +10,45 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "Doctor_Details_Data")
 public class Doctor {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Enables auto-increment
-    @Column(name = "doctor_id")
-    private Long doctorId;
 
-    @Column(name = "doctor_name")
-    private String doctorName;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)  // Enables auto-increment
+	@Column(name = "doctor_id")
+	private Long doctorId;
 
-    @Column(name = "doctor_gender")
-    private String doctorGender;
+	@Column(name = "doctor_name")
+	private String doctorName;
 
-    @Column(name = "purpose_of_visit")
-    private String purposeOfVisit;
+	@Column(name = "doctor_gender")
+	private String doctorGender;
 
-    @Column(name = "diagnosis_recommendation")
-    private String diagnosisRecommendation;
+	@Column(name = "purpose_of_visit")
+	private String purposeOfVisit;
 
-    @Column(name = "doctor_phone")
-    private String doctorPhone;
+	@Column(name = "diagnosis_recommendation")
+	private String diagnosisRecommendation;
 
-    @Column(name = "doctor_email")
-    private String doctorEmail;
+	@Column(name = "doctor_phone")
+	private String doctorPhone;
 
-    @Column(name = "self_age")
-    private int selfAge;
+	@Column(name = "doctor_email")
+	private String doctorEmail;
 
-    @Column(name = "date_of_visit")
-    private String dateOfVisit;
+	@Column(name = "self_age")
+	private int selfAge;
 
-    @Column(name = "self_medical_docs")
-    private String selfMedicalDocs;
-    
-    public Doctor()
-    {
-    	
-    }
-    
-    
+	@Column(name = "date_of_visit")
+	private String dateOfVisit;
+
+	@Column(name = "self_medical_docs")
+	private String selfMedicalDocs;
+
+	public Doctor()
+	{
+
+	}
+
+
 	public Long getDoctorId() {
 		return doctorId;
 	}
@@ -117,8 +117,8 @@ public class Doctor {
 				+ ", dateOfVisit=" + dateOfVisit + ", selfMedicalDocs=" + selfMedicalDocs + "]";
 	}
 	public Doctor(Long doctorId, String doctorName, String doctorGender, String purposeOfVisit,
-			String diagnosisRecommendation, String doctorPhone, String doctorEmail, int selfAge, String dateOfVisit,
-			String selfMedicalDocs) {
+				  String diagnosisRecommendation, String doctorPhone, String doctorEmail, int selfAge, String dateOfVisit,
+				  String selfMedicalDocs) {
 		super();
 		this.doctorId = doctorId;
 		this.doctorName = doctorName;
@@ -132,8 +132,8 @@ public class Doctor {
 		this.selfMedicalDocs = selfMedicalDocs;
 	}
 
-    
 
-    
+
+
 
 }

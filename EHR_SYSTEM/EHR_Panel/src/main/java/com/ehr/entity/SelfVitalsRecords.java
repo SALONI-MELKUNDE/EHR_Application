@@ -69,10 +69,10 @@ public class SelfVitalsRecords {
 
     @Column(name = "OXYGEN_SATURATION_STATUS")
     private String oxygenSaturationStatus;
-    
-    
-    
-    
+
+
+
+
 
     // Getters and Setters
 
@@ -228,42 +228,42 @@ public class SelfVitalsRecords {
         this.oxygenSaturationStatus = oxygenSaturationStatus;
     }
 
-	@Override
-	public String toString() {
-		return "SelfVitalsRecords [id=" + id + ", name=" + name + ", age=" + age + ", gender=" + gender + ", weight="
-				+ weight + ", height=" + height + ", bloodType=" + bloodType + ", heartRate=" + heartRate
-				+ ", bloodPressure=" + bloodPressure + ", respiratoryRate=" + respiratoryRate + ", bodyTemperature="
-				+ bodyTemperature + ", bloodGlucose=" + bloodGlucose + ", oxygenSaturation=" + oxygenSaturation
-				+ ", heartRateStatus=" + heartRateStatus + ", bloodPressureStatus=" + bloodPressureStatus
-				+ ", respiratoryRateStatus=" + respiratoryRateStatus + ", bodyTemperatureStatus="
-				+ bodyTemperatureStatus + ", bloodGlucoseStatus=" + bloodGlucoseStatus + ", oxygenSaturationStatus="
-				+ oxygenSaturationStatus + "]";
-	}
+    @Override
+    public String toString() {
+        return "SelfVitalsRecords [id=" + id + ", name=" + name + ", age=" + age + ", gender=" + gender + ", weight="
+                + weight + ", height=" + height + ", bloodType=" + bloodType + ", heartRate=" + heartRate
+                + ", bloodPressure=" + bloodPressure + ", respiratoryRate=" + respiratoryRate + ", bodyTemperature="
+                + bodyTemperature + ", bloodGlucose=" + bloodGlucose + ", oxygenSaturation=" + oxygenSaturation
+                + ", heartRateStatus=" + heartRateStatus + ", bloodPressureStatus=" + bloodPressureStatus
+                + ", respiratoryRateStatus=" + respiratoryRateStatus + ", bodyTemperatureStatus="
+                + bodyTemperatureStatus + ", bloodGlucoseStatus=" + bloodGlucoseStatus + ", oxygenSaturationStatus="
+                + oxygenSaturationStatus + "]";
+    }
 
-	public SelfVitalsRecords(Long id, String name, int age, String gender, double weight, double height,
-			String bloodType, int heartRate, int bloodPressure, int respiratoryRate, double bodyTemperature,
-			double bloodGlucose, double oxygenSaturation, String heartRateStatus, String bloodPressureStatus,
-			String respiratoryRateStatus, String bodyTemperatureStatus, String bloodGlucoseStatus,
-			String oxygenSaturationStatus) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.age = age;
-		this.gender = gender;
-		this.weight = weight;
-		this.height = height;
-		this.bloodType = bloodType;
-		this.heartRate = heartRate;
-		this.bloodPressure = bloodPressure;
-		this.respiratoryRate = respiratoryRate;
-		this.bodyTemperature = bodyTemperature;
-		this.bloodGlucose = bloodGlucose;
-		this.oxygenSaturation = oxygenSaturation;
-		this.heartRateStatus = heartRateStatus;
-		this.bloodPressureStatus = bloodPressureStatus;
-		this.respiratoryRateStatus = respiratoryRateStatus;
-		this.bodyTemperatureStatus = bodyTemperatureStatus;
-		this.bloodGlucoseStatus = bloodGlucoseStatus;
-		this.oxygenSaturationStatus = oxygenSaturationStatus;
-	}
+    public SelfVitalsRecords(Long id, String name, int age, String gender, double weight, double height,
+                             String bloodType, int heartRate, int bloodPressure, int respiratoryRate, double bodyTemperature,
+                             double bloodGlucose, double oxygenSaturation, String heartRateStatus, String bloodPressureStatus,
+                             String respiratoryRateStatus, String bodyTemperatureStatus, String bloodGlucoseStatus,
+                             String oxygenSaturationStatus) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.weight = weight;
+        this.height = height;
+        this.bloodType = bloodType;
+        this.heartRate = heartRate;
+        this.bloodPressure = bloodPressure;
+        this.respiratoryRate = respiratoryRate;
+        this.bodyTemperature = bodyTemperature;
+        this.bloodGlucose = bloodGlucose;
+        this.oxygenSaturation = oxygenSaturation;
+        this.heartRateStatus = heartRateStatus;
+        this.bloodPressureStatus = bloodPressureStatus;
+        this.respiratoryRateStatus = respiratoryRateStatus;
+        this.bodyTemperatureStatus = bodyTemperatureStatus;
+        this.bloodGlucoseStatus = bloodGlucoseStatus;
+        this.oxygenSaturationStatus = oxygenSaturationStatus;
+    }
 }

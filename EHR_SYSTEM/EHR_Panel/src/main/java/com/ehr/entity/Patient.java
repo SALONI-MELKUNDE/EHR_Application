@@ -68,8 +68,8 @@ public class Patient {
     public String getPatientGender() {
         return patientGender;
     }
-    
- 
+
+
 
     public void setPatientGender(String patientGender) {
         this.patientGender = patientGender;
@@ -123,34 +123,34 @@ public class Patient {
         this.patientMedicalDocs = patientMedicalDocs;
     }
 
-	@Override
-	public String toString() {
-		return "Patient [patientId=" + patientId + ", patientName=" + patientName + ", patientAge=" + patientAge
-				+ ", patientGender=" + patientGender + ", purposeOfVisit=" + purposeOfVisit
-				+ ", diagnosisRecommendation=" + diagnosisRecommendation + ", patientPhone=" + patientPhone
-				+ ", patientEmail=" + patientEmail + ", patientDateOfVisit=" + patientDateOfVisit
-				+ ", patientMedicalDocs=" + patientMedicalDocs + "]";
-	}
+    @Override
+    public String toString() {
+        return "Patient [patientId=" + patientId + ", patientName=" + patientName + ", patientAge=" + patientAge
+                + ", patientGender=" + patientGender + ", purposeOfVisit=" + purposeOfVisit
+                + ", diagnosisRecommendation=" + diagnosisRecommendation + ", patientPhone=" + patientPhone
+                + ", patientEmail=" + patientEmail + ", patientDateOfVisit=" + patientDateOfVisit
+                + ", patientMedicalDocs=" + patientMedicalDocs + "]";
+    }
 
-	public Patient(Long patientId, String patientName, Integer patientAge, String patientGender, String purposeOfVisit,
-			String diagnosisRecommendation, String patientPhone, String patientEmail, Date patientDateOfVisit,
-			String patientMedicalDocs) {
-		super();
-		this.patientId = patientId;
-		this.patientName = patientName;
-		this.patientAge = patientAge;
-		this.patientGender = patientGender;
-		this.purposeOfVisit = purposeOfVisit;
-		this.diagnosisRecommendation = diagnosisRecommendation;
-		this.patientPhone = patientPhone;
-		this.patientEmail = patientEmail;
-		this.patientDateOfVisit = patientDateOfVisit;
-		this.patientMedicalDocs = patientMedicalDocs;
-	}
-	
-	public Patient() {
+    public Patient(Long patientId, String patientName, Integer patientAge, String patientGender, String purposeOfVisit,
+                   String diagnosisRecommendation, String patientPhone, String patientEmail, Date patientDateOfVisit,
+                   String patientMedicalDocs) {
+        super();
+        this.patientId = patientId;
+        this.patientName = patientName;
+        this.patientAge = patientAge;
+        this.patientGender = patientGender;
+        this.purposeOfVisit = purposeOfVisit;
+        this.diagnosisRecommendation = diagnosisRecommendation;
+        this.patientPhone = patientPhone;
+        this.patientEmail = patientEmail;
+        this.patientDateOfVisit = patientDateOfVisit;
+        this.patientMedicalDocs = patientMedicalDocs;
+    }
+
+    public Patient() {
         // Default constructor body (if needed)
     }
-	
-	
+
+
 }
