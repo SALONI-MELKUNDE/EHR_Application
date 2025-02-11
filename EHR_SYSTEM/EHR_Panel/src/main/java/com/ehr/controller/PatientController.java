@@ -1,21 +1,20 @@
 package com.ehr.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.ehr.entity.Doctor;
 import com.ehr.entity.Patient;
 import com.ehr.entity.SelfVitalsRecords;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.ehr.entity.Doctor;
+
 import com.ehr.service.PatientService;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 public class PatientController {
@@ -36,16 +35,7 @@ public class PatientController {
 		return ResponseEntity.ok(response);
 	}
 
-	@PostMapping("/addDoctors")
-	public ResponseEntity<Map<String, Object>> addDoctor(@RequestBody Doctor doctor) {
-		Doctor savedDoctor = patientService.saveDoctor(doctor);
 
-		Map<String, Object> response = new HashMap<>();
-		response.put("message", "Doctor registered successfully");
-		response.put("doctor", savedDoctor);
-
-		return ResponseEntity.ok(response);
-	}
 
 	@GetMapping("/getAllDoctorRecords")
 	public List<Doctor> getAllDoctorRecords() {
@@ -86,4 +76,19 @@ public class PatientController {
 	}
 
 
+	@PostMapping("/addDoctors")
+	public ResponseEntity<Map<String, Object>> addDoctor(@RequestBody Doctor doctor) {
+		Doctor savedDoctor = patientService.saveDoctor(doctor);
+
+		Map<String, Object> response = new HashMap<>();
+		response.put("message", "Doctor registered successfully");
+		response.put("doctor", savedDoctor);
+
+
+
+
+		return ResponseEntity.ok(response);
+	}
 }
+
+
