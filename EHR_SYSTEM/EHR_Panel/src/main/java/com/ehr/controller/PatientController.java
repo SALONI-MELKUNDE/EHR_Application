@@ -1,94 +1,137 @@
-package com.ehr.controller;
+package com.ehr.entity;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-import com.ehr.entity.Patient;
-import com.ehr.entity.SelfVitalsRecords;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+@Entity
+@Table(name = "Doctor_Record")
+public class Doctor {
 
-import com.ehr.entity.Doctor;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)  // Enables auto-increment
+	@Column(name = "doctor_id")
+	private Long doctorId;
 
-import com.ehr.service.PatientService;
-import org.springframework.web.multipart.MultipartFile;
+	@Column(name = "doctor_name")
+	private String doctorName;
 
-@RestController
-public class PatientController {
+	@Column(name = "doctor_gender")
+	private String doctorGender;
 
-	@Autowired
-	PatientService patientService;
+	@Column(name = "purpose_of_visit")
+	private String purposeOfVisit;
 
-	//addPatients
+	@Column(name = "diagnosis_recommendation")
+	private String diagnosisRecommendation;
 
-	@PostMapping("/addPatients")
-	public ResponseEntity<Map<String, Object>> addPatient(@RequestBody Patient patient) {
-		Patient savedPatient = patientService.savePatient(patient);
+	@Column(name = "doctor_phone")
+	private String doctorPhone;
 
-		Map<String, Object> response = new HashMap<>();
-		response.put("message", "Patient registered successfully");
-		response.put("patient", savedPatient);
+	@Column(name = "doctor_email")
+	private String doctorEmail;
 
-		return ResponseEntity.ok(response);
+	@Column(name = "self_age")
+	private int selfAge;
+
+	@Column(name = "date_of_visit")
+	private String dateOfVisit;
+
+	@Column(name = "self_medical_docs")
+	private String selfMedicalDocs;
+
+	public Doctor()
+	{
+
 	}
 
 
-
-	@GetMapping("/getAllDoctorRecords")
-	public List<Doctor> getAllDoctorRecords() {
-		return patientService.findAll();
+	public Long getDoctorId() {
+		return doctorId;
+	}
+	public void setDoctorId(Long doctorId) {
+		this.doctorId = doctorId;
+	}
+	public String getDoctorName() {
+		return doctorName;
+	}
+	public void setDoctorName(String doctorName) {
+		this.doctorName = doctorName;
+	}
+	public String getDoctorGender() {
+		return doctorGender;
+	}
+	public void setDoctorGender(String doctorGender) {
+		this.doctorGender = doctorGender;
+	}
+	public String getPurposeOfVisit() {
+		return purposeOfVisit;
+	}
+	public void setPurposeOfVisit(String purposeOfVisit) {
+		this.purposeOfVisit = purposeOfVisit;
+	}
+	public String getDiagnosisRecommendation() {
+		return diagnosisRecommendation;
+	}
+	public void setDiagnosisRecommendation(String diagnosisRecommendation) {
+		this.diagnosisRecommendation = diagnosisRecommendation;
+	}
+	public String getDoctorPhone() {
+		return doctorPhone;
+	}
+	public void setDoctorPhone(String doctorPhone) {
+		this.doctorPhone = doctorPhone;
+	}
+	public String getDoctorEmail() {
+		return doctorEmail;
+	}
+	public void setDoctorEmail(String doctorEmail) {
+		this.doctorEmail = doctorEmail;
+	}
+	public int getSelfAge() {
+		return selfAge;
+	}
+	public void setSelfAge(int selfAge) {
+		this.selfAge = selfAge;
+	}
+	public String getDateOfVisit() {
+		return dateOfVisit;
+	}
+	public void setDateOfVisit(String dateOfVisit) {
+		this.dateOfVisit = dateOfVisit;
+	}
+	public String getSelfMedicalDocs() {
+		return selfMedicalDocs;
+	}
+	public void setSelfMedicalDocs(String selfMedicalDocs) {
+		this.selfMedicalDocs = selfMedicalDocs;
+	}
+	@Override
+	public String toString() {
+		return "Doctor [doctorId=" + doctorId + ", doctorName=" + doctorName + ", doctorGender=" + doctorGender
+				+ ", purposeOfVisit=" + purposeOfVisit + ", diagnosisRecommendation=" + diagnosisRecommendation
+				+ ", doctorPhone=" + doctorPhone + ", doctorEmail=" + doctorEmail + ", selfAge=" + selfAge
+				+ ", dateOfVisit=" + dateOfVisit + ", selfMedicalDocs=" + selfMedicalDocs + "]";
+	}
+	public Doctor(Long doctorId, String doctorName, String doctorGender, String purposeOfVisit,
+				  String diagnosisRecommendation, String doctorPhone, String doctorEmail, int selfAge, String dateOfVisit,
+				  String selfMedicalDocs) {
+		super();
+		this.doctorId = doctorId;
+		this.doctorName = doctorName;
+		this.doctorGender = doctorGender;
+		this.purposeOfVisit = purposeOfVisit;
+		this.diagnosisRecommendation = diagnosisRecommendation;
+		this.doctorPhone = doctorPhone;
+		this.doctorEmail = doctorEmail;
+		this.selfAge = selfAge;
+		this.dateOfVisit = dateOfVisit;
+		this.selfMedicalDocs = selfMedicalDocs;
 	}
 
-	@GetMapping("/doctor/{doctorId}")
-	public List<Doctor> getDoctorByDoctorId(@PathVariable Long doctorId) {
-
-		System.out.println("Received doctorId: " + doctorId);
-
-		return patientService.findByDoctorId(doctorId);
-	}
-
-
-
-
-	@PostMapping("/SelfVitalsRecords")
-	public ResponseEntity<Map<String, Object>> SelfVitalsRecords(@RequestBody SelfVitalsRecords selfVitalsRecords) {
-		SelfVitalsRecords savedselfVitalsRecords = patientService.selfVitalsRecords(selfVitalsRecords);
-
-		Map<String, Object> response = new HashMap<>();
-		response.put("message", "selfVitalsRecords registered successfully");
-		response.put("selfVitalsRecords", savedselfVitalsRecords);
-
-		return ResponseEntity.ok(response);
-	}
-
-	@GetMapping("/getAllPatients")
-	public List<Patient> getAllPatients() {
-		return patientService.getAllPatients();
-	}
-
-	// Get patient by ID
-	@GetMapping("/patient/{patientId}")
-	public List<Patient> getPatientById(@PathVariable Long patientId) {
-		return patientService.findByPatientId(patientId);
-	}
-
-
-	@PostMapping("/addDoctors")
-	public ResponseEntity<Map<String, Object>> addDoctor(@RequestBody Doctor doctor) {
-		Doctor savedDoctor = patientService.saveDoctor(doctor);
-
-		Map<String, Object> response = new HashMap<>();
-		response.put("message", "Doctor registered successfully");
-		response.put("doctor", savedDoctor);
-
-
-
-
-		return ResponseEntity.ok(response);
-	}
 }
 
 
