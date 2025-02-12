@@ -1,136 +1,177 @@
 package com.ehr.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "Doctor_Record")
-public class Doctor {
+@Table(name = "Patient_Detail_Record")
+public class Patient {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Enables auto-increment
-    @Column(name = "doctor_id")
-    private Long doctorId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "PATIENT_ID")
+    private Long patientId;
 
-    @Column(name = "doctor_name")
-    private String doctorName;
+    @Column(name = "PATIENT_NAME")
+    private String patientName;
 
-    @Column(name = "doctor_gender")
-    private String doctorGender;
+    @Column(name = "PATIENT_AGE")
+    private Integer patientAge;
 
-    @Column(name = "purpose_of_visit")
+    @Column(name = "PATIENT_GENDER")
+    private String patientGender;
+
+    @Column(name = "PURPOSE_OF_VISIT")
     private String purposeOfVisit;
 
-    @Column(name = "diagnosis_recommendation")
+    @Column(name = "DIAGNOSIS_RECOMMENDATION")
     private String diagnosisRecommendation;
 
-    @Column(name = "doctor_phone")
-    private String doctorPhone;
+    @Column(name = "PATIENT_PHONE")
+    private String patientPhone;
 
-    @Column(name = "doctor_email")
-    private String doctorEmail;
+    @Column(name = "PATIENT_EMAIL")
+    private String patientEmail;
 
-    @Column(name = "self_age")
-    private int selfAge;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "PATIENT_DATE_OF_VISIT")
+    private Date patientDateOfVisit;
 
-    @Column(name = "date_of_visit")
-    private String dateOfVisit;
+    @Column(name = "PATIENT_MEDICAL_DOCS")
+    private String patientMedicalDocs; // Assuming this is a file path or document link
 
-    @Column(name = "self_medical_docs")
-    private String selfMedicalDocs;
+    @ManyToOne
+    @JoinColumn(name = "DOCTOR_ID") // Foreign key column in the Patient table
+    private Doctor doctor; // Linking patient to a doctor
 
-    public Doctor()
-    {
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SelfVitalsRecords> vitalsRecords;
 
+    public Long getPatientId() {
+        return patientId;
     }
 
+    public void setPatientId(Long patientId) {
+        this.patientId = patientId;
+    }
 
-    public Long getDoctorId() {
-        return doctorId;
+    public String getPatientName() {
+        return patientName;
     }
-    public void setDoctorId(Long doctorId) {
-        this.doctorId = doctorId;
+
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
     }
-    public String getDoctorName() {
-        return doctorName;
+
+    public Integer getPatientAge() {
+        return patientAge;
     }
-    public void setDoctorName(String doctorName) {
-        this.doctorName = doctorName;
+
+    public void setPatientAge(Integer patientAge) {
+        this.patientAge = patientAge;
     }
-    public String getDoctorGender() {
-        return doctorGender;
+
+    public String getPatientGender() {
+        return patientGender;
     }
-    public void setDoctorGender(String doctorGender) {
-        this.doctorGender = doctorGender;
+
+    public void setPatientGender(String patientGender) {
+        this.patientGender = patientGender;
     }
+
     public String getPurposeOfVisit() {
         return purposeOfVisit;
     }
+
     public void setPurposeOfVisit(String purposeOfVisit) {
         this.purposeOfVisit = purposeOfVisit;
     }
+
     public String getDiagnosisRecommendation() {
         return diagnosisRecommendation;
     }
+
     public void setDiagnosisRecommendation(String diagnosisRecommendation) {
         this.diagnosisRecommendation = diagnosisRecommendation;
     }
-    public String getDoctorPhone() {
-        return doctorPhone;
+
+    public String getPatientPhone() {
+        return patientPhone;
     }
-    public void setDoctorPhone(String doctorPhone) {
-        this.doctorPhone = doctorPhone;
+
+    public void setPatientPhone(String patientPhone) {
+        this.patientPhone = patientPhone;
     }
-    public String getDoctorEmail() {
-        return doctorEmail;
+
+    public String getPatientEmail() {
+        return patientEmail;
     }
-    public void setDoctorEmail(String doctorEmail) {
-        this.doctorEmail = doctorEmail;
+
+    public void setPatientEmail(String patientEmail) {
+        this.patientEmail = patientEmail;
     }
-    public int getSelfAge() {
-        return selfAge;
+
+    public Date getPatientDateOfVisit() {
+        return patientDateOfVisit;
     }
-    public void setSelfAge(int selfAge) {
-        this.selfAge = selfAge;
+
+    public void setPatientDateOfVisit(Date patientDateOfVisit) {
+        this.patientDateOfVisit = patientDateOfVisit;
     }
-    public String getDateOfVisit() {
-        return dateOfVisit;
+
+    public String getPatientMedicalDocs() {
+        return patientMedicalDocs;
     }
-    public void setDateOfVisit(String dateOfVisit) {
-        this.dateOfVisit = dateOfVisit;
+
+    public void setPatientMedicalDocs(String patientMedicalDocs) {
+        this.patientMedicalDocs = patientMedicalDocs;
     }
-    public String getSelfMedicalDocs() {
-        return selfMedicalDocs;
+
+    public Doctor getDoctor() {
+        return doctor;
     }
-    public void setSelfMedicalDocs(String selfMedicalDocs) {
-        this.selfMedicalDocs = selfMedicalDocs;
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
+
+    public List<SelfVitalsRecords> getVitalsRecords() {
+        return vitalsRecords;
+    }
+
+    public void setVitalsRecords(List<SelfVitalsRecords> vitalsRecords) {
+        this.vitalsRecords = vitalsRecords;
+    }
+
     @Override
-    public String toString() {
-        return "Doctor [doctorId=" + doctorId + ", doctorName=" + doctorName + ", doctorGender=" + doctorGender
-                + ", purposeOfVisit=" + purposeOfVisit + ", diagnosisRecommendation=" + diagnosisRecommendation
-                + ", doctorPhone=" + doctorPhone + ", doctorEmail=" + doctorEmail + ", selfAge=" + selfAge
-                + ", dateOfVisit=" + dateOfVisit + ", selfMedicalDocs=" + selfMedicalDocs + "]";
-    }
-    public Doctor(Long doctorId, String doctorName, String doctorGender, String purposeOfVisit,
-                  String diagnosisRecommendation, String doctorPhone, String doctorEmail, int selfAge, String dateOfVisit,
-                  String selfMedicalDocs) {
-        super();
-        this.doctorId = doctorId;
-        this.doctorName = doctorName;
-        this.doctorGender = doctorGender;
-        this.purposeOfVisit = purposeOfVisit;
-        this.diagnosisRecommendation = diagnosisRecommendation;
-        this.doctorPhone = doctorPhone;
-        this.doctorEmail = doctorEmail;
-        this.selfAge = selfAge;
-        this.dateOfVisit = dateOfVisit;
-        this.selfMedicalDocs = selfMedicalDocs;
-    }
+	public String toString() {
+		return "Patient [patientId=" + patientId + ", patientName=" + patientName + ", patientAge=" + patientAge
+				+ ", patientGender=" + patientGender + ", purposeOfVisit=" + purposeOfVisit
+				+ ", diagnosisRecommendation=" + diagnosisRecommendation + ", patientPhone=" + patientPhone
+				+ ", patientEmail=" + patientEmail + ", patientDateOfVisit=" + patientDateOfVisit
+				+ ", patientMedicalDocs=" + patientMedicalDocs + "]";
+	}
 
+	public Patient(Long patientId, String patientName, Integer patientAge, String patientGender, String purposeOfVisit,
+			String diagnosisRecommendation, String patientPhone, String patientEmail, Date patientDateOfVisit,
+			String patientMedicalDocs) {
+		super();
+		this.patientId = patientId;
+		this.patientName = patientName;
+		this.patientAge = patientAge;
+		this.patientGender = patientGender;
+		this.purposeOfVisit = purposeOfVisit;
+		this.diagnosisRecommendation = diagnosisRecommendation;
+		this.patientPhone = patientPhone;
+		this.patientEmail = patientEmail;
+		this.patientDateOfVisit = patientDateOfVisit;
+		this.patientMedicalDocs = patientMedicalDocs;
+	}
+	
+	public Patient() {
+        // Default constructor body (if needed)
+    }
+	
+	
 }
-

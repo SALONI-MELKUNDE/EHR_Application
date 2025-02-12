@@ -4,7 +4,6 @@ package com.ehr.service;
 import java.util.List;
 
 
-import com.ehr.entity.Doctor;
 import com.ehr.entity.Patient;
 import com.ehr.entity.SelfVitalsRecords;
 
@@ -29,15 +28,6 @@ public interface PatientService {
 
 	List<Patient> findByPatientId(Long patientId);
 
-
-
-
-
-
 }
 
-	
 
-	
-  
-}

@@ -1,7 +1,6 @@
 package com.ehr.service;
 
 
-import com.ehr.entity.Doctor;
 import com.ehr.entity.Patient;
 import com.ehr.entity.SelfVitalsRecords;
 import com.ehr.repo.DoctorRepository;
@@ -148,16 +147,6 @@ public class PatientServiceImpl implements PatientService {
 }
 
 
-
-
-
-
-
-
-
-
-
- 
 
 
 
