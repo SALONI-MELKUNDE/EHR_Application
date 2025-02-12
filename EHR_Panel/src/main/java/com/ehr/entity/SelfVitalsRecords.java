@@ -1,14 +1,9 @@
 package com.ehr.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "SELF_VITALS_RECORDSA")
+@Table(name = "SELF_VITALS_RECORDs_Data")
 public class SelfVitalsRecords {
 
     @Id
@@ -70,19 +65,18 @@ public class SelfVitalsRecords {
     @Column(name = "OXYGEN_SATURATION_STATUS")
     private String oxygenSaturationStatus;
 
+    // Relationship with Patient
+    @ManyToOne
+    @JoinColumn(name = "PATIENT_ID") // Foreign key to Patient table
+    private Patient patient;
 
+    public SelfVitalsRecords() {
 
+    }
 
 
     // Getters and Setters
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -90,6 +84,14 @@ public class SelfVitalsRecords {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public int getAge() {
@@ -228,6 +230,14 @@ public class SelfVitalsRecords {
         this.oxygenSaturationStatus = oxygenSaturationStatus;
     }
 
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
     @Override
     public String toString() {
         return "SelfVitalsRecords [id=" + id + ", name=" + name + ", age=" + age + ", gender=" + gender + ", weight="
@@ -267,3 +277,4 @@ public class SelfVitalsRecords {
         this.oxygenSaturationStatus = oxygenSaturationStatus;
     }
 }
+
