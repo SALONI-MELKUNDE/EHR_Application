@@ -84,15 +84,25 @@ public class PatientController {
 		response.put("message", "Doctor registered successfully");
 		response.put("doctor", savedDoctor);
 
-
-
-
 		return ResponseEntity.ok(response);
 	}
 
+	@PostMapping("/prescription")
+	public Prescription savePrescription(@RequestBody Prescription prescription) {
+		return patientService.savePrescription(prescription);
+	}
 
+	//http://localhost:9094/getPrescription?patientId=2&medicineName=Paracetamol
+	@GetMapping("/getPrescription")
+	public String getSchedule(@RequestParam("patientId") Long patientId,
+							  @RequestParam("medicineName") String medicineName) {
+		String schedule = patientService.getScheduleForPatientAndMedicine(patientId, medicineName);
 
-
-
+		if (schedule != null && !schedule.isEmpty()) {
+			return "The prescribed time slot for " + medicineName + " is: " + schedule;
+		} else {
+			return "No schedule found for " + medicineName + " for the given patient.";
+		}
+	}
 }
 
