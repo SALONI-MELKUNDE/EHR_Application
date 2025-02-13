@@ -144,6 +144,51 @@ public class PatientServiceImpl implements PatientService {
 		return patientRepository.findByPatientId(patientId);
 	}
 
+	@Override
+	public Prescription savePrescription(Prescription prescription) {
+
+		int timesPerDay = prescription.getPrescriptionRecommendedXTimesPerDay();
+
+		if (timesPerDay >= 1) {
+			prescription.setMorningSlot("8:00 AM - 11:00 AM"); // Morning Slot
+		}
+
+		if (timesPerDay >= 2) {
+			prescription.setAfternoonSlot("12:00 PM - 3:00 PM"); // Afternoon Slot
+		}
+
+		if (timesPerDay == 3) {
+			prescription.setEveningSlot("6:00 PM - 9:00 PM"); // Evening Slot
+		}
+		return prescriptionRepository.save(prescription);
+	}
+
+
+
+	public String getScheduleForPatientAndMedicine(Long patientId, String medicineName) {
+		Prescription prescription = prescriptionRepository.findByPatientIdAndMedicineName(patientId, medicineName);
+
+		if (prescription != null) {
+			StringBuilder schedule = new StringBuilder();
+
+			// Add the time slots if they are not null
+			if (prescription.getMorningSlot() != null) {
+				schedule.append("Morning: ").append(prescription.getMorningSlot()).append("\n");
+			}
+
+			if (prescription.getAfternoonSlot() != null) {
+				schedule.append("Afternoon: ").append(prescription.getAfternoonSlot()).append("\n");
+			}
+
+			if (prescription.getEveningSlot() != null) {
+				schedule.append("Evening: ").append(prescription.getEveningSlot()).append("\n");
+			}
+
+			return schedule.toString();
+		} else {
+			return "No prescription found for the given Patient ID and Medicine Name.";
+		}
+	}
 
 }
 
