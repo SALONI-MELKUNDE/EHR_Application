@@ -21,13 +21,17 @@ public interface PatientService {
 
 	SelfVitalsRecords selfVitalsRecords(SelfVitalsRecords selfVitalsRecords);
 
-	List<Doctor> findAll();
+	    List<Doctor> findAll();
 
-	List<Doctor> findByDoctorId(Long doctorId);
+	    List<Doctor> findByDoctorId(Long doctorId);
 
-	List<Patient> getAllPatients();
+	    List<Patient> getAllPatients();
 
-	List<Patient> findByPatientId(Long patientId);
+	    List<Patient> findByPatientId(Long patientId);
+
+	Prescription savePrescription(Prescription prescription);
+
+	String getScheduleForPatientAndMedicine(Long patientId, String medicineName);
 
 }
 
