@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.ehr.entity.Patient;
+import com.ehr.entity.Prescription;
 import com.ehr.entity.SelfVitalsRecords;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -104,5 +105,9 @@ public class PatientController {
 			return "No schedule found for " + medicineName + " for the given patient.";
 		}
 	}
+
+
+
+
 }
 

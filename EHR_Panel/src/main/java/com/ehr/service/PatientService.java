@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.ehr.entity.Doctor;
 import com.ehr.entity.Patient;
+import com.ehr.entity.Prescription;
 import com.ehr.entity.SelfVitalsRecords;
 
 
