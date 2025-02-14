@@ -3,9 +3,11 @@ package com.ehr.service;
 
 import com.ehr.entity.Doctor;
 import com.ehr.entity.Patient;
+import com.ehr.entity.Prescription;
 import com.ehr.entity.SelfVitalsRecords;
 import com.ehr.repo.DoctorRepository;
 import com.ehr.repo.PatientRepository;
+import com.ehr.repo.PrescriptionRepository;
 import com.ehr.repo.SelfVitalsRecordsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,10 @@ public class PatientServiceImpl implements PatientService {
 
 	@Autowired
 	SelfVitalsRecordsRepo selfVitalsRecordsRepo;
+
+
+	@Autowired
+	PrescriptionRepository prescriptionRepository;
 
 
 	@Override
@@ -189,8 +195,11 @@ public class PatientServiceImpl implements PatientService {
 			return "No prescription found for the given Patient ID and Medicine Name.";
 		}
 	}
-
 }
+
+
+
+
 
 
 
