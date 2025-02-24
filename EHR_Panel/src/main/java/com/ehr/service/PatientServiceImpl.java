@@ -1,19 +1,14 @@
 package com.ehr.service;
 
 
-import com.ehr.entity.Doctor;
-import com.ehr.entity.Patient;
-import com.ehr.entity.Prescription;
-import com.ehr.entity.SelfVitalsRecords;
-import com.ehr.repo.DoctorRepository;
-import com.ehr.repo.PatientRepository;
-import com.ehr.repo.PrescriptionRepository;
-import com.ehr.repo.SelfVitalsRecordsRepo;
+import com.ehr.entity.*;
+import com.ehr.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -31,6 +26,9 @@ public class PatientServiceImpl implements PatientService {
 
 	@Autowired
 	PrescriptionRepository prescriptionRepository;
+
+	@Autowired
+	AppointmentRepository appointmentRepository;
 
 
 	@Override
@@ -206,22 +204,23 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 
+	// ✅ Save appointment
+	public Appointment saveAppointment(Appointment appointment) {
+		return appointmentRepository.save(appointment);
+	}
+
+	// ✅ Get all appointments
+	public List<Appointment> getAllAppointments() {
+		return appointmentRepository.findAll();
+	}
+
+	// ✅ Get an appointment by ID
+	public Optional<Appointment> getAppointmentById(String appointmentId) {
+		return appointmentRepository.findById(appointmentId);
+	}
+
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
