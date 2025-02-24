@@ -277,4 +277,3 @@ public class SelfVitalsRecords {
         this.oxygenSaturationStatus = oxygenSaturationStatus;
     }
 }
-

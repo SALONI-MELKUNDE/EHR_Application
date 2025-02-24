@@ -8,6 +8,7 @@ import com.ehr.entity.Doctor;
 import com.ehr.entity.Patient;
 import com.ehr.entity.Prescription;
 import com.ehr.entity.SelfVitalsRecords;
+import jakarta.validation.constraints.NotNull;
 
 
 public interface PatientService {
@@ -22,18 +23,18 @@ public interface PatientService {
 
 	SelfVitalsRecords selfVitalsRecords(SelfVitalsRecords selfVitalsRecords);
 
-	    List<Doctor> findAll();
+	List<Doctor> findAll();
 
-	    List<Doctor> findByDoctorId(Long doctorId);
+	List<Doctor> findByDoctorId(Long doctorId);
 
-	    List<Patient> getAllPatients();
+	List<Patient> getAllPatients();
 
-	    List<Patient> findByPatientId(Long patientId);
+	List<Patient> findByPatientId(Long patientId);
+
 
 	Prescription savePrescription(Prescription prescription);
 
-	String getScheduleForPatientAndMedicine(Long patientId, String medicineName);
 
+
+	List<String> getSchedulesForPatient(@NotNull Long patientId);
 }
-
-

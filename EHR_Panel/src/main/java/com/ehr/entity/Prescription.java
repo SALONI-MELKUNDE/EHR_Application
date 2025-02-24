@@ -5,11 +5,14 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "prescriptions")
+@Table(name = "prescriptions_data")
 public class Prescription {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Long Id;
+
     @Column(name = "Patient_ID")
     private Long patientId;
 
@@ -43,31 +46,12 @@ public class Prescription {
 
     }
 
-    public Prescription(Long patientId, String eveningSlot, String afternoonSlot, String morningSlot, int prescriptionRecommendedXTimesPerDay, String prescriptionEndDate, String prescriptionStartDate, String medicineName, String patientName) {
-        this.patientId = patientId;
-        this.eveningSlot = eveningSlot;
-        this.afternoonSlot = afternoonSlot;
-        this.morningSlot = morningSlot;
-        this.prescriptionRecommendedXTimesPerDay = prescriptionRecommendedXTimesPerDay;
-        this.prescriptionEndDate = prescriptionEndDate;
-        this.prescriptionStartDate = prescriptionStartDate;
-        this.medicineName = medicineName;
-        this.patientName = patientName;
+    public Long getId() {
+        return Id;
     }
 
-    @Override
-    public String toString() {
-        return "Prescription{" +
-                "patientId=" + patientId +
-                ", patientName='" + patientName + '\'' +
-                ", medicineName='" + medicineName + '\'' +
-                ", prescriptionStartDate='" + prescriptionStartDate + '\'' +
-                ", prescriptionEndDate='" + prescriptionEndDate + '\'' +
-                ", prescriptionRecommendedXTimesPerDay=" + prescriptionRecommendedXTimesPerDay +
-                ", morningSlot='" + morningSlot + '\'' +
-                ", afternoonSlot='" + afternoonSlot + '\'' +
-                ", eveningSlot='" + eveningSlot + '\'' +
-                '}';
+    public void setId(Long id) {
+        Id = id;
     }
 
     public Long getPatientId() {
@@ -140,5 +124,21 @@ public class Prescription {
 
     public void setEveningSlot(String eveningSlot) {
         this.eveningSlot = eveningSlot;
+    }
+
+    @Override
+    public String toString() {
+        return "Prescription{" +
+                "Id=" + Id +
+                ", patientId=" + patientId +
+                ", patientName='" + patientName + '\'' +
+                ", medicineName='" + medicineName + '\'' +
+                ", prescriptionStartDate='" + prescriptionStartDate + '\'' +
+                ", prescriptionEndDate='" + prescriptionEndDate + '\'' +
+                ", prescriptionRecommendedXTimesPerDay=" + prescriptionRecommendedXTimesPerDay +
+                ", morningSlot='" + morningSlot + '\'' +
+                ", afternoonSlot='" + afternoonSlot + '\'' +
+                ", eveningSlot='" + eveningSlot + '\'' +
+                '}';
     }
 }

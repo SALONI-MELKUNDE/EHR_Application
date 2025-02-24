@@ -12,6 +12,7 @@ import com.ehr.repo.SelfVitalsRecordsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -71,9 +72,9 @@ public class PatientServiceImpl implements PatientService {
 	private String evaluateBloodPressure(int bloodPressure) {
 
 
-		if (bloodPressure < 90 || bloodPressure < 60) {
+		if (bloodPressure < 90) {
 			return "Low Blood Pressure";
-		} else if (bloodPressure > 140 || bloodPressure > 90) {
+		} else if (bloodPressure > 90) {
 			return "High Blood Pressure";
 		} else {
 			return "Normal Range";
@@ -170,14 +171,22 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 
+	public List<String> getSchedulesForPatient(Long patientId) {
+		List<Prescription> prescriptions = prescriptionRepository.findByPatientId(patientId);
 
-	public String getScheduleForPatientAndMedicine(Long patientId, String medicineName) {
-		Prescription prescription = prescriptionRepository.findByPatientIdAndMedicineName(patientId, medicineName);
+		List<String> schedules = new ArrayList<>();
 
-		if (prescription != null) {
+		if (prescriptions.isEmpty()) {
+			return schedules; // No prescriptions found for the patient
+		}
+
+		for (Prescription prescription : prescriptions) {
 			StringBuilder schedule = new StringBuilder();
 
-			// Add the time slots if they are not null
+			// Start with the medicine name
+			schedule.append("Medicine: ").append(prescription.getMedicineName()).append("\n");
+
+			// Add time slots if they are not null
 			if (prescription.getMorningSlot() != null) {
 				schedule.append("Morning: ").append(prescription.getMorningSlot()).append("\n");
 			}
@@ -190,12 +199,28 @@ public class PatientServiceImpl implements PatientService {
 				schedule.append("Evening: ").append(prescription.getEveningSlot()).append("\n");
 			}
 
-			return schedule.toString();
-		} else {
-			return "No prescription found for the given Patient ID and Medicine Name.";
+			schedules.add(schedule.toString().trim()); // Add the schedule for this prescription to the list
 		}
+
+		return schedules;
 	}
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

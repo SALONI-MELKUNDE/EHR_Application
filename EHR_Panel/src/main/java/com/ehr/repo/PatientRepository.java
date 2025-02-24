@@ -11,7 +11,7 @@ import com.ehr.entity.Patient;
 @Repository  // ✅ Required to mark this as a Spring-managed repository
 public interface PatientRepository extends JpaRepository<Patient, Long> {
 
-	
+
 
 	List<Patient> findByPatientId(Long patientId);
 }
