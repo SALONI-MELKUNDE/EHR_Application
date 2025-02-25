@@ -2,12 +2,15 @@ package com.ehr.controller;
 
 import java.io.IOException;
 
-import java.util.Collections;
+
 import java.util.List;
-import java.util.stream.Collectors;
+
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 import com.ehr.entity.Patient;
 
+import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpHeaders;
@@ -34,34 +37,47 @@ public class PatientController {
 							@RequestParam("patient_id") String patient_id,
 							@RequestParam("date") String date) throws IOException {
 
-		return patientService.uploadPdf(file,patient_id, date);
+		return patientService.uploadPdf(file, patient_id, date);
 	}
-
 
 
 
 
 	@GetMapping("/download/{patientId}")
-	public ResponseEntity<byte[]> downloadFileByPatientId(@PathVariable String patientId) {
+	public ResponseEntity<byte[]> downloadAllFilesByPatientId(@PathVariable String patientId) {
 		List<Patient> files = patientService.getFile(patientId);
 
-		if (files.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		if (files == null || files.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No files found".getBytes());
 		}
 
-		// Get the first file (or modify logic if multiple files exist)
-		Patient file = files.get(0);
+		try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+			 ZipOutputStream zipOutputStream = new ZipOutputStream(byteArrayOutputStream)) {
 
-		System.out.println("✅ File '" + file.getFileName() + "' downloaded successfully for patient ID: " + patientId);;
-		return ResponseEntity.ok()
-				.contentType(MediaType.parseMediaType(file.getContentType()))
-				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFileName() + "\"")
-				//.body(new FileDownloadResponse("File downloaded successfully", file.getData()));
-				.body(file.getData());
+			for (Patient file : files) {
+				if (file.getData() == null) continue; // Skip empty files
+
+				ZipEntry zipEntry = new ZipEntry(file.getFileName());
+				zipOutputStream.putNextEntry(zipEntry);
+				zipOutputStream.write(file.getData());
+				zipOutputStream.closeEntry();
+			}
+
+			zipOutputStream.finish();
+			byte[] zipBytes = byteArrayOutputStream.toByteArray();
+
+			return ResponseEntity.ok()
+					.contentType(MediaType.APPLICATION_OCTET_STREAM)
+					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"patient_files.zip\"")
+					.body(zipBytes);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body(("Error creating ZIP: " + e.getMessage()).getBytes());
+		}
 	}
 }
-
-
 
 
 
