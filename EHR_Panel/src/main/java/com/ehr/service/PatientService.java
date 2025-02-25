@@ -2,12 +2,10 @@ package com.ehr.service;
 
 
 import java.util.List;
+import java.util.Optional;
 
 
-import com.ehr.entity.Doctor;
-import com.ehr.entity.Patient;
-import com.ehr.entity.Prescription;
-import com.ehr.entity.SelfVitalsRecords;
+import com.ehr.entity.*;
 import jakarta.validation.constraints.NotNull;
 
 
@@ -37,4 +35,10 @@ public interface PatientService {
 
 
 	List<String> getSchedulesForPatient(@NotNull Long patientId);
+
+	Appointment saveAppointment(Appointment appointment);
+
+	List<Appointment> getAllAppointments();
+
+	Optional<Appointment> getAppointmentById(String appointmentId);
 }
