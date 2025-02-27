@@ -9,29 +9,31 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 
 @Configuration
 @EnableWebSecurity
 
-public class Security {
+public class Security{
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/addPatients").hasRole("ADMIN")
-                        .requestMatchers("/getAllDoctorRecords").hasAnyRole("ADMIN", "DOCTOR")
-                        .requestMatchers("/doctor/**").hasAnyRole("ADMIN", "DOCTOR")
-                        .requestMatchers("/SelfVitalsRecords").hasRole("PATIENT")
-                        .requestMatchers("/getAllPatients").hasRole("ADMIN")
-                        .requestMatchers("/patient/**").hasAnyRole("ADMIN", "DOCTOR")
-                        .requestMatchers("/addDoctors").hasRole("ADMIN")
+                        .requestMatchers("/addPatients").hasRole("ADMIN") // Only ADMIN can add patients
+                        .requestMatchers("/getAllDoctorRecords").hasAnyRole("ADMIN", "DOCTOR") // Doctors & Admins can see records
+                        .requestMatchers("/doctor/**").hasAnyRole("ADMIN", "DOCTOR") // Only Doctor or Admin can access
+                        .requestMatchers("/SelfVitalsRecords").hasRole("PATIENT") // Only Patients can add self-vitals
+                        .requestMatchers("/getAllPatients").hasRole("ADMIN") // Only ADMIN can fetch patients
+                        .requestMatchers("/patient/**").hasAnyRole("ADMIN", "DOCTOR") // Doctor & Admin can get patient details
+                        .requestMatchers("/addDoctors").hasRole("ADMIN") // Only ADMIN can add doctors
                         .anyRequest().authenticated()
                 )
-                .httpBasic(httpBasic -> {
-                });
+                .httpBasic(httpBasic -> {}); // Use correct syntax for HTTP Basic Auth
 
         return http.build();
     }
@@ -40,24 +42,27 @@ public class Security {
     public UserDetailsService userDetailsService() {
         UserDetails admin = User.builder()
                 .username("admin")
-                .password("admin123")  // We'll encode later
+                .password(passwordEncoder().encode("admin123"))
                 .roles("ADMIN")
                 .build();
 
         UserDetails doctor = User.builder()
                 .username("doctor1")
-                .password("doctor123") // We'll encode later
+                .password(passwordEncoder().encode("doctor123"))
                 .roles("DOCTOR")
                 .build();
 
         UserDetails patient = User.builder()
                 .username("patient1")
-                .password("patient123") // We'll encode later
+                .password(passwordEncoder().encode("patient123"))
                 .roles("PATIENT")
                 .build();
 
         return new InMemoryUserDetailsManager(admin, doctor, patient);
     }
 
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }
-
