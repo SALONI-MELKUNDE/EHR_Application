@@ -83,6 +83,7 @@ public class PatientController {
 	}
 
 	// ✅ Add Doctor with Validation
+
 	@PostMapping("/addDoctors")
 	public ResponseEntity<Map<String, Object>> addDoctor(@Valid @RequestBody Doctor doctor) {
 		Doctor savedDoctor = patientService.saveDoctor(doctor);

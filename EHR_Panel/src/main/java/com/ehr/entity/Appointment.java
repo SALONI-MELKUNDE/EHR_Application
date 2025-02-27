@@ -5,64 +5,63 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Appointment")
+@Table(name = "Appointments")
 public class Appointment {
 
     @Id
-    @Column(name = "Appointment_ID", length = 10, nullable = false, unique = true)
-    private String appointmentId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Appointment_ID")
+    private Long appointmentId;
 
-    @ManyToOne
-    @JoinColumn(name = "Doctor_ID", nullable = false)
-    private Doctor doctor;
+    @Column(name = "doctor_id")
+    private String doctor;
 
-    @ManyToOne
-    @JoinColumn(name = "Patient_ID", nullable = false)
-    private Patient patient;
+    @Column(name = "patient_id")
+    private String patient_id;
 
-    @Column(name = "Appointment_Date", nullable = false)
+
+    @Column(name = "Appointment_Date")
     @Temporal(TemporalType.DATE)
     private Date appointmentDate;
 
-    @Column(name = "Appointment_Time", length = 20, nullable = false)
+    @Column(name = "Appointment_Time")
     private String appointmentTime;
 
-    @Column(name = "Appointment_Status", length = 20, nullable = false)
+    @Column(name = "Appointment_Status")
     private String appointmentStatus;
 
-    @Column(name = "Reason_for_Visit", length = 255, nullable = false)
+    @Column(name = "Reason_for_Visit")
     private String reasonForVisit;
 
-    @Column(name = "Additional_Notes", columnDefinition = "TEXT")
+    @Column(name = "Additional_Notes")
     private String additionalNotes;
 
     public Appointment() {
 
     }
 
-
-    public String getAppointmentId() {
+    public Long getAppointmentId() {
         return appointmentId;
     }
 
-    public void setAppointmentId(String appointmentId) {
+    public void setAppointmentId(Long appointmentId) {
         this.appointmentId = appointmentId;
     }
 
-    public Doctor getDoctor() {
+    public String getDoctor() {
         return doctor;
     }
 
-    public void setDoctor(Doctor doctor) {
+    public void setDoctor(String doctor) {
         this.doctor = doctor;
     }
 
-    public Patient getPatient() {
-        return patient;
+    public String getPatient_id() {
+        return patient_id;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public void setPatient_id(String patient_id) {
+        this.patient_id = patient_id;
     }
 
     public Date getAppointmentDate() {
@@ -105,12 +104,23 @@ public class Appointment {
         this.additionalNotes = additionalNotes;
     }
 
+    public Appointment(Long appointmentId, String additionalNotes, String appointmentStatus, String appointmentTime, Date appointmentDate, String patient_id, String doctor, String reasonForVisit) {
+        this.appointmentId = appointmentId;
+        this.additionalNotes = additionalNotes;
+        this.appointmentStatus = appointmentStatus;
+        this.appointmentTime = appointmentTime;
+        this.appointmentDate = appointmentDate;
+        this.patient_id = patient_id;
+        this.doctor = doctor;
+        this.reasonForVisit = reasonForVisit;
+    }
+
     @Override
     public String toString() {
         return "Appointment{" +
                 "appointmentId='" + appointmentId + '\'' +
-                ", doctor=" + doctor +
-                ", patient=" + patient +
+                ", doctor='" + doctor + '\'' +
+                ", patient_id='" + patient_id + '\'' +
                 ", appointmentDate=" + appointmentDate +
                 ", appointmentTime='" + appointmentTime + '\'' +
                 ", appointmentStatus='" + appointmentStatus + '\'' +
@@ -118,15 +128,5 @@ public class Appointment {
                 ", additionalNotes='" + additionalNotes + '\'' +
                 '}';
     }
-
-    public Appointment(String appointmentId, Patient patient, Doctor doctor, Date appointmentDate, String appointmentTime, String appointmentStatus, String reasonForVisit, String additionalNotes) {
-        this.appointmentId = appointmentId;
-        this.patient = patient;
-        this.doctor = doctor;
-        this.appointmentDate = appointmentDate;
-        this.appointmentTime = appointmentTime;
-        this.appointmentStatus = appointmentStatus;
-        this.reasonForVisit = reasonForVisit;
-        this.additionalNotes = additionalNotes;
-    }
 }
+

@@ -1,10 +1,14 @@
 package com.ehr.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "Patient_Detail_Record")
 public class Patient {
 
@@ -13,6 +17,7 @@ public class Patient {
     @Column(name = "PATIENT_ID")
     private Long patientId;
 
+    @NotBlank(message = "patientName is required")
     @Column(name = "PATIENT_NAME")
     private String patientName;
 

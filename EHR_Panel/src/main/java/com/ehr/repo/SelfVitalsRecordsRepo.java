@@ -13,5 +13,4 @@ public interface SelfVitalsRecordsRepo extends JpaRepository<SelfVitalsRecords, 
 
 
 
-
 }
