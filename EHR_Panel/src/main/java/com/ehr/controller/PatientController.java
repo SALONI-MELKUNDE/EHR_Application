@@ -29,7 +29,7 @@ public class PatientController {
 
 		Map<String, Object> response = new HashMap<>();
 		response.put("message", "Patient registered successfully");
-		response.put("patient", savedPatient);
+		//response.put("patient", savedPatient);
 
 		return ResponseEntity.ok(response);
 	}
@@ -59,7 +59,7 @@ public class PatientController {
 
 		Map<String, Object> response = new HashMap<>();
 		response.put("message", "Self Vitals Record saved successfully");
-		response.put("selfVitalsRecords", savedVitals);
+		//response.put("selfVitalsRecords", savedVitals);
 
 		return ResponseEntity.ok(response);
 	}
@@ -90,7 +90,7 @@ public class PatientController {
 
 		Map<String, Object> response = new HashMap<>();
 		response.put("message", "Doctor registered successfully");
-		response.put("doctor", savedDoctor);
+		//response.put("doctor", savedDoctor);
 
 		return ResponseEntity.ok(response);
 	}
@@ -102,7 +102,7 @@ public class PatientController {
 
 		Map<String, Object> response = new HashMap<>();
 		response.put("message", "Prescription saved successfully");
-		response.put("prescription", savedPrescription);
+		//response.put("prescription", savedPrescription);
 
 		return ResponseEntity.ok(response);
 	}
@@ -131,7 +131,7 @@ public class PatientController {
 
 		Map<String, Object> response = new HashMap<>();
 		response.put("message", "Appointment scheduled successfully");
-		response.put("appointment", savedAppointment);
+		//response.put("appointment", savedAppointment);
 
 		return ResponseEntity.ok(response);
 	}

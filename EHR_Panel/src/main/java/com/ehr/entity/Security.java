@@ -3,20 +3,18 @@ package com.ehr.entity;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-
 public class Security{
 
     @Bean
@@ -24,14 +22,19 @@ public class Security{
         http
                 .csrf().disable()
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/addPatients").hasRole("ADMIN") // Only ADMIN can add patients
-                        .requestMatchers("/getAllDoctorRecords").hasAnyRole("ADMIN", "DOCTOR") // Doctors & Admins can see records
-                        .requestMatchers("/doctor/**").hasAnyRole("ADMIN", "DOCTOR") // Only Doctor or Admin can access
-                        .requestMatchers("/SelfVitalsRecords").hasRole("PATIENT") // Only Patients can add self-vitals
-                        .requestMatchers("/getAllPatients").hasRole("ADMIN") // Only ADMIN can fetch patients
-                        .requestMatchers("/patient/**").hasAnyRole("ADMIN", "DOCTOR") // Doctor & Admin can get patient details
-                        .requestMatchers("/addDoctors").hasRole("ADMIN") // Only ADMIN can add doctors
-                        .anyRequest().authenticated()
+                        .requestMatchers("/addPatients").hasAnyRole("ADMIN", "DOCTOR")
+                        .requestMatchers("/patient/**").hasAnyRole("ADMIN", "DOCTOR")
+                        .requestMatchers("/getAllPatients").hasAnyRole("ADMIN", "DOCTOR")
+                        .requestMatchers("/addDoctors").hasAnyRole("ADMIN", "PATIENT")
+                        .requestMatchers("/getAllDoctorRecords").hasAnyRole("ADMIN", "PATIENT")
+                        .requestMatchers("/doctor/**").hasAnyRole("ADMIN", "PATIENT")
+                        .requestMatchers("/SelfVitalsRecords").hasAnyRole("ADMIN", "PATIENT")
+                        .requestMatchers("/prescription").hasAnyRole("ADMIN", "PATIENT")
+                        .requestMatchers("/getPrescription").hasAnyRole("ADMIN","PATIENT")
+                        .requestMatchers("/addAppointment").hasAnyRole("ADMIN", "DOCTOR", "PATIENT")
+                        .requestMatchers("/allAppointment").hasAnyRole("ADMIN", "PATIENT",  "DOCTOR")
+                        .requestMatchers("/appointment/**").hasAnyRole("ADMIN", "PATIENT", "DOCTOR")
+
                 )
                 .httpBasic(httpBasic -> {}); // Use correct syntax for HTTP Basic Auth
 
