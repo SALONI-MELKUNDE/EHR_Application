@@ -28,7 +28,7 @@ public class Security {
 
                         .anyRequest().permitAll()
                 )
-                .httpBasic();
+                .httpBasic(httpBasic -> {});
 
         return http.build();
     }
