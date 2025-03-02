@@ -17,7 +17,7 @@ public class Appointment {
     private String doctor;
 
     @Column(name = "patient_id")
-    private String patient_id;
+    private Long patient_id;
 
 
     @Column(name = "Appointment_Date")
@@ -56,12 +56,12 @@ public class Appointment {
         this.doctor = doctor;
     }
 
-    public String getPatient_id() {
+    public Long getPatient_id() {
         return patient_id;
     }
 
     public void setPatient_id(String patient_id) {
-        this.patient_id = patient_id;
+        this.patient_id = Long.valueOf(patient_id);
     }
 
     public Date getAppointmentDate() {
@@ -110,7 +110,7 @@ public class Appointment {
         this.appointmentStatus = appointmentStatus;
         this.appointmentTime = appointmentTime;
         this.appointmentDate = appointmentDate;
-        this.patient_id = patient_id;
+        this.patient_id = Long.valueOf(patient_id);
         this.doctor = doctor;
         this.reasonForVisit = reasonForVisit;
     }

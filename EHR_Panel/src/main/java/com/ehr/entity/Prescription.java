@@ -2,8 +2,6 @@ package com.ehr.entity;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
-
 @Entity
 @Table(name = "prescriptions_data")
 public class Prescription {

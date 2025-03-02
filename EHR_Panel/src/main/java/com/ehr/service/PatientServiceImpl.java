@@ -41,6 +41,91 @@ public class PatientServiceImpl implements PatientService {
 		return doctorRepository.save(doctor);
 	}
 
+	@Override
+	public boolean deletedPatientById(Long patientId) {
+		if (patientRepository.existsById(patientId)) {
+			patientRepository.deleteById(patientId);
+			return true; // Successfully deleted
+		}
+		return false; // Patient ID not found
+	}
+
+	@Override
+	public boolean deleteDoctorById(Long doctorId) {
+		if (doctorRepository.existsById(doctorId)) {
+			doctorRepository.deleteById(doctorId);
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public Doctor updateDoctorById(Long doctorId, Doctor updatedDoctor) {
+		Optional<Doctor> existingDoctorOpt = doctorRepository.findById(doctorId);
+
+		if (existingDoctorOpt.isPresent()) {
+			Doctor existingDoctor = existingDoctorOpt.get();
+
+			// Updating only non-null fields
+			if (updatedDoctor.getDoctorName() != null) {
+				existingDoctor.setDoctorName(updatedDoctor.getDoctorName());
+			}
+			if (updatedDoctor.getDoctorGender() != null) {
+				existingDoctor.setDoctorGender(updatedDoctor.getDoctorGender());
+			}
+			if (updatedDoctor.getPurposeOfVisit() != null) {
+				existingDoctor.setPurposeOfVisit(updatedDoctor.getPurposeOfVisit());
+			}
+			if (updatedDoctor.getDiagnosisRecommendation() != null) {
+				existingDoctor.setDiagnosisRecommendation(updatedDoctor.getDiagnosisRecommendation());
+			}
+			if (updatedDoctor.getDoctorPhone() != null) {
+				existingDoctor.setDoctorPhone(updatedDoctor.getDoctorPhone());
+			}
+			if (updatedDoctor.getDoctorEmail() != null) {
+				existingDoctor.setDoctorEmail(updatedDoctor.getDoctorEmail());
+			}
+			if (updatedDoctor.getSelfAge() > 0) {
+				existingDoctor.setSelfAge(updatedDoctor.getSelfAge());
+			}
+			if (updatedDoctor.getDateOfVisit() != null) {
+				existingDoctor.setDateOfVisit(updatedDoctor.getDateOfVisit());
+			}
+			if (updatedDoctor.getSelfMedicalDocs() != null) {
+				existingDoctor.setSelfMedicalDocs(updatedDoctor.getSelfMedicalDocs());
+			}
+
+			// Save updated doctor details
+			return doctorRepository.save(existingDoctor);
+		} else {
+			return null; // No doctor found
+		}
+	}
+
+
+
+	@Override
+	public Patient updatePatientById(Long patientId, Patient updatedPatient) {
+		Optional<Patient> existingPatient = patientRepository.findById(patientId);
+
+		if (existingPatient.isPresent()) {
+			Patient patient = existingPatient.get();
+			patient.setPatientName(updatedPatient.getPatientName());
+			patient.setPatientAge(updatedPatient.getPatientAge());
+			patient.setPatientGender(updatedPatient.getPatientGender());
+			patient.setPurposeOfVisit(updatedPatient.getPurposeOfVisit());
+			patient.setDiagnosisRecommendation(updatedPatient.getDiagnosisRecommendation());
+			patient.setPatientPhone(updatedPatient.getPatientPhone());
+			patient.setPatientEmail(updatedPatient.getPatientEmail());
+			patient.setPatientDateOfVisit(updatedPatient.getPatientDateOfVisit());
+			patient.setPatientMedicalDocs(updatedPatient.getPatientMedicalDocs());
+
+			return patientRepository.save(patient); // Save and return updated patient
+		}
+		return null; // If not found, return null
+	}
+
+
 
 	public SelfVitalsRecords selfVitalsRecords(SelfVitalsRecords selfVitalsRecords) {
 		// Evaluating each vital and setting the status
@@ -219,8 +304,19 @@ public class PatientServiceImpl implements PatientService {
 		return appointmentRepository.findById(appointmentId);
 	}
 
+	@Override
+	public boolean isPatientExists(Long patientId) {
+		return patientRepository.existsById(Long.valueOf(patientId));
+	}
+
+
+
+
+
 
 }
+
+
 
 
 

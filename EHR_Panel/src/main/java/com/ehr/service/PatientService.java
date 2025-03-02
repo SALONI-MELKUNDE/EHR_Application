@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import com.ehr.entity.*;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
 public interface PatientService {
@@ -17,7 +18,11 @@ public interface PatientService {
 	Doctor saveDoctor(Doctor doctor);
 
 
+	boolean deletedPatientById(@PathVariable @NotNull Long patientId);
+	boolean deleteDoctorById(Long doctorId);
 
+	Doctor updateDoctorById(Long doctorId, Doctor updatedDoctor);
+	Patient updatePatientById(Long patientId, Patient updatedPatient);
 
 	SelfVitalsRecords selfVitalsRecords(SelfVitalsRecords selfVitalsRecords);
 
@@ -41,4 +46,6 @@ public interface PatientService {
 	List<Appointment> getAllAppointments();
 
 	Optional<Appointment> getAppointmentById(String appointmentId);
+
+	boolean isPatientExists(Long patientId);
 }
