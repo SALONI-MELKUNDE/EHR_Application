@@ -205,5 +205,28 @@ public class PatientController {
 		return ResponseEntity.ok(response);
 	}
 
+	// ✅ Get all appointments
+	@GetMapping("/allAppointment")
+	public ResponseEntity<List<Appointment>> getAllAppointments() {
+		List<Appointment> appointments = patientService.getAllAppointments();
+		return ResponseEntity.ok(appointments);
+	}
+
+
+	@GetMapping("/appointment/{appointmentId}")
+	public ResponseEntity<Appointment> getAppointmentById(@PathVariable String appointmentId) {
+		return patientService.getAppointmentById(appointmentId)
+				.map(ResponseEntity::ok)
+				.orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+	}
+
+
+	// ✅ Global Exception Handler for Bad Requests
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<String> handleException(Exception ex) {
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+				.body("❌ Error: " + ex.getMessage());
+	}
+
 
 }
