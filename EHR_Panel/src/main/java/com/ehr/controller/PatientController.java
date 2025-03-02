@@ -221,6 +221,7 @@ public class PatientController {
 	}
 
 
+
 	// ✅ Global Exception Handler for Bad Requests
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<String> handleException(Exception ex) {
