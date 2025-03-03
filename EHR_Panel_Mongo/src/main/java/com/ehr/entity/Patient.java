@@ -9,15 +9,16 @@ public class Patient {
 
 	@Id
 	private String id;
-	private String patient_id;
+
+	private String patientId;
 	private String Date;
 	private String fileName;
 	private String contentType;
 	private byte[] data;
 
-	public Patient(String id, String patient_id, String date, String fileName, String contentType) {
+	public Patient(String id, String patientId, String date, String fileName, String contentType) {
 		this.id = id;
-		this.patient_id = patient_id;
+		this.patientId = patientId;
 		Date = date;
 		this.fileName = fileName;
 		this.contentType = contentType;
@@ -37,11 +38,11 @@ public class Patient {
 	}
 
 	public String getPatient_id() {
-		return patient_id;
+		return patientId;
 	}
 
 	public void setPatient_id(String patient_id) {
-		this.patient_id = patient_id;
+		this.patientId = patient_id;
 	}
 
 	public String getDate() {
@@ -76,4 +77,3 @@ public class Patient {
 		this.data = data;
 	}
 }
-
