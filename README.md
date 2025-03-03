@@ -136,6 +136,17 @@ EHR_Panel_Mongo
 ---
 
 
+## 4. Technologies Used
+- **Java 17+**
+- **Spring Boot** (Web, Data JPA, Data MongoDB, Validation, Security)
+- **MySQL** (for EHR_Panel)
+- **MongoDB** (for EHR_Panel_Mongo)
+- **Maven** (Project build tool)
+- **Hibernate** (JPA provider for MySQL)
+- **In-Memory Authentication** (Spring Security)
+- **Tomcat** (embedded in Spring Boot)
+
+---
 
 
 
