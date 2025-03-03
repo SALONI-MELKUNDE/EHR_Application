@@ -14,4 +14,8 @@ public interface PatientRepository extends MongoRepository<Patient, Long> {
 
     @Query("{ 'patient_id' : ?0 }")
     List<Patient> findByPatientId(String patient_id);
+
+    boolean existsByPatientId(String patientId);
+
+    void deleteByPatientId(String patientId);
 }

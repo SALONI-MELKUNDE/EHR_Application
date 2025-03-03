@@ -77,8 +77,18 @@ public class PatientController {
 					.body(("Error creating ZIP: " + e.getMessage()).getBytes());
 		}
 	}
+
+	@DeleteMapping("/deleteFile/{patientId}")
+	public ResponseEntity<String> deleteFileByPatientId(@PathVariable String patientId) {
+		boolean isDeleted = patientService.deleteFile(patientId);
+
+		if (isDeleted) {
+			return ResponseEntity.ok("File deleted successfully for patient ID: " + patientId);
+		}
+		return ResponseEntity.status(HttpStatus.NOT_FOUND)
+				.body("No file found for patient ID: " + patientId);
+	}
+
 }
-
-
 
 
