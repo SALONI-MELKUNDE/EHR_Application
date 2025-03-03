@@ -169,7 +169,13 @@ EHR_Panel_Mongo
 ---
 
 
+## 6. Setup & Installation
+1. **Clone this repository**:
+   ```bash
+   git clone https://github.com/your-username/your-repo.git
+   ```
 
+   
 
 
 
