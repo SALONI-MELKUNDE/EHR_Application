@@ -46,3 +46,76 @@ Together, these applications form a simplified EHR system where you can manage b
 
 ### EHR_Panel (MySQL)
 
+
+```text
+EHR_Panel
+├─ .idea
+├─ EHR_Panel
+│  ├─ src
+│  │  └─ main
+│  │     └─ java
+│  │        ├─ com.ehr.controller
+│  │        │  ├─ PatientController.java
+│  │        │  └─ GlobalExceptionHandler.java
+│  │        ├─ com.ehr.entity
+│  │        │  ├─ Appointment.java
+│  │        │  ├─ Doctor.java
+│  │        │  ├─ Patient.java
+│  │        │  ├─ Prescription.java
+│  │        │  ├─ Security.java
+│  │        │  └─ SelfVitalsRecords.java
+│  │        ├─ com.ehr.repo
+│  │        │  ├─ AppointmentRepository.java
+│  │        │  ├─ DoctorRepository.java
+│  │        │  ├─ PatientRepository.java
+│  │        │  ├─ PrescriptionRepository.java
+│  │        │  └─ SelfVitalsRecordsRepo.java
+│  │        ├─ com.ehr.service
+│  │        │  ├─ PatientService.java
+│  │        │  └─ PatientServiceImpl.java
+│  │        └─ com.ehr
+│  │           └─ Application.java
+│  ├─ src
+│  │  └─ main
+│  │     └─ resources
+│  │        ├─ application.properties
+│  │        └─ ...
+└─ pom.xml
+```
+### EHR_Panel_Mongo (MongoDB)
+
+```text
+EHR_Panel_Mongo
+├─ .idea
+├─ EHR_Panel_Mongo
+│  ├─ src
+│  │  └─ main
+│  │     └─ java
+│  │        ├─ com.ehr.controller
+│  │        │  └─ PatientController.java
+│  │        ├─ com.ehr.entity
+│  │        │  ├─ Patient.java
+│  │        │  └─ Security.java
+│  │        ├─ com.ehr.repo
+│  │        │  └─ PatientRepository.java
+│  │        ├─ com.ehr.service
+│  │        │  ├─ PatientService.java
+│  │        │  └─ PatientServiceImpl.java
+│  │        └─ com.ehr
+│  │           └─ Application.java
+│  ├─ src
+│  │  └─ main
+│  │     └─ resources
+│  │        ├─ application.properties
+│  │        └─ ...
+└─ pom.xml
+```
+
+
+
+
+
+
+
+
+
