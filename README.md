@@ -7,6 +7,7 @@
 
 This repository contains two Spring Boot projects that together form an Electronic Health Record (EHR) system. One project (**EHR_Panel**) uses MySQL for data persistence, and the other project (**EHR_Panel_Mongo**) uses MongoDB for file/document storage.
 
+
 ---
 
 ## Table of Contents
@@ -39,6 +40,7 @@ Data is stored in a MySQL database.
 A Spring Boot application that stores and retrieves PDF (or other) files associated with patients in MongoDB.
 
 Together, these applications form a simplified EHR system where you can manage both **structured data** (patients, doctors, appointments, prescriptions, vitals) and **file uploads/downloads** for patient records.
+
 
 ---
 
@@ -112,6 +114,26 @@ EHR_Panel_Mongo
 │  │        └─ ...
 └─ pom.xml
 ```
+
+---
+
+## 3. Features
+
+### EHR_Panel (MySQL)
+- **Patient Management**: Create, read, update, and delete patient records.  
+- **Doctor Management**: Create, read, update, and delete doctor records.  
+- **Appointments**: Schedule and manage appointments for patients.  
+- **Prescriptions**: Create and retrieve prescription details (including recommended times per day).  
+- **Vitals**: Add and retrieve patient vitals with basic health checks (e.g., heart rate, blood pressure).  
+- **Security**: Role-based access control (ADMIN, DOCTOR, PATIENT) using Spring Security with in-memory credentials.
+
+### EHR_Panel_Mongo (MongoDB)
+- **File Upload**: Upload PDF or other files related to a patient.  
+- **File Download**: Download multiple files for a given patient as a single ZIP.  
+- **File Deletion**: Delete files associated with a patient.  
+- **Security**: Role-based access control (ADMIN, PATIENT) using Spring Security with in-memory credentials.
+
+---
 
 
 
