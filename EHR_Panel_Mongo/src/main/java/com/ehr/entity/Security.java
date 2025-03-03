@@ -26,6 +26,9 @@ public class Security {
 
                         .requestMatchers("/download/**").hasAnyRole("ADMIN", "PATIENT")
 
+                        .requestMatchers("/delete/**").hasAnyRole("ADMIN", "PATIENT")
+
+
                         .anyRequest().permitAll()
                 )
                 .httpBasic(httpBasic -> {});
