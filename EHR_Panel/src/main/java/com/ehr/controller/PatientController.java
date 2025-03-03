@@ -19,6 +19,7 @@ public class PatientController {
 	PatientService patientService;
 
 
+
 	// ✅ Add Patient with Validation
 	@PostMapping("/addPatients")
 	public ResponseEntity<Map<String, Object>> addPatient(@Valid @RequestBody Patient patient) {
@@ -59,7 +60,6 @@ public class PatientController {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND)
 				.body("No doctor found with ID: " + doctorId);
 	}
-
 	@PutMapping("/doctorUpdate/{doctorId}")
 	public ResponseEntity<?> updateDoctorById(@PathVariable @NotNull Long doctorId, @Valid @RequestBody Doctor updatedDoctor) {
 		Doctor doctor = patientService.updateDoctorById(doctorId, updatedDoctor);
@@ -83,6 +83,21 @@ public class PatientController {
 
 		return ResponseEntity.ok(response);
 	}
+
+	// ✅ Get All Self Vitals Records
+	@GetMapping("/getSelfVitalsRecords")
+	public ResponseEntity<List<SelfVitalsRecords>> getAllSelfVitalsRecords() {
+		List<SelfVitalsRecords> vitalsRecords = patientService.getAllSelfVitalsRecords();
+
+		if (vitalsRecords.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND)
+					.body(Collections.emptyList());
+		}
+		return ResponseEntity.ok(vitalsRecords);
+	}
+
+
+
 
 	// ✅ Get All Patients
 	@GetMapping("/getAllPatients")
@@ -160,6 +175,7 @@ public class PatientController {
 	}
 
 
+
 	@GetMapping("/getPrescription")
 	public ResponseEntity<String> getSchedule(@RequestParam("patientId") @NotNull Long patientId) {
 		List<String> schedules = patientService.getSchedulesForPatient(patientId);
@@ -172,6 +188,8 @@ public class PatientController {
 		// Combine all schedules into one response, joining each schedule with a newline
 		return ResponseEntity.ok("The prescribed time slots for patient ID " + patientId + " are:\n" + String.join("\n\n", schedules));
 	}
+
+
 
 
 	// ✅ Add a new appointment
@@ -205,6 +223,11 @@ public class PatientController {
 		return ResponseEntity.ok(response);
 	}
 
+
+
+
+
+
 	// ✅ Get all appointments
 	@GetMapping("/allAppointment")
 	public ResponseEntity<List<Appointment>> getAllAppointments() {
@@ -221,13 +244,15 @@ public class PatientController {
 	}
 
 
-
 	// ✅ Global Exception Handler for Bad Requests
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<String> handleException(Exception ex) {
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
 				.body("❌ Error: " + ex.getMessage());
 	}
+
+
+
 
 
 }

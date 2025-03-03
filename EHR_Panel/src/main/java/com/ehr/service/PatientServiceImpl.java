@@ -309,13 +309,14 @@ public class PatientServiceImpl implements PatientService {
 		return patientRepository.existsById(Long.valueOf(patientId));
 	}
 
-
-
+	@Override
+	public List<SelfVitalsRecords> getAllSelfVitalsRecords() {
+		return selfVitalsRecordsRepo.findAll();
+	}
 
 
 
 }
-
 
 
 

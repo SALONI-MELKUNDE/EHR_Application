@@ -48,4 +48,7 @@ public interface PatientService {
 	Optional<Appointment> getAppointmentById(String appointmentId);
 
 	boolean isPatientExists(Long patientId);
+
+	List<SelfVitalsRecords> getAllSelfVitalsRecords();
+
 }
