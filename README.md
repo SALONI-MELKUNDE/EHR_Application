@@ -148,6 +148,25 @@ EHR_Panel_Mongo
 
 ---
 
+## 5. Prerequisites
+1. **Java 17+** installed and configured (`JAVA_HOME`).
+2. **Maven 3.6+** installed (or use Maven wrapper).
+3. **MySQL** server running on port `3307` (or adjust `application.properties` accordingly) for EHR_Panel.  
+   - Default credentials in `application.properties`:
+     ```properties
+     spring.datasource.url=jdbc:mysql://localhost:3307/ehr_portal
+     spring.datasource.username=root
+     spring.datasource.password=Santosh@2506
+     ```
+   - Make sure you create (or let Hibernate create) a schema/database named `ehr_portal`.
+4. **MongoDB** server running on port `27017` (or adjust `application.properties` accordingly) for EHR_Panel_Mongo.  
+   - Default URI in `application.properties`:
+     ```properties
+     spring.data.mongodb.uri=mongodb://localhost:27017/ehr_portal
+     ```
+5. **Postman** or any REST client (optional but recommended for testing).
+
+---
 
 
 
