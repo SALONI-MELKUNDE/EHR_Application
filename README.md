@@ -175,7 +175,18 @@ EHR_Panel_Mongo
    https://github.com/SALONI-MELKUNDE/EHR_Application.git 
    ```
 
-2. 
+2. **Navigate to each project (EHR_Panel and EHR_Panel_Mongo) to install dependencies:**
+   
+    ```bash
+    cd EHR_Panel
+    mvn clean install
+    ```
+
+    ```bash
+    cd EHR_Panel_Mongo
+    mvn clean install
+    ```
+    
    
 
 
