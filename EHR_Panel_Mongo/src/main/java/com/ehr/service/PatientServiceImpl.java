@@ -35,13 +35,28 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Override
-	public List<Patient> getFile(String patient_id) {
+	public List<Patient> getFile(String patientId) {
 
-		return doctorRepository.findByPatientId(patient_id);
+		return doctorRepository.findByPatientId(patientId);
+	}
+
+	@Override
+	public boolean deleteFile(String patientId) {
+		if (doctorRepository.existsByPatientId(patientId)) {
+			doctorRepository.deleteByPatientId(patientId);
+			return true;
+		}
+		return false;
 	}
 
 
 }
+
+
+
+
+
+
 
 
 

@@ -17,5 +17,7 @@ public interface PatientService {
 
 	//Patient getFile(String id);
 
-	List<Patient> getFile(String patientId);
+	List<Patient> getFile(String patientiId);
+
+	boolean deleteFile(String patientiId);
 }
