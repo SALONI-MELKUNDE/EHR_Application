@@ -1,6 +1,6 @@
 
 
-**EHR-Panel Requirements**
+# EHR-Panel Requirements
 
 
 Project Name: EHR-Panel
