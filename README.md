@@ -289,7 +289,38 @@ Parameters: file (MultipartFile), patient_id, date**
 **ADMIN has full access.**
 **DOCTOR and PATIENT roles have restricted access per endpoint as defined in the security configuration.** 
 
+### EHR_Panel_Mongo (MongoDB) Credentials:
 
+*ADMIN:*
+- **Username: admin**
+- **Password: admin123**
+
+*PATIENT:*
+- **Username: patient1**
+- **Password: patient123**
+
+*Endpoint Restrictions:*
+**Endpoints such as /upload, /download/**, and /deleteFile/** are accessible to users with either ADMIN or PATIENT roles.**
+
+## 10. Testing with Postman
+
+- **Import the API collection (if provided) into Postman.**
+- **Use HTTP Basic Authentication with the credentials listed above.**
+- **Test each endpoint by sending requests with the necessary parameters and payloads.**
+- **Validate the response codes and payloads as per the API definitions.**
+
+## 11. Future Enhancements
+
+- **User Interface: Develop a frontend UI for easier interaction with the EHR system.**
+- **Enhanced Security: Integrate JWT-based authentication and OAuth2 for more robust security.**
+- **Scalability: Container orchestration using Kubernetes for high availability.**
+- **Audit Logging: Implement detailed logging and audit trails for security and compliance.**
+- **Integration: Add support for third-party healthcare systems and analytics.**
+
+## 12. License
+
+- **This project is licensed under the MIT License.
+(Include or reference the actual LICENSE file in your repository.)**
 
   
 
