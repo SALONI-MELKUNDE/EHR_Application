@@ -195,8 +195,33 @@ EHR_Panel_Mongo
   src/main/resources/application.properties
   ```
 
+- **MongoDB (EHR_Panel_Mongo): Verify the MongoDB URI in**
 
+  ```bash
+  src/main/resources/application.properties
+  ```
 
+## 7. Running the Projects
+
+### EHR_Panel (MySQL)
+
+- **Using Maven:**  
+  ```bash
+  mvn spring-boot:run
+  ```
+- **Using an IDE: Run the Application.java class as a Java application.**
+- **Access: The application runs on port 9094 (or as specified in the properties file).**
+
+- **EHR_Panel_Mongo (MongoDB)**
+  
+- **Using Maven:**  
+  ```bash
+  mvn spring-boot:run
+  ```
+- **Using an IDE: Run the Application.java class as a Java application.**
+- **Access: The application runs on port 8081 (or as specified in the properties file).**
+
+*Note: Ensure that both MySQL and MongoDB servers are up and running before starting the applications.*
 
 
 
