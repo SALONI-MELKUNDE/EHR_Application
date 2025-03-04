@@ -252,5 +252,44 @@ EHR_Panel_Mongo
 - **POST /prescription – Add a new prescription record**
 - **GET /getPrescription – Retrieve prescription schedules for a patient**
 
+*Vitals:*
+
+- **POST /SelfVitalsRecords – Add patient vitals with auto-evaluation**
+- **GET /getSelfVitalsRecords – Retrieve all self-vitals records**
+
+### EHR_Panel_Mongo (MongoDB)
+
+*File Management:*
+
+- **POST /upload – Upload a file (PDF or similar) for a patient
+Parameters: file (MultipartFile), patient_id, date**
+- **GET /download/{patientId} – Download all files for a patient as a ZIP archive**
+- **DELETE /deleteFile/{patientId} – Delete files associated with a patient**
+
+
+## 9. Security & Roles
+
+*Both projects implement role-based access control using Spring Security with in-memory authentication.*
+
+### EHR_Panel (MySQL) Credentials:
+
+*ADMIN:*
+- **Username: admin**
+- **Password: admin123**
+
+*DOCTOR:*
+- **Username: doctor1**
+- **Password: doctor123**
+
+*PATIENT:*
+- **Username: patient1**
+- **Password: patient123**
+
+*Endpoint Restrictions:*
+**ADMIN has full access.**
+**DOCTOR and PATIENT roles have restricted access per endpoint as defined in the security configuration.** 
+
+
+
   
 
