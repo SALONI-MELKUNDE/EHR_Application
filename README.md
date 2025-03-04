@@ -187,7 +187,13 @@ EHR_Panel_Mongo
     mvn clean install
     ```
     
-   
+3. **Configure Database Connections:**
+
+- **MySQL (EHR_Panel): Verify the connection details in**
+  
+  ```bash
+  src/main/resources/application.properties
+  ```
 
 
 
