@@ -224,4 +224,33 @@ EHR_Panel_Mongo
 *Note: Ensure that both MySQL and MongoDB servers are up and running before starting the applications.*
 
 
+## 8. API Endpoints
+
+### EHR_Panel (MySQL)
+
+*Patients:*
+
+- **POST /addPatients – Add a new patient (with validations)**
+- **GET /getAllPatients – Retrieve all patient records**
+- **GET /patient/{patientId} – Retrieve a patient by ID**
+- **PUT /patientUpdate/{patientId} – Update patient information**
+- **DELETE /patientDelete/{patientId} – Delete a patient record**
+
+*Doctors:*
+
+- **POST /addDoctors – Add a new doctor (with validations)**
+- **GET /getAllDoctorRecords – Retrieve all doctor records**
+- **GET /doctor/{doctorId} – Retrieve doctor details by ID**
+- **PUT /doctorUpdate/{doctorId} – Update doctor information**
+- **DELETE /doctorDelete/{doctorId} – Delete a doctor record**
+
+*Appointments & Prescriptions:*
+
+- **POST /addAppointment – Schedule a new appointment**
+- **GET /allAppointment – Retrieve all appointments**
+- **GET /appointment/{appointmentId} – Retrieve appointment details by ID**
+- **POST /prescription – Add a new prescription record**
+- **GET /getPrescription – Retrieve prescription schedules for a patient**
+
+  
 
