@@ -1,7 +1,6 @@
 
-# --------------------------------------------------------------------------------
-# EHR-Panel Requirements
-# --------------------------------------------------------------------------------
+
+----------------------------------------------------------EHR-Panel Requirements-------------------------------------------------------------------
 
 Project Name: EHR-Panel
 Java Version: 17
@@ -13,9 +12,9 @@ Dependencies (as declared in pom.xml):
 3. org.springframework.boot:spring-boot-starter-data-jpa
 4. org.springframework.boot:spring-boot-starter-web
 5. org.springframework.boot:spring-boot-starter-validation
-6. org.springframework.boot:spring-boot-devtools  (runtime scope)
-7. com.mysql:mysql-connector-j                   (runtime scope)
-8. org.springframework.boot:spring-boot-starter-test (test scope)
+6. org.springframework.boot:spring-boot-devtools 
+7. com.mysql:mysql-connector-j                
+8. org.springframework.boot:spring-boot-starter-test 
 9. org.hibernate:hibernate-core:6.4.2.Final
 10. org.springframework.boot:spring-boot-starter-security
 11. net.bytebuddy:byte-buddy:1.14.12
@@ -23,9 +22,8 @@ Dependencies (as declared in pom.xml):
 
 
 
-# --------------------------------------------------------------------------------
-# EHR-Panel-Mongo Requirements
-# --------------------------------------------------------------------------------
+
+------------------------------------------------------EHR-Panel-Mongo Requirements-----------------------------------------------------------------
 
 Project Name: EHR-Panel-Mongo
 Java Version: 17
@@ -35,9 +33,9 @@ Dependencies (as declared in pom.xml):
 1. io.springfox:springfox-swagger-ui:3.0.0
 2. io.springfox:springfox-swagger2:3.0.0
 3. org.springframework.boot:spring-boot-starter-web
-4. org.springframework.boot:spring-boot-devtools  (runtime scope)
+4. org.springframework.boot:spring-boot-devtools  
 5. org.springframework.boot:spring-boot-starter-data-mongodb
-6. org.springframework.boot:spring-boot-starter-test (test scope)
+6. org.springframework.boot:spring-boot-starter-test 
 7. org.jetbrains:annotations:24.1.0
 8. org.springframework.boot:spring-boot-starter-security
 
@@ -45,22 +43,19 @@ Dependencies (as declared in pom.xml):
 
 
 
-# --------------------------------------------------------------------------------
-# Build & Run (General Notes)
-# --------------------------------------------------------------------------------
+-----------------------------------------------------Build & Run (General Notes)-------------------------------------------------------------------
 
 - Make sure you have Java 17 installed.
 - Maven will automatically handle these dependencies based on each project's pom.xml.
-- To build either project:
+- To build either project:-
     mvn clean install
-- To run either project (via Spring Boot plugin):
+- To run either project:-
     mvn spring-boot:run
 
 
 
-# --------------------------------------------------------------------------------
-# Note
-# --------------------------------------------------------------------------------
+
+-------------------------------------------------------------Note-----------------------------------------------------------------------------------
 
 This file is for reference/documentation only.
 All actual dependency management is handled by Maven in the pom.xml files.

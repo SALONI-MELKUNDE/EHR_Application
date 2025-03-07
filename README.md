@@ -187,10 +187,140 @@ EHR_Panel_Mongo
     mvn clean install
     ```
     
-   
+3. **Configure Database Connections:**
+
+- **MySQL (EHR_Panel): Verify the connection details in**
+  
+  ```bash
+  src/main/resources/application.properties
+  ```
+
+- **MongoDB (EHR_Panel_Mongo): Verify the MongoDB URI in**
+
+  ```bash
+  src/main/resources/application.properties
+  ```
+
+## 7. Running the Projects
+
+### EHR_Panel (MySQL)
+
+- **Using Maven:**  
+  ```bash
+  mvn spring-boot:run
+  ```
+- **Using an IDE: Run the Application.java class as a Java application.**
+- **Access: The application runs on port 9094 (or as specified in the properties file).**
+
+- **EHR_Panel_Mongo (MongoDB)**
+  
+- **Using Maven:**  
+  ```bash
+  mvn spring-boot:run
+  ```
+- **Using an IDE: Run the Application.java class as a Java application.**
+- **Access: The application runs on port 8081 (or as specified in the properties file).**
+
+*Note: Ensure that both MySQL and MongoDB servers are up and running before starting the applications.*
 
 
+## 8. API Endpoints
+
+### EHR_Panel (MySQL)
+
+*Patients:*
+
+- **POST /addPatients – Add a new patient (with validations)**
+- **GET /getAllPatients – Retrieve all patient records**
+- **GET /patient/{patientId} – Retrieve a patient by ID**
+- **PUT /patientUpdate/{patientId} – Update patient information**
+- **DELETE /patientDelete/{patientId} – Delete a patient record**
+
+*Doctors:*
+
+- **POST /addDoctors – Add a new doctor (with validations)**
+- **GET /getAllDoctorRecords – Retrieve all doctor records**
+- **GET /doctor/{doctorId} – Retrieve doctor details by ID**
+- **PUT /doctorUpdate/{doctorId} – Update doctor information**
+- **DELETE /doctorDelete/{doctorId} – Delete a doctor record**
+
+*Appointments & Prescriptions:*
+
+- **POST /addAppointment – Schedule a new appointment**
+- **GET /allAppointment – Retrieve all appointments**
+- **GET /appointment/{appointmentId} – Retrieve appointment details by ID**
+- **POST /prescription – Add a new prescription record**
+- **GET /getPrescription – Retrieve prescription schedules for a patient**
+
+*Vitals:*
+
+- **POST /SelfVitalsRecords – Add patient vitals with auto-evaluation**
+- **GET /getSelfVitalsRecords – Retrieve all self-vitals records**
+
+### EHR_Panel_Mongo (MongoDB)
+
+*File Management:*
+
+- **POST /upload – Upload a file (PDF or similar) for a patient
+Parameters: file (MultipartFile), patient_id, date**
+- **GET /download/{patientId} – Download all files for a patient as a ZIP archive**
+- **DELETE /deleteFile/{patientId} – Delete files associated with a patient**
 
 
+## 9. Security & Roles
 
+*Both projects implement role-based access control using Spring Security with in-memory authentication.*
+
+### EHR_Panel (MySQL) Credentials:
+
+*ADMIN:*
+- **Username: admin**
+- **Password: admin123**
+
+*DOCTOR:*
+- **Username: doctor1**
+- **Password: doctor123**
+
+*PATIENT:*
+- **Username: patient1**
+- **Password: patient123**
+
+*Endpoint Restrictions:*
+**ADMIN has full access.**
+**DOCTOR and PATIENT roles have restricted access per endpoint as defined in the security configuration.** 
+
+### EHR_Panel_Mongo (MongoDB) Credentials:
+
+*ADMIN:*
+- **Username: admin**
+- **Password: admin123**
+
+*PATIENT:*
+- **Username: patient1**
+- **Password: patient123**
+
+*Endpoint Restrictions:*
+**Endpoints such as /upload, /download/**, and /deleteFile/** are accessible to users with either ADMIN or PATIENT roles.**
+
+## 10. Testing with Postman
+
+- **Import the API collection (if provided) into Postman.**
+- **Use HTTP Basic Authentication with the credentials listed above.**
+- **Test each endpoint by sending requests with the necessary parameters and payloads.**
+- **Validate the response codes and payloads as per the API definitions.**
+
+## 11. Future Enhancements
+
+- **User Interface: Develop a frontend UI for easier interaction with the EHR system.**
+- **Enhanced Security: Integrate JWT-based authentication and OAuth2 for more robust security.**
+- **Scalability: Container orchestration using Kubernetes for high availability.**
+- **Audit Logging: Implement detailed logging and audit trails for security and compliance.**
+- **Integration: Add support for third-party healthcare systems and analytics.**
+
+## 12. License
+
+- **This project is licensed under the MIT License.
+(Include or reference the actual LICENSE file in your repository.)**
+
+  
 
