@@ -34,7 +34,7 @@ public class Security{
                         .requestMatchers("/doctorUpdate/**").hasAnyRole("ADMIN", "PATIENT")
                         .requestMatchers("/SelfVitalsRecords").hasAnyRole("ADMIN", "PATIENT")
                         .requestMatchers("/getAllSefVitalRecords").hasAnyRole("ADMIN", "DOCTOR")
-                        .requestMatchers("/selfVitalsRecords/**").hasAnyRole("ADMIN", "PATIENT")
+                        .requestMatchers("/selfVitalsRecords/**").hasAnyRole("ADMIN", "PATIENT", "DOCTOR")
                         .requestMatchers("/prescription").hasAnyRole("ADMIN", "PATIENT")
                         .requestMatchers("/getPrescription").hasAnyRole("ADMIN","PATIENT")
                         .requestMatchers("/addAppointment").hasAnyRole("ADMIN", "DOCTOR", "PATIENT")

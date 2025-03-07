@@ -11,6 +11,7 @@ import com.ehr.entity.Doctor;
 public interface DoctorRepository extends JpaRepository<Doctor, Long> {
 
 
-	List<Doctor> findByDoctorId(Long doctorId);
+    List<Doctor> findByDoctorId(Long doctorId);
 }
+
 

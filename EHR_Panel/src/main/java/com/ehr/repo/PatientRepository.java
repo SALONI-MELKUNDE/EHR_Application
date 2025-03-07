@@ -1,3 +1,5 @@
+
+
 package com.ehr.repo;
 
 import java.util.List;
@@ -12,8 +14,8 @@ import com.ehr.entity.Patient;
 public interface PatientRepository extends JpaRepository<Patient, Long> {
 
 
-	boolean existsById(Long patientId);
+    boolean existsById(Long patientId);
 
 
-	List<Patient> findByPatientId(Long patientId);
+    List<Patient> findByPatientId(Long patientId);
 }

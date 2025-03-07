@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Table(name = "Patient_Detail_Record")
+@Table(name = "Patient_Detail_Recordata")
 public class Patient {
 
     @Id
@@ -50,7 +50,7 @@ public class Patient {
     @JoinColumn(name = "DOCTOR_ID") // Foreign key column in the Patient table
     private Doctor doctor; // Linking patient to a doctor
 
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "patientId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SelfVitalsRecords> vitalsRecords;
 
     public Long getPatientId() {

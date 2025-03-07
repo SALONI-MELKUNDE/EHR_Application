@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Appointments")
+@Table(name = "AppointmentS")
 public class Appointment {
 
     @Id
@@ -48,11 +48,11 @@ public class Appointment {
         this.appointmentId = appointmentId;
     }
 
-    public String getDoctor() {
+    public String getDoctor_id() {
         return doctor_id;
     }
 
-    public void setDoctor(String doctor) {
+    public void setDoctor_id(String doctor) {
         this.doctor_id = doctor;
     }
 
