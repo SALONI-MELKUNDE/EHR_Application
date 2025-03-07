@@ -84,18 +84,32 @@ public class PatientController {
 		return ResponseEntity.ok(response);
 	}
 
-	// ✅ Get All Self Vitals Records
-	@GetMapping("/getSelfVitalsRecords")
+	@GetMapping("/getAllSefVitalRecords")
 	public ResponseEntity<List<SelfVitalsRecords>> getAllSelfVitalsRecords() {
+		System.out.println("Fetching self vitals records..."); // Debug log
 		List<SelfVitalsRecords> vitalsRecords = patientService.getAllSelfVitalsRecords();
 
 		if (vitalsRecords.isEmpty()) {
+			System.out.println("No records found!");
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)
 					.body(Collections.emptyList());
 		}
+		System.out.println("Records found: " + vitalsRecords.size());
 		return ResponseEntity.ok(vitalsRecords);
 	}
 
+	@GetMapping("/getSelfVitalRecordsByPatient/{patientId}")
+	public ResponseEntity<List<Object>> getSelfVitalRecordsByPatientId(@PathVariable Long patientId) {
+		System.out.println("Fetching self vital records for Patient ID: " + patientId); // Debug log
+
+		Optional<SelfVitalsRecords> vitalRecords = patientService.getSelfVitalRecordsByPatientId(patientId);
+
+		if (vitalRecords.isEmpty()) {
+			System.out.println("No records found for Patient ID: " + patientId);
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.emptyList());
+		}
+		return ResponseEntity.ok(Collections.singletonList(vitalRecords));
+	}
 
 
 

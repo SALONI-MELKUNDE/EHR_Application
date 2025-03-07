@@ -51,4 +51,6 @@ public interface PatientService {
 
 	List<SelfVitalsRecords> getAllSelfVitalsRecords();
 
+	Optional<SelfVitalsRecords> getSelfVitalRecordsByPatientId(Long patientId);
+
 }

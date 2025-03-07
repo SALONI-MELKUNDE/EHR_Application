@@ -315,6 +315,11 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 
+	public Optional<SelfVitalsRecords> getSelfVitalRecordsByPatientId(Long patientId) {
+		return selfVitalsRecordsRepo.findByPatientId(patientId); // Match repo method
+	}
+
+
 
 }
 
