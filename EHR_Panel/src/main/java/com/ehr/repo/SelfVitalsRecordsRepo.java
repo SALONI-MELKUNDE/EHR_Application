@@ -15,4 +15,6 @@ public interface SelfVitalsRecordsRepo extends JpaRepository<SelfVitalsRecords, 
     //Optional<SelfVitalsRecords> findByPatient_id(Long patient_id);
 
     Optional<SelfVitalsRecords> findByPatientId(Long patientId);
+
+    void deleteByPatientId(Long patientId);
 }
