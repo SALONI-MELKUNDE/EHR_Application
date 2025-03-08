@@ -4,7 +4,6 @@ import com.ehr.entity.*;
 import com.ehr.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -74,14 +73,59 @@ public class PatientController {
 
     // ✅ Add Self Vitals Record with Validation
     @PostMapping("/SelfVitalsRecords")
-    public ResponseEntity<Map<String, Object>> selfVitalsRecords(@Valid @RequestBody SelfVitalsRecords selfVitalsRecords) {
+    public Object selfVitalsRecords(@Valid @RequestBody SelfVitalsRecords selfVitalsRecords) {
+        // Check if the patient exists in Patient_Detail_Record
+        boolean patientExists = patientService.existsByPatientId(selfVitalsRecords.getpatientId());
+
+        if (!patientExists) {
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("message", "Patient not found. Cannot save Self Vitals Record.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+        }
+
+        // If patient exists, save selfVitalsRecords
         SelfVitalsRecords savedVitals = patientService.selfVitalsRecords(selfVitalsRecords);
 
         Map<String, Object> response = new HashMap<>();
         response.put("message", "Self Vitals Record saved successfully");
-        //response.put("selfVitalsRecords", savedVitals);
+        response.put("selfVitalsRecord", savedVitals);
 
         return ResponseEntity.ok(response);
+    }
+
+
+
+
+
+    // Update by patientId
+    @PutMapping("/updateSelfVitalsRecords/{patientId}")
+    public ResponseEntity<Map<String, Object>> updateSelfVitalsByPatientId(
+            @PathVariable Long patientId,
+            @RequestBody SelfVitalsRecords updatedVitals) {
+
+        SelfVitalsRecords updated = patientService.updateSelfVitalsByPatientId(patientId, updatedVitals);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Self Vitals Record updated successfully");
+        response.put("selfVitalsRecord", updated);
+
+        return ResponseEntity.ok(response);
+    }
+
+    // Delete by patientId
+    @DeleteMapping("/deleteSelfVitalsRecords/{patientId}")
+    public ResponseEntity<Map<String, String>> deleteSelfVitalsByPatientId(@PathVariable Long patientId) {
+        boolean isDeleted = patientService.deleteSelfVitalsByPatientId(patientId);
+
+        if (isDeleted) {
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Self Vitals Record deleted successfully");
+            return ResponseEntity.ok(response);
+        } else {
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Self Vitals Record not found for patient ID: " + patientId);
+            return ResponseEntity.status(404).body(response);
+        }
     }
 
 
@@ -209,6 +253,46 @@ public class PatientController {
         return ResponseEntity.ok("The prescribed time slots for patient ID " + patientId + " are:\n" + String.join("\n\n", schedules));
     }
 
+    @PutMapping("/prescription/{patientId}")
+    public Object updatePrescription(
+            @PathVariable Long patientId,
+            @RequestBody Prescription updatedPrescription) {
+
+        Prescription updated = patientService.updatePrescription(patientId, updatedPrescription);
+
+        if (updated != null) {
+            Map<String, Object> response = new HashMap<>();
+            response.put("message", "Prescription updated successfully");
+            response.put("prescription", updated);
+            return ResponseEntity.ok(response);
+        } else {
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Prescription not found for patient ID: " + patientId);
+            return ResponseEntity.status(404).body(response);
+        }
+    }
+
+
+
+
+
+    @DeleteMapping("/deletePrescription")
+    public ResponseEntity<String> deletePrescription(@RequestParam("patientId") @NotNull Long patientId) {
+        boolean isDeleted = patientService.deletePrescription(patientId);
+
+        if (isDeleted) {
+            return ResponseEntity.ok("Prescription deleted successfully for patient ID: " + patientId);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No prescription found for patient ID: " + patientId);
+        }
+    }
+
+
+
+
+
+
 
 
 
@@ -257,11 +341,55 @@ public class PatientController {
 
 
     @GetMapping("/appointment/{appointmentId}")
-    public ResponseEntity<Appointment> getAppointmentById(@PathVariable String appointmentId) {
+    public ResponseEntity<Appointment> getAppointmentById(@PathVariable Long appointmentId) {
         return patientService.getAppointmentById(appointmentId)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
+
+
+    @DeleteMapping("/appointment/{appointmentId}")
+    public ResponseEntity<Map<String, String>> deleteAppointment(@PathVariable Long appointmentId) {
+        boolean isDeleted = patientService.deleteAppointment(appointmentId);
+
+        if (isDeleted) {
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Appointment deleted successfully");
+            return ResponseEntity.ok(response);
+        } else {
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Appointment not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
+    }
+
+
+    @PutMapping("/appointment/{appointmentId}")
+    public Object updateAppointment(
+            @PathVariable Long appointmentId,
+            @RequestBody Appointment updatedAppointment) {
+
+        Appointment updated = patientService.updateAppointment(appointmentId, updatedAppointment);
+
+        if (updated != null) {
+            Map<String, Object> response = new HashMap<>();
+            response.put("message", "Appointment updated successfully");
+            response.put("appointment", updated); // Include updated appointment details
+            return ResponseEntity.ok(response);
+        } else {
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Appointment not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
+    }
+
+
+
+
+
+
+
+
 
 
     // ✅ Global Exception Handler for Bad Requests
