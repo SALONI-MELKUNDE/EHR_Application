@@ -8,7 +8,7 @@ public class SelfVitalsRecords {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id; // Primary Key
+    private Long id; // Primary Key
 
     @Column(name = "NAME")
     private String name;
@@ -230,7 +230,7 @@ public class SelfVitalsRecords {
         this.oxygenSaturationStatus = oxygenSaturationStatus;
     }
 
-    public Long getppatientId() {
+    public Long getpatientId() {
 
         return patientId;
     }
