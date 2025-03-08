@@ -60,7 +60,7 @@ public class Appointment {
         return patient_id;
     }
 
-    public void setPatient_id(String patient_id) {
+    public void setPatient_id(Long patient_id) {
         this.patient_id = Long.valueOf(patient_id);
     }
 
