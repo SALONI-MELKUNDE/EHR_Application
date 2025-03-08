@@ -45,7 +45,7 @@ public interface PatientService {
 
     List<Appointment> getAllAppointments();
 
-    Optional<Appointment> getAppointmentById(String appointmentId);
+    Optional<Appointment> getAppointmentById(Long appointmentId);
 
     boolean isPatientExists(Long patientId);
 
@@ -54,4 +54,23 @@ public interface PatientService {
 
 
     Optional<SelfVitalsRecords> getSelfVitalRecordsByPatientId(Long patientId);
+
+    boolean deleteAppointment(Long appointmentId);
+
+    Appointment updateAppointment(Long appointmentId, Appointment updatedAppointment);
+
+
+
+    boolean deletePrescription(@NotNull Long patientId);
+
+    Prescription updatePrescription(Long patientId, Prescription updatedPrescription);
+
+    SelfVitalsRecords updateSelfVitalsByPatientId(Long patientId, SelfVitalsRecords updatedVitals);
+
+    boolean deleteSelfVitalsByPatientId(Long patientId);
+
+    public boolean existsByPatientId(Long patientId) ;
+
+
+
 }

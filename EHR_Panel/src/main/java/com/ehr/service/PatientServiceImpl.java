@@ -3,11 +3,13 @@ package com.ehr.service;
 
 import com.ehr.entity.*;
 import com.ehr.repo.*;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 
@@ -103,7 +105,6 @@ public class PatientServiceImpl implements PatientService {
     }
 
 
-
     @Override
     public Patient updatePatientById(Long patientId, Patient updatedPatient) {
         Optional<Patient> existingPatient = patientRepository.findById(patientId);
@@ -124,7 +125,6 @@ public class PatientServiceImpl implements PatientService {
         }
         return null; // If not found, return null
     }
-
 
 
     public SelfVitalsRecords selfVitalsRecords(SelfVitalsRecords selfVitalsRecords) {
@@ -300,7 +300,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     // ✅ Get an appointment by ID
-    public Optional<Appointment> getAppointmentById(String appointmentId) {
+    public Optional<Appointment> getAppointmentById(Long appointmentId) {
         return appointmentRepository.findById(appointmentId);
     }
 
@@ -320,10 +320,143 @@ public class PatientServiceImpl implements PatientService {
     }
 
 
+    public boolean deleteAppointment(Long appointmentId) {
+        if (appointmentRepository.existsById(appointmentId)) {
+            appointmentRepository.deleteById(appointmentId);
+            return true;
+        }
+        return false;
+    }
+
+    public Appointment updateAppointment(Long appointmentId, Appointment updatedAppointment) {
+        return appointmentRepository.findById(appointmentId)
+                .map(existingAppointment -> {
+                    System.out.println("Updating appointment ID: " + appointmentId);
+
+                    existingAppointment.setDoctor_id(updatedAppointment.getDoctor_id());
+                    existingAppointment.setPatient_id(updatedAppointment.getPatient_id());
+                    existingAppointment.setAppointmentDate(updatedAppointment.getAppointmentDate());
+                    existingAppointment.setAppointmentTime(updatedAppointment.getAppointmentTime());
+                    existingAppointment.setAppointmentStatus(updatedAppointment.getAppointmentStatus());
+                    existingAppointment.setReasonForVisit(updatedAppointment.getReasonForVisit());
+                    existingAppointment.setAdditionalNotes(updatedAppointment.getAdditionalNotes());
+
+                    return appointmentRepository.save(existingAppointment);
+                }).orElseGet(() -> {
+                    System.out.println("Appointment not found with ID: " + appointmentId);
+                    return null;
+                });
+    }
+
+
+    @Override
+    public boolean deletePrescription(Long patientId) {
+
+        if (prescriptionRepository.existsById(patientId)) {
+            prescriptionRepository.deleteById(patientId);
+            return true;
+        }
+        return false;
+
+
+    }
 
 
 
+    public Prescription updatePrescription(Long prescriptionId, Prescription updatedPrescription) {
+        return prescriptionRepository.findById(prescriptionId)
+                .map(existingPrescription -> {
+                    System.out.println("Updating prescription with ID: " + prescriptionId);
+
+                    existingPrescription.setPatientName(updatedPrescription.getPatientName());
+                    existingPrescription.setMedicineName(updatedPrescription.getMedicineName());
+                    existingPrescription.setPrescriptionStartDate(updatedPrescription.getPrescriptionStartDate());
+                    existingPrescription.setPrescriptionEndDate(updatedPrescription.getPrescriptionEndDate());
+                    existingPrescription.setPrescriptionRecommendedXTimesPerDay(updatedPrescription.getPrescriptionRecommendedXTimesPerDay());
+                    existingPrescription.setMorningSlot(updatedPrescription.getMorningSlot());
+                    existingPrescription.setAfternoonSlot(updatedPrescription.getAfternoonSlot());
+                    existingPrescription.setEveningSlot(updatedPrescription.getEveningSlot());
+
+                    return prescriptionRepository.save(existingPrescription);
+                })
+                .orElseThrow(() -> new NoSuchElementException("Prescription not found with ID: " + prescriptionId));
+    }
+
+
+
+
+
+
+
+
+    // Update based on patientId
+    public SelfVitalsRecords updateSelfVitalsByPatientId(Long patientId, SelfVitalsRecords updatedVitals) {
+        return selfVitalsRecordsRepo.findByPatientId(patientId)
+                .map(existingVitals -> {
+                    System.out.println("Updating Self Vitals Record for patient ID: " + patientId);
+
+                    existingVitals.setName(updatedVitals.getName());
+                    existingVitals.setAge(updatedVitals.getAge());
+                    existingVitals.setGender(updatedVitals.getGender());
+                    existingVitals.setWeight(updatedVitals.getWeight());
+                    existingVitals.setHeight(updatedVitals.getHeight());
+                    existingVitals.setBloodType(updatedVitals.getBloodType());
+                    existingVitals.setHeartRate(updatedVitals.getHeartRate());
+                    existingVitals.setBloodPressure(updatedVitals.getBloodPressure());
+                    existingVitals.setRespiratoryRate(updatedVitals.getRespiratoryRate());
+                    existingVitals.setBodyTemperature(updatedVitals.getBodyTemperature());
+                    existingVitals.setBloodGlucose(updatedVitals.getBloodGlucose());
+                    existingVitals.setOxygenSaturation(updatedVitals.getOxygenSaturation());
+                    existingVitals.setHeartRateStatus(updatedVitals.getHeartRateStatus());
+                    existingVitals.setBloodPressureStatus(updatedVitals.getBloodPressureStatus());
+                    existingVitals.setRespiratoryRateStatus(updatedVitals.getRespiratoryRateStatus());
+                    existingVitals.setBodyTemperatureStatus(updatedVitals.getBodyTemperatureStatus());
+                    existingVitals.setBloodGlucoseStatus(updatedVitals.getBloodGlucoseStatus());
+                    existingVitals.setOxygenSaturationStatus(updatedVitals.getOxygenSaturationStatus());
+
+                    return selfVitalsRecordsRepo.save(existingVitals);
+                })
+                .orElseThrow(() -> new NoSuchElementException("Self Vitals Record not found for patient ID: " + patientId));
+    }
+
+    // Delete based on patientId
+    @Transactional
+    public boolean deleteSelfVitalsByPatientId(Long patientId) {
+        Optional<SelfVitalsRecords> record = selfVitalsRecordsRepo.findByPatientId(patientId);
+        if (record.isPresent()) {
+            selfVitalsRecordsRepo.deleteByPatientId(patientId);
+            System.out.println("Deleted Self Vitals Record for patient ID: " + patientId);
+            return true;
+        } else {
+            System.out.println("Self Vitals Record not found for patient ID: " + patientId);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean existsByPatientId(Long patientId) {
+        return patientRepository.existsById(patientId);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
