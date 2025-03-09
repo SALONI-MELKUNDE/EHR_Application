@@ -12,6 +12,6 @@
    URL: http://localhost:8081/download/{{patientId}}
    Description: Download the zip file to extract the files.
 
-* DELETE - Delete File(s)
+* DELETE - Delete File's
    URL: http://localhost:8081/deleteFile/{{patientId}}
    Description: Delete the file(s) by the patientId.
