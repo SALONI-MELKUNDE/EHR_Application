@@ -1,0 +1,19 @@
+-----------------------------------------------------------
+         Patient File Management Endpoints
+-----------------------------------------------------------
+
+* POST - File Upload (form-data)
+   URL: http://localhost:8081/upload
+   Parameters:
+      1) file
+      2) patient_id
+      3) date
+   Description: Upload one file or multiple files under one patient.
+
+* GET - File Download
+   URL: http://localhost:8081/download/{{patientId}}
+   Description: Download the zip file to extract the files.
+
+* DELETE - Delete File(s)
+   URL: http://localhost:8081/deleteFile/{{patientId}}
+   Description: Delete the file(s) by the patientId.
