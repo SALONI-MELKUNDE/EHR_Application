@@ -1,0 +1,377 @@
+
+
+-----------------------------------------------------------------------------Doctor-------------------------------------------------------------------------
+* Post
+
+1. http method- post
+
+http://localhost:9094/addDoctors
+
+Input Request---
+
+{
+  "doctorName": "Rocky",
+  "doctorGender": "male",
+  "purposeOfVisit": "Routine Checkup",
+  "diagnosisRecommendation": "Regular exercise and healthy diet",
+  "doctorPhone": "+1-555-1234",
+  "doctorEmail": "dr.jane.smith@example.com",
+  "selfAge": 35,
+  "dateOfVisit": "2025-02-05",
+  "selfMedicalDocs": "Blood test results, X-ray report"
+}
+
+
+* Get
+
+1. http method- get
+
+http://localhost:9094/getAllDoctorRecords
+
+all doctor's data will displayed.
+
+
+
+2. http method- get
+
+http method- Get
+
+http://localhost:9094/doctor/1
+
+doctor deatils visible by doctor id
+
+
+* Delete
+
+1. http method- delete
+
+http://localhost:9094/doctorDelete/1
+
+delete doctor by doctor id
+
+
+* Update
+
+1. http method- put
+
+http://localhost:9094/doctorUpdate/2
+
+you need to provide the new data of the doctor's profile to update for particular patient iD
+
+update doctor parameters by it's doctor id
+
+
+-------------------------------------------------------------------------------Patient----------------------------------------------------------------------
+
+*Post
+
+1. Http Method- Post
+
+http://localhost:9094/addPatients
+
+Input Request---
+
+{
+  "patientName": "John Doe",
+  "patientAge": 30,
+  "patientGender": "Male",
+  "purposeOfVisit": "General Checkup",
+  "diagnosisRecommendation": "Increase water intake, follow up in 6 months",
+  "patientPhone": "+1-555-9876",
+  "patientEmail": "john.doe@example.com",
+  "patientDateOfVisit": "2025-02-05",
+  "patientMedicalDocs": "Blood work, X-ray report"
+}
+
+
+*Get
+
+1. http method- get
+
+http://localhost:9094/patient/{{patientId}}
+
+get Patient by Id
+
+
+2. http method- get
+
+http://localhost:9094/getAllPatients
+
+Get All Patient
+
+
+
+
+*Update
+
+1. get method- put
+
+http://localhost:9094/patientUpdate/{{patientId}}
+
+you need to provide the new data of the patient profile to update for particular patient iD 
+
+update the patient parameters by patient id 
+
+
+
+*Delete
+
+1. get method- delete 
+
+http://localhost:9094/patientDelete/{{patientId}}
+
+delete the patient details by the patient id 
+
+
+------------------------------------------------------------------------SelfVitalsRecords-------------------------------------------------------------------
+
+*Post
+
+1. Http Method- Post
+
+http://localhost:9094/SelfVitalsRecords
+
+Add SelfVitalsRecords Data 
+
+Input Request---
+
+
+{
+  "name": "John Doe",
+  "age": 30,
+  "gender": "Male",
+  "weight": 70.5,
+  "height": 175.3,
+  "bloodType": "A+",
+  "heartRate": 72,
+  "bloodPressure": 120,
+  "respiratoryRate": 16,
+  "bodyTemperature": 36.6,
+  "bloodGlucose": 90.0,
+  "oxygenSaturation": 98.0,
+  "patientId": 1
+}
+
+
+* Get
+
+1. http method- get 
+
+http://localhost:9094/getAllSelfVitalsRecords
+
+get all selfvitalRecords
+
+
+2. http method- get 
+
+http://localhost:9094/getSelfVitalRecordsByPatient/{{patientId}}
+
+get vitalrecords by patientID
+
+
+ 
+* Update
+
+1. http method- put
+
+http://localhost:9094/updateSelfVitalsRecords/{{patientId}}
+
+you need to provide the new data of the vitalrecords to update for particular patient iD
+
+update the selfrecords by the patientId
+
+
+* Delete 
+
+2. http method- delete
+
+http://localhost:9094/deleteSelfVitalsRecords/{{patientId}}
+
+delete the selfrecords by patientId
+
+
+
+
+
+---------------------------------------------------------------------------prescriptions--------------------------------------------------------------------
+
+
+* Post 
+
+1. http method- post
+
+http://localhost:9094/prescription
+
+Input Request---
+
+
+{
+  "patientId": 1,
+  "patientName": "John Doe",
+  "medicineName": "Paracetamol",
+  "prescriptionStartDate": "2025-03-01",
+  "prescriptionEndDate": "2025-03-10",
+  "prescriptionRecommendedXTimesPerDay": 3
+}
+
+
+* Get 
+
+1. http method- get
+
+http://localhost:9094/getPrescription?patientId={{$random.integer(100)}}
+
+get particular prescription by the patient id
+
+
+
+* Update 
+
+1. http method- put
+
+http://localhost:9094/prescription/{{patientId}}
+
+update the prescription details by patient id 
+
+
+* Delete 
+
+1. http method- delete 
+
+http://localhost:9094/deletePrescription?patientId={{$random.integer(100)}}
+
+delete the prescription details by patient id 
+
+
+
+
+--------------------------------------------------------------------------Appoinment------------------------------------------------------------------------
+
+* Post 
+
+1. http method- post
+
+http://localhost:9094/addAppointment
+
+Input Request---
+
+{
+  "doctor_id": "1",
+  "patient_id": 1,
+  "appointmentDate": "2025-03-15",
+  "appointmentTime": "10:30 AM",
+  "appointmentStatus": "Scheduled",
+  "reasonForVisit": "Routine checkup",
+  "additionalNotes": "Patient requires blood test."
+}
+
+
+* Get 
+
+1. http method- get
+
+http://localhost:9094/appointment/1
+
+get the appointment deatils by the patientId
+
+
+2. http method- get
+
+http://localhost:9094/allAppointment
+
+get the all appointments details for patients and doctors
+
+
+
+*Update 
+
+1. http method- put
+
+http://localhost:9094/appointment/{{appointmentId}}
+
+update by the appointment id
+
+
+
+*Delete
+
+1. http method- delete
+
+http://localhost:9094/appointment/{{appointmentId}}
+
+delete the appointment deatils by patient id 
+
+
+
+
+http://ehrdb.cnick62sy1fu.eu-north-1.rds.amazonaws.com
+Hover over a message to pin it
+keep
+username=admin
+password=Santosh2506
+RAKESH BAKE
+17:51
+mongosh
+RAKESH BAKE
+18:09
+http://localhost:8081/upload
+RAKESH BAKE
+18:11
+patient_id
+date
+RAKESH BAKE
+18:14
+"2025-1-1"
+RAKESH BAKE
+18:16
+db.table.find()
+RAKESH BAKE
+18:18
+http://localhost:8081/download/123 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mongodb://localhost:27017/test ========================  mongodb local system
+
+
+mongodb://ec2-13-61-183-103.eu-north-1.compute.amazonaws.com:27017/test ======================= mongodb EC2
+
+
+
+
+
+
+
+
+jdbc:mysql://localhost:3307/ehr_portal =============================== MySQL local system
+
+
+jdbc:mysql://ehrdb.cnick62sy1fu.eu-north-1.rds.amazonaws.com:3307/ehr_portal ======================  MySQL RDS
