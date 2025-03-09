@@ -7,6 +7,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Patient_Data") // Define MongoDB collection name
 public class Patient {
 
+	//db.Patient_Data.find({ "patientId": "03" })
+
 	@Id
 	private String id;
 
