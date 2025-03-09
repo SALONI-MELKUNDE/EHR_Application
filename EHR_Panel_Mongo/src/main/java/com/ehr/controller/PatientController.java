@@ -47,6 +47,9 @@ public class PatientController {
 	public ResponseEntity<byte[]> downloadAllFilesByPatientId(@PathVariable String patientId) {
 		List<Patient> files = patientService.getFile(patientId);
 
+
+		System.out.println("Fetched files for patient ID " + patientId + ": " + files);
+
 		if (files == null || files.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No files found".getBytes());
 		}
@@ -90,7 +93,5 @@ public class PatientController {
 	}
 
 }
-
-
 
 
