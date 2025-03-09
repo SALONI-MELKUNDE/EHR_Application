@@ -130,7 +130,7 @@ public class PatientController {
 
 
 
-    @GetMapping("/getAllSefVitalRecords")
+    @GetMapping("/getAllSelfVitalsRecords")
     public ResponseEntity<List<SelfVitalsRecords>> getAllSelfVitalsRecords() {
         System.out.println("Fetching self vitals records..."); // Debug log
         List<SelfVitalsRecords> vitalsRecords = patientService.getAllSelfVitalsRecords();
