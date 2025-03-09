@@ -304,32 +304,6 @@ delete the appointment deatils by patient id
 
 
 
-http://ehrdb.cnick62sy1fu.eu-north-1.rds.amazonaws.com
-Hover over a message to pin it
-keep
-username=admin
-password=Santosh2506
-RAKESH BAKE
-17:51
-mongosh
-RAKESH BAKE
-18:09
-http://localhost:8081/upload
-RAKESH BAKE
-18:11
-patient_id
-date
-RAKESH BAKE
-18:14
-"2025-1-1"
-RAKESH BAKE
-18:16
-db.table.find()
-RAKESH BAKE
-18:18
-http://localhost:8081/download/123 
-
-
 
 
 
