@@ -36,9 +36,17 @@ public class PatientServiceImpl implements PatientService {
 
 	@Override
 	public List<Patient> getFile(String patientId) {
+		List<Patient> files = doctorRepository.findByPatientId(patientId);
 
-		return doctorRepository.findByPatientId(patientId);
+		if (files.isEmpty()) {
+			System.out.println("❌ No files found for patient ID: " + patientId);
+		} else {
+			System.out.println("✅ Files retrieved: " + files.size());
+		}
+
+		return files;
 	}
+
 
 	@Override
 	public boolean deleteFile(String patientId) {
@@ -51,6 +59,8 @@ public class PatientServiceImpl implements PatientService {
 
 
 }
+
+
 
 
 
