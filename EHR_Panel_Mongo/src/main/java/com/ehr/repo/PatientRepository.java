@@ -12,10 +12,14 @@ import java.util.List;
 @Repository  // ✅ Required to mark this as a Spring-managed repository
 public interface PatientRepository extends MongoRepository<Patient, Long> {
 
-    @Query("{ 'patient_id' : ?0 }")
-    List<Patient> findByPatientId(String patient_id);
+
+    List<Patient> findByPatientId(String patientId);
+
+
+
 
     boolean existsByPatientId(String patientId);
 
     void deleteByPatientId(String patientId);
 }
+
