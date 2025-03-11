@@ -437,7 +437,13 @@ public class PatientServiceImpl implements PatientService {
     public boolean existsByPatientId(Long patientId) {
         return patientRepository.existsById(patientId);
     }
+
+    @Override
+    public boolean isDoctorExists(String doctorId) {
+        return doctorRepository.existsById(Long.valueOf(doctorId));
+    }
 }
+
 
 
 

@@ -72,5 +72,5 @@ public interface PatientService {
     public boolean existsByPatientId(Long patientId) ;
 
 
-
+    boolean isDoctorExists(String doctorId);
 }

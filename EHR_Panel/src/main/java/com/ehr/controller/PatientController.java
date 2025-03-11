@@ -311,13 +311,20 @@ public class PatientController {
     public ResponseEntity<Map<String, Object>> addAppointment(@RequestBody Appointment appointment) {
         // Check if patient exists
         boolean isPatientExists = patientService.isPatientExists(appointment.getPatient_id());
+        // Check if doctor exists
+        boolean isDoctorExists = patientService.isDoctorExists(appointment.getDoctor_id());
 
         if (!isPatientExists) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(Collections.singletonMap("error", "Patient ID " + appointment.getPatient_id() + " not found."));
         }
 
-        // If patient exists, save appointment
+        if (!isDoctorExists) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(Collections.singletonMap("error", "Doctor ID " + appointment.getDoctor_id() + " not found."));
+        }
+
+        // If both patient and doctor exist, save the appointment
         Appointment savedAppointment = patientService.saveAppointment(appointment);
 
         Map<String, Object> response = new HashMap<>();
@@ -326,6 +333,8 @@ public class PatientController {
 
         return ResponseEntity.ok(response);
     }
+
+
 
 
 
