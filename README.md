@@ -3,7 +3,6 @@
 1) **Backend** - Java (Spring Boot) → EHR-Panel  
 2) **Database** - Structured (MySQL) and Non-Structured (MongoDB) Data  
 3) **Postman** - API Testing  
-4) **Dockers** - Containerization  
 
 This repository contains two Spring Boot projects that together form an Electronic Health Record (EHR) system. One project (**EHR_Panel**) uses MySQL for data persistence, and the other project (**EHR_Panel_Mongo**) uses MongoDB for file/document storage.
 
@@ -99,7 +98,8 @@ EHR_Panel_Mongo
 │  │        │  └─ PatientController.java
 │  │        ├─ com.ehr.entity
 │  │        │  ├─ Patient.java
-│  │        │  └─ Security.java
+│  │        │  ├─ Security.java
+│  │        │  └─ FileDownloadResponse.java
 │  │        ├─ com.ehr.repo
 │  │        │  └─ PatientRepository.java
 │  │        ├─ com.ehr.service
@@ -115,7 +115,6 @@ EHR_Panel_Mongo
 └─ pom.xml
 ```
 
----
 
 ## 3. Features
 
@@ -155,8 +154,8 @@ EHR_Panel_Mongo
    - Default credentials in `application.properties`:
      ```properties
      spring.datasource.url=jdbc:mysql://localhost:3307/ehr_portal
-     spring.datasource.username=root
-     spring.datasource.password=Santosh@2506
+     spring.datasource.username={{Your username}}
+     spring.datasource.password={{password}}
      ```
    - Make sure you create (or let Hibernate create) a schema/database named `ehr_portal`.
 4. **MongoDB** server running on port `27017` (or adjust `application.properties` accordingly) for EHR_Panel_Mongo.  
