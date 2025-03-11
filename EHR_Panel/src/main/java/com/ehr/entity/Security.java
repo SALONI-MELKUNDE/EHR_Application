@@ -44,7 +44,7 @@ public class Security{
                         .requestMatchers("/addAppointment").hasAnyRole("ADMIN", "DOCTOR", "PATIENT")
                         .requestMatchers("/allAppointment").hasAnyRole("ADMIN", "PATIENT",  "DOCTOR")
                         .requestMatchers("/appointment/**").hasAnyRole("ADMIN", "PATIENT", "DOCTOR")
-
+                        .anyRequest().authenticated()
 
                 )
                 .httpBasic(httpBasic -> {}); // Use correct syntax for HTTP Basic Auth

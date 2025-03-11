@@ -130,32 +130,40 @@ public class PatientController {
 
 
 
-    @GetMapping("/getAllSelfVitalsRecords")
-    public ResponseEntity<List<SelfVitalsRecords>> getAllSelfVitalsRecords() {
+    @GetMapping("/getAllSelfVitalRecords")
+    public ResponseEntity<Object> getAllSelfVitalsRecords() {
         System.out.println("Fetching self vitals records..."); // Debug log
         List<SelfVitalsRecords> vitalsRecords = patientService.getAllSelfVitalsRecords();
 
         if (vitalsRecords.isEmpty()) {
-            System.out.println("No records found!");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(Collections.emptyList());
+            System.out.println("No self-vital records found!");
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "No self-vital records found.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
+
         System.out.println("Records found: " + vitalsRecords.size());
         return ResponseEntity.ok(vitalsRecords);
     }
 
+
     @GetMapping("/getSelfVitalRecordsByPatient/{patientId}")
-    public ResponseEntity<List<Object>> getSelfVitalRecordsByPatientId(@PathVariable Long patientId) {
-        System.out.println("Fetching self vital records for Patient ID: " + patientId); // Debug log
+    public ResponseEntity<Object> getSelfVitalRecordsByPatientId(@PathVariable Long patientId) {
+        System.out.println("Fetching self-vital records for Patient ID: " + patientId); // Debug log
 
         Optional<SelfVitalsRecords> vitalRecords = patientService.getSelfVitalRecordsByPatientId(patientId);
 
         if (vitalRecords.isEmpty()) {
-            System.out.println("No records found for Patient ID: " + patientId);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.emptyList());
+            System.out.println("No self-vital records found for Patient ID: " + patientId);
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "No self-vital records found for Patient ID: " + patientId);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
-        return ResponseEntity.ok(Collections.singletonList(vitalRecords));
+
+
+        return ResponseEntity.ok(vitalRecords);
     }
+
 
 
 
@@ -340,7 +348,6 @@ public class PatientController {
 
 
 
-
     // ✅ Get all appointments
     @GetMapping("/allAppointment")
     public ResponseEntity<List<Appointment>> getAllAppointments() {
@@ -350,11 +357,18 @@ public class PatientController {
 
 
     @GetMapping("/appointment/{appointmentId}")
-    public ResponseEntity<Appointment> getAppointmentById(@PathVariable Long appointmentId) {
-        return patientService.getAppointmentById(appointmentId)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    public ResponseEntity<Object> getAppointmentById(@PathVariable Long appointmentId) {
+        Optional<Appointment> appointment = patientService.getAppointmentById(appointmentId);
+
+        if (appointment.isPresent()) {
+            return ResponseEntity.ok(appointment.get());
+        } else {
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Appointment with ID " + appointmentId + " not found.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
     }
+
 
 
     @DeleteMapping("/appointment/{appointmentId}")
