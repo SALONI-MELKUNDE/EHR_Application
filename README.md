@@ -3,7 +3,6 @@
 1) **Backend** - Java (Spring Boot) → EHR-Panel  
 2) **Database** - Structured (MySQL) and Non-Structured (MongoDB) Data  
 3) **Postman** - API Testing  
-4) **Dockers** - Containerization  
 
 This repository contains two Spring Boot projects that together form an Electronic Health Record (EHR) system. One project (**EHR_Panel**) uses MySQL for data persistence, and the other project (**EHR_Panel_Mongo**) uses MongoDB for file/document storage.
 
