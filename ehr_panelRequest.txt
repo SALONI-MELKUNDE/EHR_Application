@@ -1,0 +1,189 @@
+
+
+-----------------------------------------------------------Healthcare API Endpoints Documentation-----------------------------------------------------------
+
+------------------- Doctor Endpoints ----------------------
+
+1. POST - Add Doctor
+   URL: http://localhost:9094/addDoctors
+   Request Body:
+   {
+     "doctorName": "Rocky",
+     "doctorGender": "male",
+     "purposeOfVisit": "Routine Checkup",
+     "diagnosisRecommendation": "Regular exercise and healthy diet",
+     "doctorPhone": "+1-555-1234",
+     "doctorEmail": "dr.jane.smith@example.com",
+     "selfAge": 35,
+     "dateOfVisit": "2025-02-05",
+     "selfMedicalDocs": "Blood test results, X-ray report"
+   }
+
+2. GET - Get All Doctor Records
+   URL: http://localhost:9094/getAllDoctorRecords
+   Description: Retrieves all doctor records.
+
+3. GET - Get Doctor by ID
+   URL: http://localhost:9094/doctor/1
+   Description: Retrieves doctor details by doctor id.
+
+4. DELETE - Delete Doctor by ID
+   URL: http://localhost:9094/doctorDelete/1
+   Description: Deletes a doctor by doctor id.
+
+5. PUT - Update Doctor
+   URL: http://localhost:9094/doctorUpdate/2
+   Description: Updates doctor profile by doctor id. Provide the new data in the request body.
+
+
+------------------- Patient Endpoints ---------------------
+
+1. POST - Add Patient
+   URL: http://localhost:9094/addPatients
+   Request Body:
+   {
+     "patientName": "John Doe",
+     "patientAge": 30,
+     "patientGender": "Male",
+     "purposeOfVisit": "General Checkup",
+     "diagnosisRecommendation": "Increase water intake, follow up in 6 months",
+     "patientPhone": "+1-555-9876",
+     "patientEmail": "john.doe@example.com",
+     "patientDateOfVisit": "2025-02-05",
+     "patientMedicalDocs": "Blood work, X-ray report"
+   }
+
+2. GET - Get Patient by ID
+   URL: http://localhost:9094/patient/{{patientId}}
+   Description: Retrieves patient details by patient id.
+
+3. GET - Get All Patients
+   URL: http://localhost:9094/getAllPatients
+   Description: Retrieves all patient records.
+
+4. PUT - Update Patient
+   URL: http://localhost:9094/patientUpdate/{{patientId}}
+   Description: Updates patient profile by patient id. Provide the new data in the request body.
+
+5. DELETE - Delete Patient
+   URL: http://localhost:9094/patientDelete/{{patientId}}
+   Description: Deletes the patient details by patient id.
+
+
+---------------- Self Vitals Records Endpoints --------------
+
+1. POST - Add Self Vitals Record
+   URL: http://localhost:9094/SelfVitalsRecords
+   Request Body:
+   {
+     "name": "John Doe",
+     "age": 30,
+     "gender": "Male",
+     "weight": 70.5,
+     "height": 175.3,
+     "bloodType": "A+",
+     "heartRate": 72,
+     "bloodPressure": 120,
+     "respiratoryRate": 16,
+     "bodyTemperature": 36.6,
+     "bloodGlucose": 90.0,
+     "oxygenSaturation": 98.0,
+     "patientId": 1
+   }
+
+2. GET - Get All Self Vitals Records
+   URL: http://localhost:9094/getAllSelfVitalsRecords
+   Description: Retrieves all self vitals records.
+
+3. GET - Get Self Vitals Record by Patient ID
+   URL: http://localhost:9094/getSelfVitalRecordsByPatient/{{patientId}}
+   Description: Retrieves self vitals record by patient id.
+
+4. PUT - Update Self Vitals Record
+   URL: http://localhost:9094/updateSelfVitalsRecords/{{patientId}}
+   Description: Updates self vitals record by patient id. Provide the new data in the request body.
+
+5. DELETE - Delete Self Vitals Record
+   URL: http://localhost:9094/deleteSelfVitalsRecords/{{patientId}}
+   Description: Deletes self vitals record by patient id.
+
+
+------------------ Prescription Endpoints -------------------
+
+1. POST - Add Prescription
+   URL: http://localhost:9094/prescription
+   Request Body:
+   {
+     "patientId": 1,
+     "patientName": "John Doe",
+     "medicineName": "Paracetamol",
+     "prescriptionStartDate": "2025-03-01",
+     "prescriptionEndDate": "2025-03-10",
+     "prescriptionRecommendedXTimesPerDay": 3
+   }
+
+2. GET - Get Prescription by Patient ID
+   URL: http://localhost:9094/getPrescription?patientId={{$random.integer(100)}}
+   Description: Retrieves prescription details by patient id.
+
+3. PUT - Update Prescription
+   URL: http://localhost:9094/prescription/{{patientId}}
+   Description: Updates prescription details by patient id. Provide the new data in the request body.
+
+4. DELETE - Delete Prescription
+   URL: http://localhost:9094/deletePrescription?patientId={{$random.integer(100)}}
+   Description: Deletes prescription details by patient id.
+
+
+------------------- Appointment Endpoints -------------------
+
+1. POST - Add Appointment
+   URL: http://localhost:9094/addAppointment
+   Request Body:
+   {
+     "doctor_id": "1",
+     "patient_id": 1,
+     "appointmentDate": "2025-03-15",
+     "appointmentTime": "10:30 AM",
+     "appointmentStatus": "Scheduled",
+     "reasonForVisit": "Routine checkup",
+     "additionalNotes": "Patient requires blood test."
+   }
+
+2. GET - Get Appointment by Patient ID
+   URL: http://localhost:9094/appointment/1
+   Description: Retrieves appointment details by patient id.
+
+3. GET - Get All Appointments
+   URL: http://localhost:9094/allAppointment
+   Description: Retrieves all appointments details for patients and doctors.
+
+4. PUT - Update Appointment
+   URL: http://localhost:9094/appointment/{{appointmentId}}
+   Description: Updates appointment details by appointment id. Provide the new data in the request body.
+
+5. DELETE - Delete Appointment
+   URL: http://localhost:9094/appointment/{{appointmentId}}
+   Description: Deletes appointment details by appointment id.
+
+
+
+
+
+
+mongodb://localhost:27017/test ========================  mongodb local system
+
+
+mongodb://ec2-13-61-183-103.eu-north-1.compute.amazonaws.com:27017/test ======================= mongodb EC2
+
+
+
+
+
+
+
+
+jdbc:mysql://localhost:3307/ehr_portal =============================== MySQL local system
+
+
+jdbc:mysql://ehrdb.cnick62sy1fu.eu-north-1.rds.amazonaws.com:3307/ehr_portal ======================  MySQL RDS
