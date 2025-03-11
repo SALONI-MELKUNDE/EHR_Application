@@ -12,6 +12,11 @@ public interface DoctorRepository extends JpaRepository<Doctor, Long> {
 
 
     List<Doctor> findByDoctorId(Long doctorId);
+
+
+    boolean existsById(Long doctorId);
 }
+
+
 
 
