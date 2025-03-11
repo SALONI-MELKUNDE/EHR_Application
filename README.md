@@ -113,7 +113,8 @@ EHR_Panel_Mongo
 │  │        ├─ application.properties
 │  │        └─ ...
 └─ pom.xml
----
+```
+
 
 ## 3. Features
 
