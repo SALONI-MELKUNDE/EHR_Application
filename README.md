@@ -154,8 +154,8 @@ EHR_Panel_Mongo
    - Default credentials in `application.properties`:
      ```properties
      spring.datasource.url=jdbc:mysql://localhost:3307/ehr_portal
-     spring.datasource.username=root
-     spring.datasource.password=Santosh@2506
+     spring.datasource.username={{Your username}}
+     spring.datasource.password={{password}}
      ```
    - Make sure you create (or let Hibernate create) a schema/database named `ehr_portal`.
 4. **MongoDB** server running on port `27017` (or adjust `application.properties` accordingly) for EHR_Panel_Mongo.  
