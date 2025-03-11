@@ -98,7 +98,8 @@ EHR_Panel_Mongo
 │  │        │  └─ PatientController.java
 │  │        ├─ com.ehr.entity
 │  │        │  ├─ Patient.java
-│  │        │  └─ Security.java
+│  │        │  ├─ Security.java
+│  │        │  └─ FileDownloadResponse.java
 │  │        ├─ com.ehr.repo
 │  │        │  └─ PatientRepository.java
 │  │        ├─ com.ehr.service
@@ -112,7 +113,6 @@ EHR_Panel_Mongo
 │  │        ├─ application.properties
 │  │        └─ ...
 └─ pom.xml
-```
 
 ---
 
