@@ -227,34 +227,35 @@ EHR_Panel_Mongo
 
 ### EHR_Panel (MySQL)
 
-*Patients:*
 
-- **POST /addPatients – Add a new patient (with validations)**
-- **GET /getAllPatients – Retrieve all patient records**
-- **GET /patient/{patientId} – Retrieve a patient by ID**
-- **PUT /patientUpdate/{patientId} – Update patient information**
-- **DELETE /patientDelete/{patientId} – Delete a patient record**
+| **Category**     | **HTTP Method** | **Endpoint**                                      | **Description**                                                                              |
+|------------------|-----------------|---------------------------------------------------|----------------------------------------------------------------------------------------------|
+| **Patients**     | POST            | `/addPatients`                                    | Add a new patient with validations.                                                          |
+| **Patients**     | GET             | `/getAllPatients`                                 | Retrieve all patient records.                                                                |
+| **Patients**     | GET             | `/patient/{patientId}`                            | Retrieve a patient by ID.                                                                    |
+| **Patients**     | PUT             | `/patientUpdate/{patientId}`                      | Update patient information.                                                                  |
+| **Patients**     | DELETE          | `/patientDelete/{patientId}`                      | Delete a patient record by ID.                                                               |
+| **Doctors**      | POST            | `/addDoctors`                                     | Add a new doctor with validations.                                                           |
+| **Doctors**      | GET             | `/getAllDoctorRecords`                            | Retrieve all doctor records.                                                                 |
+| **Doctors**      | GET             | `/doctor/{doctorId}`                              | Retrieve doctor details by ID.                                                               |
+| **Doctors**      | PUT             | `/doctorUpdate/{doctorId}`                        | Update doctor information.                                                                   |
+| **Doctors**      | DELETE          | `/doctorDelete/{doctorId}`                        | Delete a doctor record by ID.                                                                |
+| **Appointments** | POST            | `/addAppointment`                                 | Schedule a new appointment.                                                                  |
+| **Appointments** | GET             | `/allAppointment`                                 | Retrieve all appointments.                                                                   |
+| **Appointments** | GET             | `/appointment/{appointmentId}`                    | Retrieve appointment details by ID.                                                          |
+| **Appointments** | PUT             | `/appointment/{appointmentId}`                    | Update appointment information by ID.                                                        |
+| **Appointments** | DELETE          | `/appointment/{appointmentId}`                    | Delete an appointment by ID.                                                                 |
+| **Prescriptions**| POST            | `/prescription`                                   | Add a new prescription record.                                                               |
+| **Prescriptions**| GET             | `/getPrescription?patientId={patientId}`          | Retrieve prescription schedules for a patient.                                               |
+| **Prescriptions**| PUT             | `/prescription/{patientId}`                       | Update prescription information based on patient ID.                                         |
+| **Prescriptions**| DELETE          | `/deletePrescription?patientId={patientId}`        | Delete a prescription record based on patient ID.                                            |
+| **Self Vitals**  | POST            | `/SelfVitalsRecords`                              | Add self vitals record with auto-evaluation of vital signs.                                  |
+| **Self Vitals**  | GET             | `/getAllSelfVitalRecords`                         | Retrieve all self vitals records.                                                            |
+| **Self Vitals**  | GET             | `/getSelfVitalRecordsByPatient/{patientId}`       | Retrieve self vitals records for a specific patient by ID.                                   |
+| **Self Vitals**  | PUT             | `/updateSelfVitalsRecords/{patientId}`            | Update self vitals record for a patient by ID.                                               |
+| **Self Vitals**  | DELETE          | `/deleteSelfVitalsRecords/{patientId}`            | Delete self vitals record for a patient by ID.                                               |
 
-*Doctors:*
 
-- **POST /addDoctors – Add a new doctor (with validations)**
-- **GET /getAllDoctorRecords – Retrieve all doctor records**
-- **GET /doctor/{doctorId} – Retrieve doctor details by ID**
-- **PUT /doctorUpdate/{doctorId} – Update doctor information**
-- **DELETE /doctorDelete/{doctorId} – Delete a doctor record**
-
-*Appointments & Prescriptions:*
-
-- **POST /addAppointment – Schedule a new appointment**
-- **GET /allAppointment – Retrieve all appointments**
-- **GET /appointment/{appointmentId} – Retrieve appointment details by ID**
-- **POST /prescription – Add a new prescription record**
-- **GET /getPrescription – Retrieve prescription schedules for a patient**
-
-*Vitals:*
-
-- **POST /SelfVitalsRecords – Add patient vitals with auto-evaluation**
-- **GET /getSelfVitalsRecords – Retrieve all self-vitals records**
 
 ### EHR_Panel_Mongo (MongoDB)
 
