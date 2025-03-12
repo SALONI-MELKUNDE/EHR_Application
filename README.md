@@ -243,8 +243,8 @@ EHR_Panel_Mongo
 | **Appointments** | POST            | `/addAppointment`                                 | Schedule a new appointment.                                                                  |
 | **Appointments** | GET             | `/allAppointment`                                 | Retrieve all appointments.                                                                   |
 | **Appointments** | GET             | `/appointment/{appointmentId}`                    | Retrieve appointment details by ID.                                                          |
-| **Appointments** | PUT             | `/appointment/{appointmentId}`                    | Update appointment information by ID.                                                        |
-| **Appointments** | DELETE          | `/appointment/{appointmentId}`                    | Delete an appointment by ID.                                                                 |
+| **Appointments** | PUT             | `/appointmentUpdate/{appointmentId}`                    | Update appointment information by ID.                                                        |
+| **Appointments** | DELETE          | `/appointmentDelete/{appointmentId}`                    | Delete an appointment by ID.                                                                 |
 | **Prescriptions**| POST            | `/prescription`                                   | Add a new prescription record.                                                               |
 | **Prescriptions**| GET             | `/getPrescription?patientId={patientId}`          | Retrieve prescription schedules for a patient.                                               |
 | **Prescriptions**| PUT             | `/prescription/{patientId}`                       | Update prescription information based on patient ID.                                         |
