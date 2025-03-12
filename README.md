@@ -259,12 +259,13 @@ EHR_Panel_Mongo
 
 ### EHR_Panel_Mongo (MongoDB)
 
-*File Management:*
+| **HTTP Method** | **Endpoint**                     | **Description**                                                                                           | **Parameters**                                                 |
+|-----------------|----------------------------------|-----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| POST            | `/upload`                        | Upload a file (PDF or similar) for a patient.                                                             | `file` (MultipartFile), `patient_id`, `date`                   |
+| GET             | `/download/{patientId}`          | Download all files for a patient as a ZIP archive.                                                        | Path parameter: `patientId`                                    |
+| DELETE          | `/deleteFile/{patientId}`        | Delete files associated with a patient.                                                                   | Path parameter: `patientId`                                    |
 
-- **POST /upload – Upload a file (PDF or similar) for a patient
-Parameters: file (MultipartFile), patient_id, date**
-- **GET /download/{patientId} – Download all files for a patient as a ZIP archive**
-- **DELETE /deleteFile/{patientId} – Delete files associated with a patient**
+
 
 
 ## 9. Security & Roles
