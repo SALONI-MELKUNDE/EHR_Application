@@ -319,7 +319,7 @@ Parameters: file (MultipartFile), patient_id, date**
 ## 12. License
 
 - **This project is licensed under the MIT License.
-(Include or reference the actual LICENSE file in your repository.)**
+(Include or reference the actual LICENSE file in my repository.)**
 
   
 
