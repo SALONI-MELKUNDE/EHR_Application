@@ -5,7 +5,7 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.2.3</version>
 		<relativePath/>
-		<!--  lookup parent from repository  -->
+
 	</parent>
 	<groupId>in.sud</groupId>
 	<artifactId>BAWC_API</artifactId>
@@ -61,11 +61,11 @@
 		</dependency>
 
 
-		<!-- Byte Buddy -->
+
 		<dependency>
 			<groupId>net.bytebuddy</groupId>
 			<artifactId>byte-buddy</artifactId>
-			<version>1.14.12</version> <!-- Ensure compatibility -->
+			<version>1.14.12</version>
 		</dependency>
 	</dependencies>
 	<build>
