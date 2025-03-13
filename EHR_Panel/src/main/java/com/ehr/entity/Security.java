@@ -39,11 +39,14 @@ public class Security{
                         .requestMatchers("/updateSelfVitalsRecords/**").hasAnyRole("ADMIN", "PATIENT")
                         .requestMatchers("/prescription").hasAnyRole("ADMIN", "PATIENT")
                         .requestMatchers("/getPrescription").hasAnyRole("ADMIN","PATIENT")
-                        .requestMatchers("/prescription/**").hasAnyRole("ADMIN", "PATIENT")
-                        .requestMatchers("/deletePrescription/**").hasAnyRole("ADMIN", "PATIENT")
+                        .requestMatchers("/prescriptionUpdate/**").hasAnyRole("ADMIN", "PATIENT")
+                        .requestMatchers("/prescriptionDelete/**").hasAnyRole("ADMIN", "PATIENT")
                         .requestMatchers("/addAppointment").hasAnyRole("ADMIN", "DOCTOR", "PATIENT")
                         .requestMatchers("/allAppointment").hasAnyRole("ADMIN", "PATIENT",  "DOCTOR")
                         .requestMatchers("/appointment/**").hasAnyRole("ADMIN", "PATIENT", "DOCTOR")
+                        .requestMatchers("/appointmentDelete/**").hasAnyRole("ADMIN", "PATIENT", "DOCTOR")
+                        .requestMatchers("/appointmentUpdate/**").hasAnyRole("ADMIN", "PATIENT", "DOCTOR")
+
                         .anyRequest().authenticated()
 
                 )
@@ -51,6 +54,8 @@ public class Security{
 
         return http.build();
     }
+
+
 
     @Bean
     public UserDetailsService userDetailsService() {

@@ -261,7 +261,7 @@ public class PatientController {
         return ResponseEntity.ok("The prescribed time slots for patient ID " + patientId + " are:\n" + String.join("\n\n", schedules));
     }
 
-    @PutMapping("/prescription/{patientId}")
+    @PutMapping("/prescriptionUpdate/{patientId}")
     public Object updatePrescription(
             @PathVariable Long patientId,
             @RequestBody Prescription updatedPrescription) {
@@ -284,7 +284,7 @@ public class PatientController {
 
 
 
-    @DeleteMapping("/deletePrescription")
+    @DeleteMapping("/prescriptionDelete")
     public ResponseEntity<String> deletePrescription(@RequestParam("patientId") @NotNull Long patientId) {
         boolean isDeleted = patientService.deletePrescription(patientId);
 
@@ -371,7 +371,7 @@ public class PatientController {
 
 
 
-    @DeleteMapping("/appointment/{appointmentId}")
+    @DeleteMapping("/appointmentDelete/{appointmentId}")
     public ResponseEntity<Map<String, String>> deleteAppointment(@PathVariable Long appointmentId) {
         boolean isDeleted = patientService.deleteAppointment(appointmentId);
 
@@ -387,7 +387,7 @@ public class PatientController {
     }
 
 
-    @PutMapping("/appointment/{appointmentId}")
+    @PutMapping("/appointmentUpdate/{appointmentId}")
     public Object updateAppointment(
             @PathVariable Long appointmentId,
             @RequestBody Appointment updatedAppointment) {
