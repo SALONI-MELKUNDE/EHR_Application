@@ -1,6 +1,7 @@
 
 
 <<<<<Project: ehr_panel>>>>>
+<<<<<Java Version: 17>>>>>
 
 --------------------------------------------------------------
 Parent:
@@ -69,6 +70,85 @@ Group ID: net.bytebuddy
 Artifact ID: byte-buddy
 Version: 1.14.12
 ========================================================
+
+
+
+
+
+
+
+#####################################################################################################################################################################################################################################################################################################
+.....................................................................................................................................................................................................................................................................................................
+#####################################################################################################################################################################################################################################################################################################
+
+
+
+
+
+
+
+
+
+<<<<<Project: ehr_mongo_panel>>>>>
+<<<<<Java Version: 17>>>>>
+
+--------------------------------------------------------------
+Parent:
+
+Spring Boot Starter Parent
+Group ID: org.springframework.boot
+Artifact ID: spring-boot-starter-parent
+Version: 3.2.3
+
+-------------------------------------------------------------
+
+Dependencies:
+
+Group ID: io.springfox
+Artifact ID: springfox-swagger2
+Version: 3.0.0
+Spring Boot Starter Web
+============================================================
+
+Group ID: org.springframework.boot
+Artifact ID: spring-boot-starter-web
+Spring Boot DevTools 
+===========================================================
+
+Group ID: org.springframework.boot
+Artifact ID: spring-boot-devtools
+Scope: Runtime
+Optional: Yes
+Spring Boot Starter Data MongoDB
+==========================================================
+
+Group ID: org.springframework.boot
+Artifact ID: spring-boot-starter-data-mongodb
+Spring Boot Starter Test
+==========================================================
+
+Group ID: org.springframework.boot
+Artifact ID: spring-boot-starter-test
+Scope: Test
+JetBrains Annotations 
+==========================================================
+
+Group ID: org.jetbrains
+Artifact ID: annotations
+Version: 24.1.0
+Scope: Compile
+Spring Boot Starter Security
+=========================================================
+
+Group ID: org.springframework.boot
+Artifact ID: spring-boot-starter-security
+========================================================
+
+Build Plugin:
+Spring Boot Maven Plugin
+Group ID: org.springframework.boot
+Artifact ID: spring-boot-maven-plugin
+
 
 -------------------------------------------------------------Note-----------------------------------------------------------------------------------
 
