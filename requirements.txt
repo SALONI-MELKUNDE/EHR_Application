@@ -1,59 +1,74 @@
 
 
-----------------------------------------------------------EHR-Panel Requirements-------------------------------------------------------------------
+<<<<<Project: ehr_panel>>>>>
 
-Project Name: EHR-Panel
-Java Version: 17
-Spring Boot Version: 3.2.3
+--------------------------------------------------------------
+Parent:
 
-Dependencies (as declared in pom.xml):
-1. io.springfox:springfox-swagger-ui:3.0.0
-2. io.springfox:springfox-swagger2:3.0.0
-3. org.springframework.boot:spring-boot-starter-data-jpa
-4. org.springframework.boot:spring-boot-starter-web
-5. org.springframework.boot:spring-boot-starter-validation
-6. org.springframework.boot:spring-boot-devtools 
-7. com.mysql:mysql-connector-j                
-8. org.springframework.boot:spring-boot-starter-test 
-9. org.hibernate:hibernate-core:6.4.2.Final
-10. org.springframework.boot:spring-boot-starter-security
-11. net.bytebuddy:byte-buddy:1.14.12
+Spring Boot Starter Parent
+Group ID: org.springframework.boot
+Artifact ID: spring-boot-starter-parent
+Version: 3.2.3
 
+--------------------------------------------------------------
 
+Dependencies:
 
+Spring Boot Starter Data JPA
 
+Group ID: org.springframework.boot
+Artifact ID: spring-boot-starter-data-jpa
+Version: Inherited from parent
+Spring Boot Starter Web
+=============================================================
 
-------------------------------------------------------EHR-Panel-Mongo Requirements-----------------------------------------------------------------
+Group ID: org.springframework.boot
+Artifact ID: spring-boot-starter-web
+Version: Inherited from parent
+Spring Boot Starter Validation
+============================================================
 
-Project Name: EHR-Panel-Mongo
-Java Version: 17
-Spring Boot Version: 3.2.3
+Group ID: org.springframework.boot
+Artifact ID: spring-boot-starter-validation
+Version: Inherited from parent
+Spring Boot DevTools
+===========================================================
 
-Dependencies (as declared in pom.xml):
-1. io.springfox:springfox-swagger-ui:3.0.0
-2. io.springfox:springfox-swagger2:3.0.0
-3. org.springframework.boot:spring-boot-starter-web
-4. org.springframework.boot:spring-boot-devtools  
-5. org.springframework.boot:spring-boot-starter-data-mongodb
-6. org.springframework.boot:spring-boot-starter-test 
-7. org.jetbrains:annotations:24.1.0
-8. org.springframework.boot:spring-boot-starter-security
+Group ID: org.springframework.boot
+Artifact ID: spring-boot-devtools
+Scope: Runtime
+Optional: Yes
+MySQL Connector
+==========================================================
 
+Group ID: com.mysql
+Artifact ID: mysql-connector-j
+Scope: Runtime
+Spring Boot Starter Test
+==========================================================
 
+Group ID: org.springframework.boot
+Artifact ID: spring-boot-starter-test
+Scope: Test
+Hibernate Core
+=========================================================
 
+Group ID: org.hibernate
+Artifact ID: hibernate-core
+Version: 6.4.2.Final
+Spring Boot Starter Security
+========================================================
 
+Group ID: org.springframework.boot
+Artifact ID: spring-boot-starter-security
+Version: Inherited from parent
+Byte Buddy
+======================================================
 
------------------------------------------------------Build & Run (General Notes)-------------------------------------------------------------------
-
-- Make sure you have Java 17 installed.
-- Maven will automatically handle these dependencies based on each project's pom.xml.
-- To build either project:-
-    mvn clean install
-- To run either project:-
-    mvn spring-boot:run
-
-
-
+Group ID: net.bytebuddy
+Artifact ID: byte-buddy
+Version: 1.14.12
+========================================================
 
 -------------------------------------------------------------Note-----------------------------------------------------------------------------------
 
