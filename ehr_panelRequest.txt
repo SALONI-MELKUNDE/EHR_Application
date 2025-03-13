@@ -26,15 +26,15 @@
    Description: Retrieves all doctor records.
 
 3. GET - Get Doctor by ID
-   URL: http://localhost:9094/doctor/1
+   URL: http://localhost:9094/doctor/{{doctorId}}
    Description: Retrieves doctor details by doctor id.
 
 4. DELETE - Delete Doctor by ID
-   URL: http://localhost:9094/doctorDelete/1
+   URL: http://localhost:9094/doctorDelete/{{doctorId}}
    Description: Deletes a doctor by doctor id.
 
 5. PUT - Update Doctor
-   URL: http://localhost:9094/doctorUpdate/2
+   URL: http://localhost:9094/doctorUpdate/{{doctorId}}
    Description: Updates doctor profile by doctor id. Provide the new data in the request body.
 
 
