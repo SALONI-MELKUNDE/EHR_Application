@@ -18,7 +18,7 @@ This repository contains two Spring Boot projects that together form an Electron
 6. [Setup & Installation](#setup--installation)  
 7. [Running the Projects](#running-the-projects)  
 8. [API Endpoints](#api-endpoints)  
-9. [Security & Roles](#security--roles)  
+9. [Security & Roles](#security--roles) 
 
 
 ---
