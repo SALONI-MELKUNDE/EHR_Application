@@ -1,6 +1,8 @@
 
 
------------------------------------------------------------Healthcare API Endpoints Documentation-----------------------------------------------------------
+-----------------------------------------------------------
+            Healthcare API Endpoints Documentation
+-----------------------------------------------------------
 
 ------------------- Doctor Endpoints ----------------------
 
@@ -8,12 +10,12 @@
    URL: http://localhost:9094/addDoctors
    Request Body:
    {
-     "doctorName": "Rocky",
+     "doctorName": "Mazhar Hameed",
      "doctorGender": "male",
      "purposeOfVisit": "Routine Checkup",
      "diagnosisRecommendation": "Regular exercise and healthy diet",
      "doctorPhone": "+1-555-1234",
-     "doctorEmail": "dr.jane.smith@example.com",
+     "doctorEmail": "dr.mazhar.hameed@example.com",
      "selfAge": 35,
      "dateOfVisit": "2025-02-05",
      "selfMedicalDocs": "Blood test results, X-ray report"
@@ -24,15 +26,15 @@
    Description: Retrieves all doctor records.
 
 3. GET - Get Doctor by ID
-   URL: http://localhost:9094/doctor/1
+   URL: http://localhost:9094/doctor/{{doctorId}}
    Description: Retrieves doctor details by doctor id.
 
 4. DELETE - Delete Doctor by ID
-   URL: http://localhost:9094/doctorDelete/1
+   URL: http://localhost:9094/doctorDelete/{{doctorId}}
    Description: Deletes a doctor by doctor id.
 
 5. PUT - Update Doctor
-   URL: http://localhost:9094/doctorUpdate/2
+   URL: http://localhost:9094/doctorUpdate/{{doctorId}}
    Description: Updates doctor profile by doctor id. Provide the new data in the request body.
 
 
@@ -123,15 +125,15 @@
    }
 
 2. GET - Get Prescription by Patient ID
-   URL: http://localhost:9094/getPrescription?patientId={{$random.integer(100)}}
+   URL: http://localhost:9094/getPrescription/{{patientId}}
    Description: Retrieves prescription details by patient id.
 
 3. PUT - Update Prescription
-   URL: http://localhost:9094/prescription/{{patientId}}
+   URL: http://localhost:9094/prescriptionUpdate/{{patientId}}
    Description: Updates prescription details by patient id. Provide the new data in the request body.
 
 4. DELETE - Delete Prescription
-   URL: http://localhost:9094/deletePrescription?patientId={{$random.integer(100)}}
+   URL: http://localhost:9094/prescriptionDelete/{{patientId}}
    Description: Deletes prescription details by patient id.
 
 
@@ -150,8 +152,8 @@
      "additionalNotes": "Patient requires blood test."
    }
 
-2. GET - Get Appointment by Patient ID
-   URL: http://localhost:9094/appointment/1
+2. GET - Get Appointment by ID
+   URL: http://localhost:9094/appointment/{{appointmentId}}
    Description: Retrieves appointment details by patient id.
 
 3. GET - Get All Appointments
@@ -159,12 +161,23 @@
    Description: Retrieves all appointments details for patients and doctors.
 
 4. PUT - Update Appointment
-   URL: http://localhost:9094/appointment/{{appointmentId}}
+   URL: http://localhost:9094/appointmentUpdate/{{appointmentId}}
    Description: Updates appointment details by appointment id. Provide the new data in the request body.
 
 5. DELETE - Delete Appointment
-   URL: http://localhost:9094/appointment/{{appointmentId}}
+   URL: http://localhost:9094/appointmentDelete/{{appointmentId}}
    Description: Deletes appointment details by appointment id.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -173,17 +186,7 @@
 
 mongodb://localhost:27017/test ========================  mongodb local system
 
-
-mongodb://ec2-13-61-183-103.eu-north-1.compute.amazonaws.com:27017/test ======================= mongodb EC2
-
-
-
-
-
-
-
-
 jdbc:mysql://localhost:3307/ehr_portal =============================== MySQL local system
 
 
-jdbc:mysql://ehrdb.cnick62sy1fu.eu-north-1.rds.amazonaws.com:3307/ehr_portal ======================  MySQL RDS
+

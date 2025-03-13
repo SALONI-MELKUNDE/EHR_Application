@@ -14,4 +14,4 @@
 
 * DELETE - Delete File's
    URL: http://localhost:8081/deleteFile/{{patientId}}
-   Description: Delete the file(s) by the patientId.
+   Description: Delete the file's by the patientId.
