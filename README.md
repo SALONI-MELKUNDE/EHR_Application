@@ -19,8 +19,8 @@ This repository contains two Spring Boot projects that together form an Electron
 7. [Running the Projects](#running-the-projects)  
 8. [API Endpoints](#api-endpoints)  
 9. [Security & Roles](#security--roles)
-10.[Testing with postman](#testing-with-postman)
-11.[Future Enhancements](#future-enhancement)
+10.[Testing with postman](#testing--with--postman)
+11.[Future Enhancements](#future--enhancement)
 12.[License](#license) 
 
 
