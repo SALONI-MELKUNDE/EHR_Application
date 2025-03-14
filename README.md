@@ -1,4 +1,4 @@
-# EHR System
+# EHR Application
 
 1) **Backend** - Java (Spring Boot) → EHR-Panel  
 2) **Database** - Structured (MySQL) and Non-Structured (MongoDB) Data  
