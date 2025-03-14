@@ -10,19 +10,19 @@ This repository contains two Spring Boot projects that together form an Electron
 ---
 
 ## Table of Contents
-1. [Overview](#overview)  
-2. [Project Structure](#project-structure)  
-3. [Features](#features)  
-4. [Technologies Used](#technologies-used)  
-5. [Prerequisites](#prerequisites)  
-6. [Setup & Installation](#setup--installation)  
-7. [Running the Projects](#running-the-projects)  
-8. [API Endpoints](#api-endpoints)  
-9. [Security & Roles](#security--roles)
-10.[Testing with postman](#testing--with--postman)
-11.[Future Enhancements](#future--enhancement)
-12.[License](#license) 
 
+1. [Overview](#overview)
+2. [Project Structure](#project-structure)
+3. [Features](#features)
+4. [Technologies Used](#technologies-used)
+5. [Prerequisites](#prerequisites)
+6. [Setup & Installation](#setup--installation)
+7. [Running the Projects](#running-the-projects)
+8. [API Endpoints](#api-endpoints)
+9. [Security & Roles](#security--roles)
+10. [Testing with Postman](#testing-with-postman)
+11. [Future Enhancements](#future-enhancements)
+12. [License](#license)
 
 ---
 
