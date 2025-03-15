@@ -1,4 +1,4 @@
-# EHR System
+# EHR Application
 
 1) **Backend** - Java (Spring Boot) → EHR-Panel  
 2) **Database** - Structured (MySQL) and Non-Structured (MongoDB) Data  
@@ -10,16 +10,19 @@ This repository contains two Spring Boot projects that together form an Electron
 ---
 
 ## Table of Contents
-1. [Overview](#overview)  
-2. [Project Structure](#project-structure)  
-3. [Features](#features)  
-4. [Technologies Used](#technologies-used)  
-5. [Prerequisites](#prerequisites)  
-6. [Setup & Installation](#setup--installation)  
-7. [Running the Projects](#running-the-projects)  
-8. [API Endpoints](#api-endpoints)  
-9. [Security & Roles](#security--roles) 
 
+1. [Overview](#overview)
+2. [Project Structure](#project-structure)
+3. [Features](#features)
+4. [Technologies Used](#technologies-used)
+5. [Prerequisites](#prerequisites)
+6. [Setup & Installation](#setup--installation)
+7. [Running the Projects](#running-the-projects)
+8. [API Endpoints](#api-endpoints)
+9. [Security & Roles](#security--roles)
+10. [Testing with Postman](#testing-with-postman)
+11. [Future Enhancements](#future-enhancements)
+12. [License](#license)
 
 ---
 
@@ -324,4 +327,7 @@ EHR_Panel_Mongo
 (Include or reference the actual LICENSE file in my repository.)**
 
   
+## Thank you for exploring the EHR_DatabaseProject!
+
+- **If you have any questions or suggestions, feel free to open an issue or reach out.**
 
