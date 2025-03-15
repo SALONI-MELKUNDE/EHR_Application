@@ -10,12 +10,12 @@
    URL: http://localhost:9094/addDoctors
    Request Body:
    {
-     "doctorName": "Mazhar Hameed",
+     "doctorName": "Mazhar",
      "doctorGender": "male",
      "purposeOfVisit": "Routine Checkup",
      "diagnosisRecommendation": "Regular exercise and healthy diet",
      "doctorPhone": "+1-555-1234",
-     "doctorEmail": "dr.mazhar.hameed@example.com",
+     "doctorEmail": "dr.mazhar@example.com",
      "selfAge": 35,
      "dateOfVisit": "2025-02-05",
      "selfMedicalDocs": "Blood test results, X-ray report"
