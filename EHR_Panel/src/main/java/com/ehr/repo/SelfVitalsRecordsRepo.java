@@ -8,7 +8,7 @@ import com.ehr.entity.SelfVitalsRecords;
 import java.util.Optional;
 
 
-@Repository  // ✅ Required to mark this as a Spring-managed repository
+@Repository
 public interface SelfVitalsRecordsRepo extends JpaRepository<SelfVitalsRecords, Long> {
 
 

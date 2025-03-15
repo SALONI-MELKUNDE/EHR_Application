@@ -8,16 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository  // ✅ Required to mark this as a Spring-managed repository
+@Repository
 public interface PrescriptionRepository extends JpaRepository<Prescription, Long> {
-
-
-
-
-
-
-
-
 
     void deleteByPatientId(Long patientId);
 

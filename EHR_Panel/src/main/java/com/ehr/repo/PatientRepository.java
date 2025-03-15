@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ehr.entity.Patient;
 
-@Repository  // ✅ Required to mark this as a Spring-managed repository
+@Repository  //
 public interface PatientRepository extends JpaRepository<Patient, Long> {
 
 

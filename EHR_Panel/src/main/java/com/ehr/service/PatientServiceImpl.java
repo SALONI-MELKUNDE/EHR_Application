@@ -599,7 +599,7 @@ public class PatientServiceImpl implements PatientService {
     private String evaluateBloodPressure(int bloodPressure) {
         if (bloodPressure < 90) {
             return "Low Blood Pressure";
-        } else if (bloodPressure > 90) {
+        } else if (bloodPressure > 140) {
             return "High Blood Pressure";
         } else {
             return "Normal Range";

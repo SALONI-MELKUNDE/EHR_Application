@@ -19,7 +19,7 @@ public class PatientController {
 
 
 
-    // ✅ Add Patient with Validation
+    // Add Patient with Validation
     @PostMapping("/addPatients")
     public ResponseEntity<Map<String, Object>> addPatient(@Valid @RequestBody Patient patient) {
         Patient savedPatient = patientService.savePatient(patient);
@@ -31,13 +31,13 @@ public class PatientController {
         return ResponseEntity.ok(response);
     }
 
-    // ✅ Get All Doctors
+    // Get All Doctors
     @GetMapping("/getAllDoctorRecords")
     public List<Doctor> getAllDoctorRecords() {
         return patientService.findAll();
     }
 
-    // ✅ Get Doctor by ID (Validation Added)
+    //Get Doctor by ID (Validation Added)
     @GetMapping("/doctor/{doctorId}")
     public ResponseEntity<?> getDoctorByDoctorId(@PathVariable @NotNull Long doctorId) {
         List<Doctor> doctors = patientService.findByDoctorId(doctorId);
@@ -49,6 +49,7 @@ public class PatientController {
         return ResponseEntity.ok(doctors);
     }
 
+    // Delete Doctor by ID (Validation Added)
     @DeleteMapping("/doctorDelete/{doctorId}")
     public ResponseEntity<String> deleteDoctorById(@PathVariable @NotNull Long doctorId) {
         boolean isDeleted = patientService.deleteDoctorById(doctorId);
@@ -59,6 +60,9 @@ public class PatientController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body("No doctor found with ID: " + doctorId);
     }
+
+
+    // Update Doctor by ID (Validation Added)
     @PutMapping("/doctorUpdate/{doctorId}")
     public ResponseEntity<?> updateDoctorById(@PathVariable @NotNull Long doctorId, @Valid @RequestBody Doctor updatedDoctor) {
         Doctor doctor = patientService.updateDoctorById(doctorId, updatedDoctor);
@@ -71,7 +75,7 @@ public class PatientController {
     }
 
 
-    // ✅ Add Self Vitals Record with Validation
+    //Add Self Vitals Record with Validation
     @PostMapping("/SelfVitalsRecords")
     public Object selfVitalsRecords(@Valid @RequestBody SelfVitalsRecords selfVitalsRecords) {
         // Check if the patient exists in Patient_Detail_Record
@@ -92,9 +96,6 @@ public class PatientController {
 
         return ResponseEntity.ok(response);
     }
-
-
-
 
 
     // Update by patientId
@@ -129,7 +130,7 @@ public class PatientController {
     }
 
 
-
+    // Get All Self Vitals Records
     @GetMapping("/getAllSelfVitalRecords")
     public ResponseEntity<Object> getAllSelfVitalsRecords() {
         System.out.println("Fetching self vitals records..."); // Debug log
@@ -146,7 +147,7 @@ public class PatientController {
         return ResponseEntity.ok(vitalsRecords);
     }
 
-
+    // Get Self Vitals Records by Patient ID
     @GetMapping("/getSelfVitalRecordsByPatient/{patientId}")
     public ResponseEntity<Object> getSelfVitalRecordsByPatientId(@PathVariable Long patientId) {
         System.out.println("Fetching self-vital records for Patient ID: " + patientId); // Debug log
@@ -165,19 +166,15 @@ public class PatientController {
     }
 
 
-
-
-
-
-
-
-    // ✅ Get All Patients
+    // Get All Patients
     @GetMapping("/getAllPatients")
     public List<Patient> getAllPatients() {
         return patientService.getAllPatients();
     }
 
 
+
+    // Delete Patient by ID with Validation
     @DeleteMapping("/patientDelete/{patientId}")
     public ResponseEntity<String> deletePatientById(@PathVariable @NotNull Long patientId) {
         if (patientService.deletedPatientById(patientId)) {
@@ -187,6 +184,8 @@ public class PatientController {
                 .body("No patient found with ID: " + patientId);
     }
 
+
+    // Update Patient by ID with Validation
     @PutMapping("/patientUpdate/{patientId}")
     public ResponseEntity<?> updatePatientById(@PathVariable @NotNull Long patientId,
                                                @Valid @RequestBody Patient updatedPatient) {
@@ -200,7 +199,7 @@ public class PatientController {
     }
 
 
-    // ✅ Get Patient by ID with Validation
+    //Get Patient by ID with Validation
     @GetMapping("/patient/{patientId}")
     public ResponseEntity<?> getPatientById(@PathVariable @NotNull Long patientId) {
         List<Patient> patients = patientService.findByPatientId(patientId);
@@ -212,8 +211,9 @@ public class PatientController {
         return ResponseEntity.ok(patients);
     }
 
-    // ✅ Add Doctor with Validation
 
+
+    // Add Doctor with Validation
     @PostMapping("/addDoctors")
     public ResponseEntity<Map<String, Object>> addDoctor(@Valid @RequestBody Doctor doctor) {
         Doctor savedDoctor = patientService.saveDoctor(doctor);
@@ -226,6 +226,7 @@ public class PatientController {
     }
 
 
+    // Add Prescription
     @PostMapping("/prescription")
     public ResponseEntity<Map<String, Object>> savePrescription(@Valid @RequestBody Prescription prescription) {
         // Check if the patient ID exists in the Patient_Detail_Record table
@@ -247,7 +248,7 @@ public class PatientController {
     }
 
 
-
+    // Get Prescription by Patient ID
     @GetMapping("/getPrescription")
     public ResponseEntity<String> getSchedule(@RequestParam("patientId") @NotNull Long patientId) {
         List<String> schedules = patientService.getSchedulesForPatient(patientId);
@@ -261,6 +262,8 @@ public class PatientController {
         return ResponseEntity.ok("The prescribed time slots for patient ID " + patientId + " are:\n" + String.join("\n\n", schedules));
     }
 
+
+    // Update Prescription by Patient ID
     @PutMapping("/prescriptionUpdate/{patientId}")
     public Object updatePrescription(
             @PathVariable Long patientId,
@@ -281,9 +284,7 @@ public class PatientController {
     }
 
 
-
-
-
+    // Delete Prescription by Patient ID
     @DeleteMapping("/prescriptionDelete")
     public ResponseEntity<String> deletePrescription(@RequestParam("patientId") @NotNull Long patientId) {
         boolean isDeleted = patientService.deletePrescription(patientId);
@@ -297,42 +298,20 @@ public class PatientController {
     }
 
 
-
-
-
-
-
-
-
-    // ✅ Add a new appointment
-/*	@PostMapping("/addAppointment")
-	public ResponseEntity<Map<String, Object>> addAppointment(@RequestBody Appointment appointment) {
-		Appointment savedAppointment = patientService.saveAppointment(appointment);
-
-		Map<String, Object> response = new HashMap<>();
-		response.put("message", "Appointment scheduled successfully");
-		//response.put("appointment", savedAppointment);
-
-		return ResponseEntity.ok(response);
-	}*/
+    // Add Appointment
     @PostMapping("/addAppointment")
     public ResponseEntity<Map<String, Object>> addAppointment(@RequestBody Appointment appointment) {
-        // Check if patient exists
         boolean isPatientExists = patientService.isPatientExists(appointment.getPatient_id());
-        // Check if doctor exists
         boolean isDoctorExists = patientService.isDoctorExists(appointment.getDoctor_id());
 
         if (!isPatientExists) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(Collections.singletonMap("error", "Patient ID " + appointment.getPatient_id() + " not found."));
         }
-
         if (!isDoctorExists) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(Collections.singletonMap("error", "Doctor ID " + appointment.getDoctor_id() + " not found."));
         }
-
-        // If both patient and doctor exist, save the appointment
         Appointment savedAppointment = patientService.saveAppointment(appointment);
 
         Map<String, Object> response = new HashMap<>();
@@ -343,19 +322,14 @@ public class PatientController {
     }
 
 
-
-
-
-
-
-    // ✅ Get all appointments
+    // Get All Appointments
     @GetMapping("/allAppointment")
     public ResponseEntity<List<Appointment>> getAllAppointments() {
         List<Appointment> appointments = patientService.getAllAppointments();
         return ResponseEntity.ok(appointments);
     }
 
-
+    // Get Appointment by ID
     @GetMapping("/appointment/{appointmentId}")
     public ResponseEntity<Object> getAppointmentById(@PathVariable Long appointmentId) {
         Optional<Appointment> appointment = patientService.getAppointmentById(appointmentId);
@@ -370,7 +344,7 @@ public class PatientController {
     }
 
 
-
+    // Delete Appointment by ID
     @DeleteMapping("/appointmentDelete/{appointmentId}")
     public ResponseEntity<Map<String, String>> deleteAppointment(@PathVariable Long appointmentId) {
         boolean isDeleted = patientService.deleteAppointment(appointmentId);
@@ -387,6 +361,7 @@ public class PatientController {
     }
 
 
+    // Update Appointment by ID
     @PutMapping("/appointmentUpdate/{appointmentId}")
     public Object updateAppointment(
             @PathVariable Long appointmentId,
@@ -407,23 +382,10 @@ public class PatientController {
     }
 
 
-
-
-
-
-
-
-
-
-    // ✅ Global Exception Handler for Bad Requests
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleException(Exception ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body("❌ Error: " + ex.getMessage());
     }
-
-
-
-
 
 }

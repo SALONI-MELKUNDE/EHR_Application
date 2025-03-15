@@ -9,64 +9,42 @@ public class SelfVitalsRecords {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // Primary Key
-
     @Column(name = "NAME")
     private String name;
-
     @Column(name = "AGE")
     private int age;
-
     @Column(name = "GENDER")
     private String gender;
-
     @Column(name = "WEIGHT")
     private double weight;
-
     @Column(name = "HEIGHT")
     private double height;
-
     @Column(name = "BLOOD_TYPE")
     private String bloodType;
-
     @Column(name = "HEART_RATE")
     private int heartRate;
-
     @Column(name = "BLOOD_PRESSURE")
-    private int bloodPressure; // Format: "systolic/diastolic"
-
+    private int bloodPressure;
     @Column(name = "RESPIRATORY_RATE")
     private int respiratoryRate;
-
     @Column(name = "BODY_TEMPERATURE")
     private double bodyTemperature;
-
     @Column(name = "BLOOD_GLUCOSE")
     private double bloodGlucose;
-
     @Column(name = "OXYGEN_SATURATION")
     private double oxygenSaturation;
-
-    // Health Status Columns
     @Column(name = "HEART_RATE_STATUS")
     private String heartRateStatus;
-
     @Column(name = "BLOOD_PRESSURE_STATUS")
     private String bloodPressureStatus;
-
     @Column(name = "RESPIRATORY_RATE_STATUS")
     private String respiratoryRateStatus;
-
     @Column(name = "BODY_TEMPERATURE_STATUS")
     private String bodyTemperatureStatus;
-
     @Column(name = "BLOOD_GLUCOSE_STATUS")
     private String bloodGlucoseStatus;
-
     @Column(name = "OXYGEN_SATURATION_STATUS")
     private String oxygenSaturationStatus;
-
-    // Relationship with patient_id
-
     @Column(name = "patient_id") // Foreign key to patient_id table
     private Long patientId;
 
