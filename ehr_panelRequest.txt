@@ -6,11 +6,13 @@
 
 ------------------- Doctor Endpoints ----------------------
 
+
+
 1. POST - Add Doctor
    URL: http://localhost:9094/addDoctors
    Request Body:
    {
-     "doctorName": "Mazhar",
+     "doctorName": "Dr. Mazhar",
      "doctorGender": "male",
      "purposeOfVisit": "Routine Checkup",
      "diagnosisRecommendation": "Regular exercise and healthy diet",
