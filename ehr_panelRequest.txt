@@ -43,6 +43,9 @@ Password = patient123
 
 ------------------- Patient Endpoints ---------------------
 
+Username = doctor1
+Password = doctor123
+
 1. POST - Add Patient
    URL: http://localhost:9094/addPatients
    Request Body:
@@ -202,7 +205,7 @@ Password = doctor123
 
 
 
-
+Note:- Using the admin credentials (Username: admin, Password: admin123) grants access to all endpoints in the project.
 
 
 mongodb://localhost:27017/test ========================  mongodb local system
