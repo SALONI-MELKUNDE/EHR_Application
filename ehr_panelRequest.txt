@@ -108,7 +108,7 @@ Password = patient123
 
 
 2. GET - Get All Self Vitals Records
-   URL: http://localhost:9094/getAllSelfVitalsRecords
+   URL: http://localhost:9094/getAllSelfVitalRecords
    Description: Retrieves all self vitals records.
 
 3. GET - Get Self Vitals Record by Patient ID
