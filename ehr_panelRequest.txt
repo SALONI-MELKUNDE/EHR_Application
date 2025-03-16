@@ -46,16 +46,20 @@
    URL: http://localhost:9094/addPatients
    Request Body:
    {
-     "patientName": "John Doe",
-     "patientAge": 30,
-     "patientGender": "Male",
-     "purposeOfVisit": "General Checkup",
-     "diagnosisRecommendation": "Increase water intake, follow up in 6 months",
-     "patientPhone": "+1-555-9876",
-     "patientEmail": "john.doe@example.com",
-     "patientDateOfVisit": "2025-02-05",
-     "patientMedicalDocs": "Blood work, X-ray report"
-   }
+  "patientName": "Alice Smith",
+  "patientAge": 28,
+  "patientGender": "Female",
+  "purposeOfVisit": "Flu Symptoms",
+  "diagnosisRecommendation": "Rest and hydration, consult if fever persists",
+  "patientPhone": "+1-555-2345",
+  "patientEmail": "alice.smith@example.com",
+  "patientDateOfVisit": "2025-03-10",
+  "patientMedicalDocs": "Flu test results, temperature logs",
+  "doctor": {
+    "doctorId": 2
+  }
+}
+
 
 2. GET - Get Patient by ID
    URL: http://localhost:9094/patient/{{patientId}}
