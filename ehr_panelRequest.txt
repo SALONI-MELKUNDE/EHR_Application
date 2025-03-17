@@ -6,16 +6,19 @@
 
 ------------------- Doctor Endpoints ----------------------
 
+Username = patient1
+Password = patient123
+
 1. POST - Add Doctor
    URL: http://localhost:9094/addDoctors
    Request Body:
    {
-     "doctorName": "Mazhar Hameed",
+     "doctorName": "Dr. Mazhar",
      "doctorGender": "male",
      "purposeOfVisit": "Routine Checkup",
      "diagnosisRecommendation": "Regular exercise and healthy diet",
      "doctorPhone": "+1-555-1234",
-     "doctorEmail": "dr.mazhar.hameed@example.com",
+     "doctorEmail": "dr.mazhar@example.com",
      "selfAge": 35,
      "dateOfVisit": "2025-02-05",
      "selfMedicalDocs": "Blood test results, X-ray report"
@@ -40,20 +43,27 @@
 
 ------------------- Patient Endpoints ---------------------
 
+Username = doctor1
+Password = doctor123
+
 1. POST - Add Patient
    URL: http://localhost:9094/addPatients
    Request Body:
    {
-     "patientName": "John Doe",
-     "patientAge": 30,
-     "patientGender": "Male",
-     "purposeOfVisit": "General Checkup",
-     "diagnosisRecommendation": "Increase water intake, follow up in 6 months",
-     "patientPhone": "+1-555-9876",
-     "patientEmail": "john.doe@example.com",
-     "patientDateOfVisit": "2025-02-05",
-     "patientMedicalDocs": "Blood work, X-ray report"
-   }
+  "patientName": "Alice Smith",
+  "patientAge": 28,
+  "patientGender": "Female",
+  "purposeOfVisit": "Flu Symptoms",
+  "diagnosisRecommendation": "Rest and hydration, consult if fever persists",
+  "patientPhone": "+1-555-2345",
+  "patientEmail": "alice.smith@example.com",
+  "patientDateOfVisit": "2025-03-10",
+  "patientMedicalDocs": "Flu test results, temperature logs",
+  "doctor": {
+    "doctorId": 2
+  }
+}
+
 
 2. GET - Get Patient by ID
    URL: http://localhost:9094/patient/{{patientId}}
@@ -73,28 +83,32 @@
 
 
 ---------------- Self Vitals Records Endpoints --------------
+Username = patient1
+Password = patient123
+
 
 1. POST - Add Self Vitals Record
    URL: http://localhost:9094/SelfVitalsRecords
    Request Body:
-   {
-     "name": "John Doe",
-     "age": 30,
-     "gender": "Male",
-     "weight": 70.5,
-     "height": 175.3,
-     "bloodType": "A+",
-     "heartRate": 72,
-     "bloodPressure": 120,
-     "respiratoryRate": 16,
-     "bodyTemperature": 36.6,
-     "bloodGlucose": 90.0,
-     "oxygenSaturation": 98.0,
-     "patientId": 1
-   }
+{
+  "name": "Alice Smith",
+  "age": 28,
+  "gender": "Female",
+  "weight": 60.0,
+  "height": 165.0,
+  "bloodType": "O+",
+  "heartRate": 68,
+  "bloodPressure": 115,
+  "respiratoryRate": 18,
+  "bodyTemperature": 36.7,
+  "bloodGlucose": 85.0,
+  "oxygenSaturation": 99.0,
+  "patientId": 2
+}
+
 
 2. GET - Get All Self Vitals Records
-   URL: http://localhost:9094/getAllSelfVitalsRecords
+   URL: http://localhost:9094/getAllSelfVitalRecords
    Description: Retrieves all self vitals records.
 
 3. GET - Get Self Vitals Record by Patient ID
@@ -111,6 +125,9 @@
 
 
 ------------------ Prescription Endpoints -------------------
+
+Username = patient1
+Password = patient123
 
 1. POST - Add Prescription
    URL: http://localhost:9094/prescription
@@ -138,6 +155,13 @@
 
 
 ------------------- Appointment Endpoints -------------------
+
+Username = patient1
+Password = patient123
+
+Username = doctor1
+Password = doctor123
+
 
 1. POST - Add Appointment
    URL: http://localhost:9094/addAppointment
@@ -181,7 +205,7 @@
 
 
 
-
+Note:- Using the admin credentials (Username: admin, Password: admin123) grants access to all endpoints in the project.
 
 
 mongodb://localhost:27017/test ========================  mongodb local system
