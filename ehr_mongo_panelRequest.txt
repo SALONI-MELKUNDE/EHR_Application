@@ -1,4 +1,7 @@
 ---------------------------------------------------------------------------Patient File Management Endpoints-----------------------------------------------------------------
+Username = patient1
+Password = patient123
+
 
 * POST - File Upload (form-data)
    URL: http://localhost:8081/upload
@@ -15,3 +18,8 @@
 * DELETE - Delete File's
    URL: http://localhost:8081/deleteFile/{{patientId}}
    Description: Delete the file's by the patientId.
+
+
+
+
+
