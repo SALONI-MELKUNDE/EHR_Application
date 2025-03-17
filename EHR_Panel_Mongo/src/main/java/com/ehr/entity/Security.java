@@ -45,7 +45,6 @@ public class Security {
                 .roles("ADMIN")
                 .build();
 
-
         UserDetails patient = User.builder()
                 .username("patient1")
                 .password(passwordEncoder().encode("patient123"))

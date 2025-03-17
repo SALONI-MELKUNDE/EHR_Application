@@ -9,6 +9,7 @@ public class FileDownloadResponse {
         this.fileData = fileData;
     }
 
+
     // Getters and Setters
     public String getMessage() {
         return message;

@@ -8,10 +8,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Patient {
 
 	//db.Patient_Data.find({ "patientId": "03" })
-
 	@Id
 	private String id;
-
 	private String patientId;
 	private String Date;
 	private String fileName;
@@ -26,6 +24,7 @@ public class Patient {
 		this.contentType = contentType;
 		this.data = data;
 	}
+
 
 	public Patient() {
 
@@ -78,4 +77,5 @@ public class Patient {
 	public void setData(byte[] data) {
 		this.data = data;
 	}
+
 }
