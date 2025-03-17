@@ -23,3 +23,9 @@ Password = patient123
 
 
 
+
+
+
+
+
+Note:- Using the admin credentials (Username: admin, Password: admin123) grants access to all endpoints in the project.
