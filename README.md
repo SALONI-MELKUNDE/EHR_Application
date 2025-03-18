@@ -1,4 +1,4 @@
-# EHR Application
+# EHR Application 🏥🩺💉
 
 1) **Backend** - Java (Spring Boot) → EHR-Panel  
 2) **Database** - Structured (MySQL) and Non-Structured (MongoDB) Data  
@@ -9,7 +9,7 @@ This repository contains two Spring Boot projects that together form an Electron
 
 ---
 
-## Table of Contents
+## Table of Contents 👁️📌 
 
 1. [Overview](#overview)
 2. [Project Structure](#project-structure)
@@ -138,7 +138,7 @@ EHR_Panel_Mongo
 ---
 
 
-## 4. Technologies Used
+## 4. Technologies Used 💻
 - **Java 17+**
 - **Spring Boot** (Web, Data JPA, Data MongoDB, Validation, Security)
 - **MySQL** (for EHR_Panel)
