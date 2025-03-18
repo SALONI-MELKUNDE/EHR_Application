@@ -9,15 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface PatientService {
 
-
-
-
 	String uploadPdf(MultipartFile file, String patientId, String date) throws IOException;
-
-
-	//Patient getFile(String id);
-
 	List<Patient> getFile(String patientiId);
-
 	boolean deleteFile(String patientiId);
 }

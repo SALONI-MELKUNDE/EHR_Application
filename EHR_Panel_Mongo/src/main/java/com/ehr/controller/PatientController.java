@@ -27,11 +27,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 public class PatientController {
-
 	@Autowired
 	PatientService patientService;
-
-
 	@PostMapping("/upload")
 	public String uploadPdf(@RequestParam("file") MultipartFile file,
 							@RequestParam("patient_id") String patient_id,
@@ -47,13 +44,11 @@ public class PatientController {
 	public ResponseEntity<byte[]> downloadAllFilesByPatientId(@PathVariable String patientId) {
 		List<Patient> files = patientService.getFile(patientId);
 
-
 		System.out.println("Fetched files for patient ID " + patientId + ": " + files);
 
 		if (files == null || files.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No files found".getBytes());
 		}
-
 		try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 			 ZipOutputStream zipOutputStream = new ZipOutputStream(byteArrayOutputStream)) {
 

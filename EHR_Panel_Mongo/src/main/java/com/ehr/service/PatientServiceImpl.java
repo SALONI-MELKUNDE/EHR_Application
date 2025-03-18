@@ -17,8 +17,6 @@ public class PatientServiceImpl implements PatientService {
 	@Autowired
 	PatientRepository doctorRepository;
 
-
-
 	@Override
 	public String uploadPdf(MultipartFile file, String patientId, String date) throws IOException {
 		Patient document = new Patient();
@@ -28,8 +26,6 @@ public class PatientServiceImpl implements PatientService {
 		document.setPatient_id(patientId);
 		document.setDate(String.valueOf(date));
 
-		//return String.valueOf(doctorRepository.save(document));
-
 		doctorRepository.save(document);
 		return "File uploaded successfully with ID: " + document.getPatient_id();
 	}
@@ -37,13 +33,11 @@ public class PatientServiceImpl implements PatientService {
 	@Override
 	public List<Patient> getFile(String patientId) {
 		List<Patient> files = doctorRepository.findByPatientId(patientId);
-
 		if (files.isEmpty()) {
 			System.out.println("❌ No files found for patient ID: " + patientId);
 		} else {
 			System.out.println("✅ Files retrieved: " + files.size());
 		}
-
 		return files;
 	}
 
