@@ -142,7 +142,7 @@ Password = patient123
    }
 
 2. GET - Get Prescription by Patient ID
-   URL: http://localhost:9094/getPrescription/{{patientId}}
+   URL: http://localhost:9094/getPrescription?patientId={{patientId}}
    Description: Retrieves prescription details by patient id.
 
 3. PUT - Update Prescription
