@@ -1,4 +1,4 @@
-# EHR Application
+# EHR Application 🏥🩺💉
 
 1) **Backend** - Java (Spring Boot) → EHR-Panel  
 2) **Database** - Structured (MySQL) and Non-Structured (MongoDB) Data  
@@ -9,7 +9,7 @@ This repository contains two Spring Boot projects that together form an Electron
 
 ---
 
-## Table of Contents
+## Table of Contents 👁️📌 
 
 1. [Overview](#overview)
 2. [Project Structure](#project-structure)
@@ -26,7 +26,7 @@ This repository contains two Spring Boot projects that together form an Electron
 
 ---
 
-## 1. Overview
+## 1. Overview 🌐
 
 ### EHR_Panel (MySQL)
 A Spring Boot application that manages:
@@ -46,7 +46,7 @@ Together, these applications form a simplified EHR system where you can manage b
 
 ---
 
-## 2. Project Structure
+## 2. Project Structure 🗂️
 
 ### EHR_Panel (MySQL)
 
@@ -119,7 +119,7 @@ EHR_Panel_Mongo
 ```
 
 
-## 3. Features
+## 3. Features ⭐
 
 ### EHR_Panel (MySQL)
 - **Patient Management**: Create, read, update, and delete patient records.  
@@ -138,7 +138,7 @@ EHR_Panel_Mongo
 ---
 
 
-## 4. Technologies Used
+## 4. Technologies Used 💻
 - **Java 17+**
 - **Spring Boot** (Web, Data JPA, Data MongoDB, Validation, Security)
 - **MySQL** (for EHR_Panel)
@@ -150,7 +150,7 @@ EHR_Panel_Mongo
 
 ---
 
-## 5. Prerequisites
+## 5. Prerequisites 📋
 1. **Java 17+** installed and configured (`JAVA_HOME`).
 2. **Maven 3.6+** installed (or use Maven wrapper).
 3. **MySQL** server running on port `3306` (or adjust `application.properties` accordingly) for EHR_Panel.  
@@ -171,7 +171,7 @@ EHR_Panel_Mongo
 ---
 
 
-## 6. Setup & Installation
+## 6. Setup & Installation 🚀
 1. **Clone this repository**:
    ```bash
    https://github.com/SALONI-MELKUNDE/EHR_Application.git 
@@ -203,7 +203,7 @@ EHR_Panel_Mongo
   src/main/resources/application.properties
   ```
 
-## 7. Running the Projects
+## 7. Running the Projects ▶️
 
 ### EHR_Panel (MySQL)
 
@@ -226,7 +226,7 @@ EHR_Panel_Mongo
 *Note: Ensure that both MySQL and MongoDB servers are up and running before starting the applications.*
 
 
-## 8. API Endpoints
+## 8. API Endpoints 🔗
 
 ### EHR_Panel (MySQL)
 
@@ -271,7 +271,7 @@ EHR_Panel_Mongo
 
 
 
-## 9. Security & Roles
+## 9. Security & Roles 🔒
 
 *Both projects implement role-based access control using Spring Security with in-memory authentication.*
 
@@ -306,14 +306,14 @@ EHR_Panel_Mongo
 *Endpoint Restrictions:*
 **Endpoints such as /upload, /download/**, and /deleteFile/** are accessible to users with either ADMIN or PATIENT roles.**
 
-## 10. Testing with Postman
+## 10. Testing with Postman 🧪
 
 - **Import the API collection (if provided) into Postman.**
 - **Use HTTP Basic Authentication with the credentials listed above.**
 - **Test each endpoint by sending requests with the necessary parameters and payloads.**
 - **Validate the response codes and payloads as per the API definitions.**
 
-## 11. Future Enhancements
+## 11. Future Enhancements 🔮
 
 - **User Interface: Develop a frontend UI for easier interaction with the EHR system.**
 - **Enhanced Security: Integrate JWT-based authentication and OAuth2 for more robust security.**
@@ -321,13 +321,13 @@ EHR_Panel_Mongo
 - **Audit Logging: Implement detailed logging and audit trails for security and compliance.**
 - **Integration: Add support for third-party healthcare systems and analytics.**
 
-## 12. License
+## 12. License 📜
 
 - **This project is licensed under the MIT License.
 (Include or reference the actual LICENSE file in my repository.)**
 
   
-## Thank you for exploring the EHR_DatabaseProject!
+## Thank you for exploring the EHR_DatabaseProject! 🎉
 
-- **If you have any questions or suggestions, feel free to open an issue or reach out.**
+- **If you have any questions or suggestions, feel free to open an issue or reach out.** 💬 📬
 
