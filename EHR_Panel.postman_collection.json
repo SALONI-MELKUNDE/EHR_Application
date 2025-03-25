@@ -1,0 +1,984 @@
+{
+	"info": {
+		"_postman_id": "a2bc00d9-3157-4d37-befe-a6a4718bcef5",
+		"name": "EHR_Panel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41956287"
+	},
+	"item": [
+		{
+			"name": "Add new doctor",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "patient123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "patient1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"doctorName\": \"Dr. Sarah Lee\",\r\n  \"doctorGender\": \"female\",\r\n  \"purposeOfVisit\": \"Specialist Consultation\",\r\n  \"diagnosisRecommendation\": \"Referral to a specialist for further evaluation\",\r\n  \"doctorPhone\": \"+1-555-9876\",\r\n  \"doctorEmail\": \"dr.sarahlee@example.com\",\r\n  \"selfAge\": 38,\r\n  \"dateOfVisit\": \"2025-03-07\",\r\n  \"selfMedicalDocs\": \"MRI, ultrasound report\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9094/addDoctors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"addDoctors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all doctors",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "patient123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "patient1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9094/doctor/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"doctor",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get doctor by ID",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "patient123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "patient1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9094/doctor/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"doctor",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update by doctor ID",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "patient123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "patient1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n     \"doctorName\": \"Dr. swapnil\",\r\n     \"doctorGender\": \"male\",\r\n     \"purposeOfVisit\": \"Routine Checkup\",\r\n     \"diagnosisRecommendation\": \"Regular exercise and healthy diet\",\r\n     \"doctorPhone\": \"+1-555-9999\",\r\n     \"doctorEmail\": \"dr.swapnil@example.com\",\r\n     \"selfAge\": 35,\r\n     \"dateOfVisit\": \"2025-02-25\",\r\n     \"selfMedicalDocs\": \"Blood test results, X-ray report\"\r\n   }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9094/doctorUpdate/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"doctorUpdate",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add new patient",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "doctor123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "doctor1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"patientName\": \"Alice Smith\",\r\n  \"patientAge\": 28,\r\n  \"patientGender\": \"Female\",\r\n  \"purposeOfVisit\": \"Flu Symptoms\",\r\n  \"diagnosisRecommendation\": \"Rest and hydration, consult if fever persists\",\r\n  \"patientPhone\": \"+1-555-2345\",\r\n  \"patientEmail\": \"alice.smith@example.com\",\r\n  \"patientDateOfVisit\": \"2025-03-10\",\r\n  \"patientMedicalDocs\": \"Flu test results, temperature logs\",\r\n  \"doctor\": {\r\n    \"doctorId\": 1\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9094/addPatients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"addPatients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Patients",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "doctor123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "doctor1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9094/getAllPatients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"getAllPatients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get patient by ID",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "doctor123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "doctor1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9094/patient/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"patient",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update by patient ID",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "doctor123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "doctor1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"patientName\": \"Liam Anderson\",\r\n  \"patientAge\": 40,\r\n  \"patientGender\": \"Male\",\r\n  \"purposeOfVisit\": \"Routine Checkup\",\r\n  \"diagnosisRecommendation\": \"Maintain current diet and exercise\",\r\n  \"patientPhone\": \"+1-555-7777\",\r\n  \"patientEmail\": \"liam.anderson@example.com\",\r\n  \"patientDateOfVisit\": \"2025-04-10\",\r\n  \"patientMedicalDocs\": \"Blood test report, cholesterol check\",\r\n  \"doctor\": {\r\n    \"doctorId\": 1\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9094/patientUpdate/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"patientUpdate",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add self vitals record",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "patient123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "patient1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Liam Anderson\",\r\n  \"age\": 28,\r\n  \"gender\": \"male\",\r\n  \"weight\": 60.0,\r\n  \"height\": 165.0,\r\n  \"bloodType\": \"O+\",\r\n  \"heartRate\": 68,\r\n  \"bloodPressure\": 115,\r\n  \"respiratoryRate\": 18,\r\n  \"bodyTemperature\": 36.7,\r\n  \"bloodGlucose\": 85.0,\r\n  \"oxygenSaturation\": 99.0,\r\n  \"patientId\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9094/SelfVitalsRecords",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"SelfVitalsRecords"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All self vitals records",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "patient123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "patient1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9094/getAllSelfVitalRecords",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"getAllSelfVitalRecords"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get selfvitalsrecord by patient ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "patient123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "patient1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9094/getSelfVitalRecordsByPatient/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"getSelfVitalRecordsByPatient",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update selfvitalsrecord by patient ID",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "patient123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "patient1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Liam Anderson\",\r\n  \"age\": 38,\r\n  \"gender\": \"male\",\r\n  \"weight\": 60.0,\r\n  \"height\": 165.0,\r\n  \"bloodType\": \"O+\",\r\n  \"heartRate\": 20,\r\n  \"bloodPressure\": 115,\r\n  \"respiratoryRate\": 18,\r\n  \"bodyTemperature\": 36.7,\r\n  \"bloodGlucose\": 85.0,\r\n  \"oxygenSaturation\": 99.0,\r\n  \"patientId\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9094/updateSelfVitalsRecords/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"updateSelfVitalsRecords",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add new prescription",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "patient123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "patient1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"patientId\": 3,\r\n     \"patientName\": \"John Doe\",\r\n     \"medicineName\": \"Paracetamol\",\r\n     \"prescriptionStartDate\": \"2025-03-01\",\r\n     \"prescriptionEndDate\": \"2025-03-10\",\r\n     \"prescriptionRecommendedXTimesPerDay\": 3\r\n   }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9094/prescription",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"prescription"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get prescription by patient ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "patient123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "patient1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9094/getPrescription?patientId=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"getPrescription"
+					],
+					"query": [
+						{
+							"key": "patientId",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update prescription by patient ID",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "patient123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "patient1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n     \"patientId\": 3,\r\n     \"patientName\": \"John Doe\",\r\n     \"medicineName\": \"Paracetamol\",\r\n     \"prescriptionStartDate\": \"2025-03-01\",\r\n     \"prescriptionEndDate\": \"2025-03-10\",\r\n     \"prescriptionRecommendedXTimesPerDay\": 1\r\n   }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9094/prescriptionUpdate/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"prescriptionUpdate",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add new appointment",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "patient123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "patient1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"doctor_id\": \"1\",\r\n     \"patient_id\": 3,\r\n     \"appointmentDate\": \"2025-03-15\",\r\n     \"appointmentTime\": \"10:30 AM\",\r\n     \"appointmentStatus\": \"Scheduled\",\r\n     \"reasonForVisit\": \"Routine checkup\",\r\n     \"additionalNotes\": \"Patient requires blood test.\"\r\n   }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9094/addAppointment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"addAppointment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All appointment ",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "patient123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "patient1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9094/allAppointment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"allAppointment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get appointment by appointment ID",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "patient123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "patient1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9094/appointment/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"appointment",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update appointments by appointment ID",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "patient123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "patient1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"doctor_id\": \"1\",\r\n     \"patient_id\": 3,\r\n     \"appointmentDate\": \"2025-03-25\",\r\n     \"appointmentTime\": \"11:11 AM\",\r\n     \"appointmentStatus\": \"Scheduled\",\r\n     \"reasonForVisit\": \"Routine checkup\",\r\n     \"additionalNotes\": \"Patient requires blood test.\"\r\n   }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9094/appointmentUpdate/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"appointmentUpdate",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Doctor by ID",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "patient123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "patient1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9094/doctorDelete/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"doctorDelete",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Patient by ID",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "doctor123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "doctor1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9094/patientDelete/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"patientDelete",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete selfvitalsrecord by patient ID",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "patient123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "patient1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9094/deleteSelfVitalsRecords/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"deleteSelfVitalsRecords",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete prescription by patient ID",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "patient123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "patient1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9094/prescriptionDelete?patientId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"prescriptionDelete"
+					],
+					"query": [
+						{
+							"key": "patientId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete appointment by appointment ID",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "patient123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "patient1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9094/appointmentDelete/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"appointmentDelete",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
